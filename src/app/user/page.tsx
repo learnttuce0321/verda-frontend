@@ -3,7 +3,6 @@
 import BoxStore from "@/Component-jsh/Atom/Box/BoxStore"
 import { BoxStyle } from "@/Component-jsh/Atom/Box/BoxStore"
 import Link from "next/link"
-import { notFound } from "next/navigation"
 
 function Section({ children }: { children: React.ReactNode }) {
   return (

@@ -8,6 +8,17 @@ const config: Config = {
     "./src/Component-son/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    fontSize: {
+      custom_40: "40px",
+      custom_32: "32px",
+      custom_30: "30px",
+      custom_24: "24px",
+      custom_20: "20px",
+      custom_16: "16px",
+      custom_15: "15px",
+      custom_11: "11px",
+      custom_10: "10px",
+    },
     extend: {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
