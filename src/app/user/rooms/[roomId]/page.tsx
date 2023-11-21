@@ -58,8 +58,9 @@ export default function ChatDetailPage({ params: { roomId } }: Props) {
           before:left-[-12.5px]
           before:content-['◀']
           before:text-white
-          before:border-0
-          ">{data?.firstMessage}</div>
+          before:border-0">
+              {data?.firstMessage}
+            </div>
 
           </div>
           <div className="flex justify-end w-[100%]">
