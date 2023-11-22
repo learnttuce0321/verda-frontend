@@ -1,4 +1,6 @@
 "use client"
+import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
+import ButtonListInfo from "@/Components/Molecure/Button-jsh/List/ButtonListInfo";
 import Link from "next/link";
 import { ChevronRight } from "react-bootstrap-icons";
 
@@ -24,29 +26,20 @@ export default function ChatList() {
   return (
     <>
       <section>
-        <h1>채팅</h1>
-        {
-          CHATLIST_DUMMYDATA.map(chat => {
-            return (
-              <Link href={`/user/rooms/${chat.id}`} key={chat.id}>
-                <div key={chat.id} className="flex mx-10 my-5 bg-white p-3 rounded-lg justify-between">
-
-                  <div className="flex ">
-                    <img src="" alt="사진" />
-                    <div>
-                      <h3>{chat.fundManagerName}</h3>
-                      <p>{chat.firstMessage.length > 15 ? chat.firstMessage.slice(0, 15) + "..." : chat.firstMessage}</p>
-                    </div>
-                  </div>
-
-                  <div className="flex justify-center items-center">
-                    <ChevronRight />
-                  </div>
-                </div>
-              </Link>
-            )
-          })
-        }
+        <TextStore textStyle={TextStyle.TEXT_R_40_BLUE}>채팅</TextStore>
+      </section>
+      <section>
+        <div className="flex items-center flex-col">
+          {
+            CHATLIST_DUMMYDATA.map(chat => {
+              return (
+                <Link href={`/user/rooms/${chat.id}`} key={chat.id}>
+                  <ButtonListInfo chat={chat} />
+                </Link>
+              )
+            })
+          }
+        </div>
       </section>
     </>
   )

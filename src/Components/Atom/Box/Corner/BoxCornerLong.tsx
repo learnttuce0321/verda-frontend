@@ -8,7 +8,7 @@ interface Props {
 
 export default function BoxCornerLong({ children, clickHandler, style }: Props) {
   return (
-    <div className={`bg-white w-[24.75rem] rounded-lg p-2 border border-lightblue ${style}`} onClick={clickHandler}>
+    <div className={`bg-white w-[23rem] rounded-lg p-2 border border-lightblue ${style}`} onClick={clickHandler}>
       {children}
     </div>
   )
