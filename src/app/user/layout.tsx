@@ -5,7 +5,7 @@ export default function UserMainPage({ children }: { children: React.ReactNode }
     <>
       <main className="bg-gradient-to-b from-sky-500 to-blue-500 h-screen ">
         <UserNavigation />
-        <div className="p-3">
+        <div className="px-5 ">
           {children}
         </div>
       </main>
