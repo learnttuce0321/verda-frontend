@@ -3,10 +3,10 @@
 import React from "react";
 import { RecoilRoot } from "recoil";
 
-export default function RecoilRootProvider({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+interface Props {
+  children: React.ReactNode
+}
+
+export default function RecoilRootProvider({ children }: Props) {
   return <RecoilRoot> {children} </RecoilRoot>;
 }
