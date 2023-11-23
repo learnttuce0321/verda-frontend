@@ -1,11 +1,10 @@
 "use client";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
-export default function GoBackBtn() {
-  const router = useRouter();
-  const GotoBack = () => {
-    router.back();
-  };
+interface props {
+  link: string;
+}
 
-  return <button onClick={GotoBack}>뒤로</button>;
+export default function GoBackBtn({ link }: props) {
+  return <Link href={link}>뒤로</Link>;
 }
