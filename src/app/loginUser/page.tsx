@@ -1,9 +1,6 @@
 import LoginUser from "@/Component-son/LoginUser";
+
 function LoginUserRouter() {
-  return (
-    <>
-      <LoginUser />
-    </>
-  );
+  return (<LoginUser />);
 }
 export default LoginUserRouter;

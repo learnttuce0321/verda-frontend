@@ -20,7 +20,7 @@ export const useIntersectionObserver = ({
   const observerCallback: IntersectionObserverCallback = (entries: any) => {
     console.log(entries);
     entries.foreach((entry: any) => {
-      //target이 화면에 관찰되고, 다음페이지가 있다면 다음페이지를 호출
+      // target이 화면에 관찰되고, 다음페이지가 있다면 다음페이지를 호출
       if (entry.isIntersecting && hasNextPage) {
         fetchNextPage();
       }
@@ -38,7 +38,9 @@ export const useIntersectionObserver = ({
 
     observer.observe(target);
 
-    return () => observer.unobserve(target);
+    return (): any => {
+      return observer.unobserve(target);
+    };
   }, [observerCallback, threshold, target]);
 
   return { setTarget };

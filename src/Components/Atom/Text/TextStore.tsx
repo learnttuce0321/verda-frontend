@@ -22,12 +22,12 @@ interface Props {
   style?: string
 }
 export default function TextStore({ textStyle, children, style }: Props) {
-  const SelectText = (): React.ReactNode => {
+  const selectText = (): React.ReactNode => {
     switch (textStyle) {
       case TextStyle.TEXT_R_40:
         return <p className={`text-custom_40 leading-[40px] font-normal ${style}`}>{children}</p>
       case TextStyle.TEXT_R_40_BLUE:
-        return <p className={`text-custom_40 font-normal text-custom_navy ${style}`}>{children}</p>
+        return <p className={`text-custom_40 font-normal leading-[40px] text-custom_navy ${style}`}>{children}</p>
       case TextStyle.TEXT_E_32:
         return <p className={`text-custom_32 font-extrabold ${style}`}>{children}</p>
       case TextStyle.TEXT_S_32_BLUE:
@@ -54,11 +54,13 @@ export default function TextStore({ textStyle, children, style }: Props) {
         return <p className={`text-custom_11 font-normal ${style}`}>{children}</p>
       case TextStyle.TEXT_S_10:
         return <p className={`text-custom_10 font-semibold ${style}`}>{children}</p>
+      default:
+        return null;
     }
   }
   return (
     <>
-      {SelectText()}
+      {selectText()}
     </>
   )
 }
