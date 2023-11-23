@@ -84,9 +84,9 @@ export default function BoxStore({ boxStyle, children, style, clickHandler }: Pr
       case "BOX_CORNER_LONG":
         return <BoxCornerLong clickHandler={clickHandler} style={style}>{children}</BoxCornerLong>
       case "BOX_CHAT_ORANGE":
-        return <BoxChatOrange clickHandler={clickHandler} style={style}>{children}</BoxChatOrange>
+        return <BoxChatOrange style={style}>{children}</BoxChatOrange>
       case "BOX_CHAT_SMOG":
-        return <BoxChatSmog clickHandler={clickHandler} style={style}>{children}</BoxChatSmog>
+        return <BoxChatSmog style={style}>{children}</BoxChatSmog>
     }
   }
 

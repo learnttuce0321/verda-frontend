@@ -1,12 +1,8 @@
 "use client"
+
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 import ButtonListInfo from "@/Components/Molecure/Button-jsh/List/ButtonListInfo";
-
 import Link from "next/link";
-import { ChevronRight } from "react-bootstrap-icons";
-import { useInfiniteQuery } from '@tanstack/react-query'
-import { pages } from "next/dist/build/templates/app-page";
-import { useIntersectionObserver } from "@/utils/hooks/userIntersectionHook";
 
 const CHATLIST_DUMMYDATA = [
   {
@@ -91,7 +87,6 @@ export default async function ChatList() {
             })
           }
         </div>
-
       </section>
     </>
   )

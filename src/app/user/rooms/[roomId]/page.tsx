@@ -1,5 +1,7 @@
 "use client"
 
+import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore"
+import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore"
 import { notFound } from "next/navigation"
 
 interface Props {
@@ -38,53 +40,73 @@ export default function ChatDetailPage({ params: { roomId } }: Props) {
 
   return (
     <>
-      <section className="w-[100%]">
-        <h1>{data?.fundManagerName}</h1>
-        <div className="border-2 opacity-100 h-[1000px]">
-          <div className="flex justify-start w-[100%]">
-            <div className="
-          bg-white
-          relative 
-          inline-block
-          w-[250px]
-          p-[10px]
-          mt-[7px]
-          ml-[15px]
-          rounded-lg
-          break-keep
-          before:absolute
-          before:block
-          before:top-0
-          before:left-[-12.5px]
-          before:content-['◀']
-          before:text-white
-          before:border-0">
-              {data?.firstMessage}
-            </div>
+      <section className="w-[100%] ">
+        <TextStore textStyle={TextStyle.TEXT_R_40_BLUE} style="mb-2">{data?.fundManagerName}</TextStore>
+        <div className="border-2 opacity-100 h-[calc(100vh_-_126px)] overflow-y-scroll">
+          {/* todos : 이거 백엔드랑 연결 후 설정해야됨 */}
+          <BoxStore boxStyle={BoxStyle.BOX_CHAT_SMOG}>
+            <TextStore textStyle={TextStyle.TEXT_S_16}>{data?.firstMessage}</TextStore>
+          </BoxStore>
 
-          </div>
-          <div className="flex justify-end w-[100%]">
-            <div className="
-          bg-custom_orange
-          relative
-          inline-block
-          w-[250px]
-          p-[10px]
-          mt-[7px]
-          mr-[15px]
-          rounded-lg
-          break-keep
-          before:absolute
-          before:right-[-12.5px]
-          before:block
-          before:top-0
-          before:content-['▶']
-          before:text-custom_orange
-          before:border-0">
-              {data?.secondMessage}
-            </div>
-          </div>
+          <BoxStore boxStyle={BoxStyle.BOX_CHAT_ORANGE}>
+            <TextStore textStyle={TextStyle.TEXT_S_16}>{data?.secondMessage}</TextStore>
+          </BoxStore>
+          <BoxStore boxStyle={BoxStyle.BOX_CHAT_SMOG}>
+            <TextStore textStyle={TextStyle.TEXT_S_16}>{data?.firstMessage}</TextStore>
+          </BoxStore>
+
+          <BoxStore boxStyle={BoxStyle.BOX_CHAT_ORANGE}>
+            <TextStore textStyle={TextStyle.TEXT_S_16}>{data?.secondMessage}</TextStore>
+          </BoxStore>
+          <BoxStore boxStyle={BoxStyle.BOX_CHAT_SMOG}>
+            <TextStore textStyle={TextStyle.TEXT_S_16}>{data?.firstMessage}</TextStore>
+          </BoxStore>
+
+          <BoxStore boxStyle={BoxStyle.BOX_CHAT_ORANGE}>
+            <TextStore textStyle={TextStyle.TEXT_S_16}>{data?.secondMessage}</TextStore>
+          </BoxStore>
+          <BoxStore boxStyle={BoxStyle.BOX_CHAT_SMOG}>
+            <TextStore textStyle={TextStyle.TEXT_S_16}>{data?.firstMessage}</TextStore>
+          </BoxStore>
+
+          <BoxStore boxStyle={BoxStyle.BOX_CHAT_ORANGE}>
+            <TextStore textStyle={TextStyle.TEXT_S_16}>{data?.secondMessage}</TextStore>
+          </BoxStore>
+          <BoxStore boxStyle={BoxStyle.BOX_CHAT_SMOG}>
+            <TextStore textStyle={TextStyle.TEXT_S_16}>{data?.firstMessage}</TextStore>
+          </BoxStore>
+
+          <BoxStore boxStyle={BoxStyle.BOX_CHAT_ORANGE}>
+            <TextStore textStyle={TextStyle.TEXT_S_16}>{data?.secondMessage}</TextStore>
+          </BoxStore>
+          <BoxStore boxStyle={BoxStyle.BOX_CHAT_SMOG}>
+            <TextStore textStyle={TextStyle.TEXT_S_16}>{data?.firstMessage}</TextStore>
+          </BoxStore>
+
+          <BoxStore boxStyle={BoxStyle.BOX_CHAT_ORANGE}>
+            <TextStore textStyle={TextStyle.TEXT_S_16}>{data?.secondMessage}</TextStore>
+          </BoxStore>
+          <BoxStore boxStyle={BoxStyle.BOX_CHAT_SMOG}>
+            <TextStore textStyle={TextStyle.TEXT_S_16}>{data?.firstMessage}</TextStore>
+          </BoxStore>
+
+          <BoxStore boxStyle={BoxStyle.BOX_CHAT_ORANGE}>
+            <TextStore textStyle={TextStyle.TEXT_S_16}>{data?.secondMessage}</TextStore>
+          </BoxStore>
+          <BoxStore boxStyle={BoxStyle.BOX_CHAT_SMOG}>
+            <TextStore textStyle={TextStyle.TEXT_S_16}>{data?.firstMessage}</TextStore>
+          </BoxStore>
+
+          <BoxStore boxStyle={BoxStyle.BOX_CHAT_ORANGE}>
+            <TextStore textStyle={TextStyle.TEXT_S_16}>{data?.secondMessage}</TextStore>
+          </BoxStore>
+
+
         </div>
+      </section>
+      {/* todos: input 생성해야됨 */}
+      <section>
+
       </section>
     </>
   )
