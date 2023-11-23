@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import Section from "@/Components-kim/Section";
+import Section from "@/components-kim/Section";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 import ButtonListTitle from "@/Components/Molecure/Button-jsh/List/ButtonListTitle";
 
