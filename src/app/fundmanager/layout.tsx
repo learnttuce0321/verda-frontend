@@ -1,7 +1,8 @@
 "use client";
-import Navi from "@/Components-kim/Navi";
+
 import { useState } from "react";
-import Modal from "@/Components-kim/modal";
+import Navi from "@/components-kim/navi";
+import Modal from "@/components-kim/modal";
 
 export default function FundmanagerMainPage({
   children,

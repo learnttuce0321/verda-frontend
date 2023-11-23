@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
+import Link from "next/link";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 import ButtonListInfo from "@/Components/Molecure/Button-jsh/List/ButtonListInfo";
-import Link from "next/link";
 
 const CHATLIST_DUMMYDATA = [
   {
@@ -19,10 +19,10 @@ const CHATLIST_DUMMYDATA = [
     id: 3,
     fundManagerName: '김미리',
     firstMessage: '안녕하세요. 저는 펀드매니저 김미리 입니다. 이번건에 대허서 답장을 드리기 위해 연락을 드렸습니다.',
-  }
-]
+  },
+];
 
-export default async function ChatList() {
+export default function ChatList() {
   // const foo = async () => {
   //   const data = await fetch(process.env.BASE_URL + '/api/board?lastPostId=10000&size=20', {
   //     method: 'GET',
@@ -69,7 +69,6 @@ export default async function ChatList() {
   //   hasNextPage,
   //   fetchNextPage,
   // })
-
   return (
     <>
       <section>
@@ -77,17 +76,15 @@ export default async function ChatList() {
       </section>
       <section>
         <div className="flex items-center flex-col">
-          {
-            CHATLIST_DUMMYDATA.map(chat => {
-              return (
-                <Link href={`/user/rooms/${chat.id}`} key={chat.id}>
-                  <ButtonListInfo chat={chat} />
-                </Link>
-              )
-            })
-          }
+          {CHATLIST_DUMMYDATA.map(chat => {
+            return (
+              <Link href={`/user/rooms/${chat.id}`} key={chat.id}>
+                <ButtonListInfo chat={chat} />
+              </Link>
+            );
+          })}
         </div>
       </section>
     </>
-  )
+  );
 }

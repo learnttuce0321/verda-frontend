@@ -9,7 +9,7 @@ function InfoLogin() {
           <p>verda에서 더 많은 고객을 만나보세요. </p>
         </div>
         <Link href="/loginManager">
-          <button className="border-2 border-black rounded-2xl">
+          <button type="button" className="border-2 border-black rounded-2xl">
             펀드매니저
             <br />
             로그인/가입하기
@@ -21,7 +21,7 @@ function InfoLogin() {
           <p>지금 의뢰하고 다양한 투자전략을 제안 받으세요.</p>
         </div>
         <Link href="/loginUser">
-          <button className="border-2 border-black rounded-2xl">
+          <button type="button" className="border-2 border-black rounded-2xl">
             펀드매니저
             <br />
             로그인/가입하기

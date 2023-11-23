@@ -1,4 +1,5 @@
 "use client";
+
 import Link from "next/link";
 import Section from "@/Components-kim/Section";
 import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
@@ -32,9 +33,9 @@ const DUMMYDATA = [
   },
 ];
 
-export default function RequestDetail({ params: { postId } }: Props) {
-  const userData = DUMMYDATA[0];
-
+export default function RequestDetail({ params: { postId }, name, title }: Props) {
+  const userData = DUMMYDATA[parseInt(postId, 10)];
+  console.log(name, title)
   return (
     <>
       <Section>
