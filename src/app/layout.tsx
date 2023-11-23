@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import RecoilRootProvider from "@/utils/RecoilRootComponent";
+import RecoilProvider from "@/utils/provider/RecoilProvider";
+import ReactQueryProvider from "@/utils/provider/ReactQueryProvider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,10 +16,21 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="h-screen w-[100%]">
-        <RecoilRootProvider>{children}</RecoilRootProvider>
+        <ReactQueryProvider>
+          <RecoilProvider>{children}</RecoilProvider>
+        </ReactQueryProvider>
         <div className="hidden bg-custom_ice bg-custom_skyBlue bg-custom_lightBlue bg-custom_blue bg-custom_navy bg-custom_yellow bg-custom_peach bg-custom_orange bg-custom_lightGrey bg-custom_cloud bg-custom_skyGrey bg-custom_smog bg-custom_mint "></div>
-        <div id="portal"></div>
       </body>
     </html>
   );
+}
+
+{
+  /* <ReactQueryProvider>
+          <RecoilProvider>
+            {children}
+          </RecoilProvider>
+        </ReactQueryProvider>
+
+        <div className="hidden bg-custom_ice bg-custom_skyBlue bg-custom_lightBlue bg-custom_blue bg-custom_navy bg-custom_yellow bg-custom_peach bg-custom_orange bg-custom_lightGrey bg-custom_cloud bg-custom_skyGrey bg-custom_smog bg-custom_mint "></div> */
 }
