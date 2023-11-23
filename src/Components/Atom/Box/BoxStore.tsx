@@ -161,9 +161,17 @@ export default function BoxStore({
           </BoxCornerLong>
         );
       case "BOX_CHAT_ORANGE":
-        return <BoxChatOrange style={style}>{children}</BoxChatOrange>
+        return (
+          <BoxChatOrange style={style}>
+            {children}
+          </BoxChatOrange>
+        )
       case "BOX_CHAT_SMOG":
-        return <BoxChatSmog style={style}>{children}</BoxChatSmog>
+        return (
+          <BoxChatSmog style={style}>
+            {children}
+          </BoxChatSmog>
+        )
     }
   };
 
