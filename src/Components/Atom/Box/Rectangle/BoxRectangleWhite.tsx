@@ -8,7 +8,7 @@ interface Props {
 
 export default function BoxRectangeWhite({ children, clickHandler, style }: Props) {
   return (
-    <div className={`bg-white w-[24.75rem] rounded-lg p-3 ${style}`} onClick={clickHandler}>
+    <div className={`bg-white w-[24.75rem] rounded-[20px] p-4 ${style}`} onClick={clickHandler}>
       {children}
     </div>
   )

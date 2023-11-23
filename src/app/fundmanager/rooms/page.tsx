@@ -1,65 +1,65 @@
-"use client";
+import GoBackBtn from "@/Components-kim/GoBack";
 
 import Link from "next/link";
-import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
-import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
-import { ChevronRight } from "react-bootstrap-icons";
 import Section from "@/Components-kim/Section";
+import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
+import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
+import { ChevronRight } from "react-bootstrap-icons";
 
 interface Props {
-  postId: string;
+  roomId: string;
   name: string;
   title: string;
+  content: string;
 }
 
-interface ClientRequestProps {
-  posts: Props[];
+interface ChatListProps {
+  rooms: Props[];
 }
 
-const USER_DUMMYDATA = [
+const CHAT_DUMMYDATA = [
   {
     id: 1,
     userName: "주상후",
     filmId: 1,
-    title: "미국 주식투자 문의",
-    firstMessage: "내용1",
+    title: "문의",
+    firstMessage: "최근채팅내용1",
     roomId: 1,
   },
   {
     id: 2,
     userName: "김aa",
     filmId: 2,
-    title: "국내 주식투자 문의",
-    firstMessage: "내용2",
+    title: "문의",
+    firstMessage: "최근채팅내용2",
     roomId: 2,
   },
 ];
 
-export default function ClientRequest({
-  posts,
-}: ClientRequestProps): JSX.Element {
-  const userData = USER_DUMMYDATA;
+export default function ChatList({ rooms }: ChatListProps) {
+  const room = CHAT_DUMMYDATA;
   return (
     <>
       <Section>
-        <TextStore textStyle={TextStyle.TEXT_R_40}>투자문의</TextStore>
+        <TextStore textStyle={TextStyle.TEXT_R_40}>채팅문의</TextStore>
       </Section>
+
       <Section>
-        {userData.map(userData => (
-          <div key={userData.id} className="mt-2.5">
-            <Link href={`/fundmanager/clientrequest/${userData.id}`}>
+        {room.map(room => (
+          <div key={room.id} className="mt-2.5">
+            <Link href={`/fundmanager/rooms/${room.id}`}>
               <BoxStore boxStyle={BoxStyle.BOX_CORNER_LONG} style="relative">
                 <TextStore
                   textStyle={TextStyle.TEXT_M_24}
                   style="text-black font-bold"
                 >
-                  {userData.userName}
+                  {room.userName}
                 </TextStore>
                 <TextStore
                   textStyle={TextStyle.TEXT_R_20}
                   style="text-slate-500"
                 >
-                  {userData.title}
+                  {room.firstMessage}
                 </TextStore>
                 <ChevronRight
                   fill="black"

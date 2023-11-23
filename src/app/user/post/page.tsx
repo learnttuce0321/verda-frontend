@@ -1,5 +1,9 @@
 "use client"
 
+import Section from "@/Components-kim/Section"
+import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore"
+import ButtonListTitle from "@/Components/Molecure/Button-jsh/List/ButtonListTitle"
+import ButtonListInfo from "@/Components/Molecure/Button-jsh/List/ButtonListTitle"
 import Link from "next/link"
 import { ChevronRight } from "react-bootstrap-icons"
 
@@ -19,16 +23,17 @@ const POST_DUMMYDATA = [
 export default function PostListPage() {
   return (
     <>
+      <Section>
+        <TextStore textStyle={TextStyle.TEXT_R_40_BLUE} style="mb-[2.5rem]">내 문의글</TextStore>
+      </Section>
       <section>
-        <h1>내 문의글</h1>
         {
           POST_DUMMYDATA.map(post => {
             return (
               <Link href={`/user/post/${post.id}`} key={post.id}>
-                <div key={post.id} className="flex mx-10 my-5 bg-white p-3 rounded-lg justify-between">
-                  <h3>{post.title}</h3>
-                  <ChevronRight />
-                </div>
+                <ButtonListTitle>
+                  {post.title}
+                </ButtonListTitle>
               </Link>
             )
           })
