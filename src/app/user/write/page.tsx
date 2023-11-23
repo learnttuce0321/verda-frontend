@@ -2,7 +2,7 @@
 
 import { useRef } from "react"
 import { useRouter } from "next/navigation";
-import Section from "@/Components-kim/Section";
+import Section from "@/components-kim/Section";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 import ButtonButtonNavy from "@/Components/Molecure/Button-jsh/Button/ButtonButtonNavy";
 import InputContent from "@/Components/Molecure/Input-jsh/InputContent";
