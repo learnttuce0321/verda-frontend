@@ -162,16 +162,16 @@ export default function BoxStore({
         );
       case "BOX_CHAT_ORANGE":
         return (
-          <BoxChatOrange clickHandler={clickHandler} style={style}>
+          <BoxChatOrange style={style}>
             {children}
           </BoxChatOrange>
-        );
+        )
       case "BOX_CHAT_SMOG":
         return (
-          <BoxChatSmog clickHandler={clickHandler} style={style}>
+          <BoxChatSmog style={style}>
             {children}
           </BoxChatSmog>
-        );
+        )
     }
   };
 

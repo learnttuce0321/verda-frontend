@@ -1,12 +1,9 @@
-"use client"
-
 interface Props {
   children: React.ReactNode,
   style?: string,
-  clickHandler?: () => void
 };
 
-export default function BoxChatOrange({ children, clickHandler, style }: Props) {
+export default function BoxChatOrange({ children, style }: Props) {
   return (
     <div className="flex justify-end w-[100%]">
       <div className="
@@ -15,10 +12,10 @@ export default function BoxChatOrange({ children, clickHandler, style }: Props) 
           inline-block
           w-[250px]
           p-[10px]
-          mt-[7px]
           mr-[15px]
           rounded-lg
           break-keep
+          my-4
           before:absolute
           before:right-[-12.5px]
           before:block

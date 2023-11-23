@@ -27,7 +27,7 @@ export default function TextStore({ textStyle, children, style }: Props) {
       case TextStyle.TEXT_R_40:
         return <p className={`text-custom_40 leading-[40px] font-normal ${style}`}>{children}</p>
       case TextStyle.TEXT_R_40_BLUE:
-        return <p className={`text-custom_40 font-normal text-custom_navy ${style}`}>{children}</p>
+        return <p className={`text-custom_40 font-normal leading-[40px] text-custom_navy ${style}`}>{children}</p>
       case TextStyle.TEXT_E_32:
         return <p className={`text-custom_32 font-extrabold ${style}`}>{children}</p>
       case TextStyle.TEXT_S_32_BLUE:
