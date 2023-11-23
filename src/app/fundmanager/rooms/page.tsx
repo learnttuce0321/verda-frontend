@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ChevronRight } from "react-bootstrap-icons";
-import Section from "@/Components-kim/Section";
+import Section from "@/components-kim/Section";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
 
