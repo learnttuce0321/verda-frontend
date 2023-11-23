@@ -1,6 +1,5 @@
 "use client";
 import Link from "next/link";
-import GoBackBtn from "@/Components-kim/GoBack";
 import Section from "@/Components-kim/Section";
 import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";

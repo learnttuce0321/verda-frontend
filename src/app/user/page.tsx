@@ -1,21 +1,17 @@
 "use client"
 
+import Section from "@/Components-kim/Section"
 import BoxStore from "@/Components/Atom/Box/BoxStore"
 import { BoxStyle } from "@/Components/Atom/Box/BoxStore"
+import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore"
 import Link from "next/link"
-
-function Section({ children }: { children: React.ReactNode }) {
-  return (
-    <section className="my-3">{children}</section>
-  )
-}
 
 export default function UserMainPage() {
   return (
     <>
       <Section>
-        <h1>안녕하세요</h1>
-        <h1>USER01님!</h1>
+        <TextStore textStyle={TextStyle.TEXT_R_40}>안녕하세요</TextStore>
+        <TextStore textStyle={TextStyle.TEXT_R_40_BLUE}>USER01<span className="text-black">님!</span></TextStore>
       </Section>
 
       <Section>
