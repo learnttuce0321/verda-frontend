@@ -9,8 +9,6 @@ interface Props {
   params: {
     postId: string;
   };
-  name: string;
-  title: string;
 }
 
 const DUMMYDATA = [
@@ -33,9 +31,8 @@ const DUMMYDATA = [
   },
 ];
 
-export default function RequestDetail({ params: { postId }, name, title }: Props) {
+export default function RequestDetail({ params: { postId } }: Props) {
   const userData = DUMMYDATA[parseInt(postId, 10)];
-  console.log(name, title)
   return (
     <>
       <Section>
