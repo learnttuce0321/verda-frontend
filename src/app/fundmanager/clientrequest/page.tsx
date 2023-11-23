@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import { ChevronRight } from "react-bootstrap-icons";
 import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
-import { ChevronRight } from "react-bootstrap-icons";
 import Section from "@/Components-kim/Section";
 
 interface Props {
@@ -35,31 +35,31 @@ const USER_DUMMYDATA = [
   },
 ];
 
-export default function ClientRequest({
-  posts,
-}: ClientRequestProps): JSX.Element {
+// {posts}: ClientRequestProps
+export default function ClientRequest(): JSX.Element {
   const userData = USER_DUMMYDATA;
+
   return (
     <>
       <Section>
         <TextStore textStyle={TextStyle.TEXT_R_40}>투자문의</TextStore>
       </Section>
       <Section>
-        {userData.map(userData => (
-          <div key={userData.id} className="mt-2.5">
-            <Link href={`/fundmanager/clientrequest/${userData.id}`}>
+        {userData.map(data => (
+          <div key={data.id} className="mt-2.5">
+            <Link href={`/fundmanager/clientrequest/${data.id}`}>
               <BoxStore boxStyle={BoxStyle.BOX_CORNER_LONG} style="relative">
                 <TextStore
                   textStyle={TextStyle.TEXT_M_24}
                   style="text-black font-bold"
                 >
-                  {userData.userName}
+                  {data.userName}
                 </TextStore>
                 <TextStore
                   textStyle={TextStyle.TEXT_R_20}
                   style="text-slate-500"
                 >
-                  {userData.title}
+                  {data.title}
                 </TextStore>
                 <ChevronRight
                   fill="black"

@@ -1,10 +1,6 @@
 import LoginManager from "@/Component-son/LoginManager";
 
 function LoginManagerRouter() {
-  return (
-    <>
-      <LoginManager />
-    </>
-  );
+  return (<LoginManager />);
 }
 export default LoginManagerRouter;

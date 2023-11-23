@@ -1,10 +1,8 @@
-import GoBackBtn from "@/Components-kim/GoBack";
-
 import Link from "next/link";
+import { ChevronRight } from "react-bootstrap-icons";
 import Section from "@/Components-kim/Section";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
-import { ChevronRight } from "react-bootstrap-icons";
 
 interface Props {
   roomId: string;
@@ -36,8 +34,8 @@ const CHAT_DUMMYDATA = [
   },
 ];
 
-export default function ChatList({ rooms }: ChatListProps) {
-  const room = CHAT_DUMMYDATA;
+// { rooms }: ChatListProps
+export default function ChatList() {
   return (
     <>
       <Section>
@@ -45,7 +43,7 @@ export default function ChatList({ rooms }: ChatListProps) {
       </Section>
 
       <Section>
-        {room.map(room => (
+        {CHAT_DUMMYDATA.map(room => (
           <div key={room.id} className="mt-2.5">
             <Link href={`/fundmanager/rooms/${room.id}`}>
               <BoxStore boxStyle={BoxStyle.BOX_CORNER_LONG} style="relative">

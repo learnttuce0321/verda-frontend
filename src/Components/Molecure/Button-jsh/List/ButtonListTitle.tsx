@@ -1,6 +1,6 @@
+import { ChevronRight } from "react-bootstrap-icons";
 import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
-import { ChevronRight } from "react-bootstrap-icons";
 
 // todos: 변경해야됨
 interface Props {
