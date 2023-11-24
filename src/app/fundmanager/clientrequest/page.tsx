@@ -2,8 +2,10 @@
 
 import Link from "next/link";
 import { ChevronRight } from "react-bootstrap-icons";
+import { useEffect } from "react";
 import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import Section from "@/components-kim/Section";
 
 interface Props {
@@ -15,6 +17,18 @@ interface Props {
 interface ClientRequestProps {
   posts: Props[];
 }
+
+const getData = async (page = 1) => {
+  const data = await fetch(process.env.BASE_URL + `/api/board/${page}`);
+
+  if (!data.ok) {
+    console.log("error");
+  } else {
+    console.log(data);
+  }
+
+  return data.json();
+};
 
 const USER_DUMMYDATA = [
   {
@@ -35,9 +49,41 @@ const USER_DUMMYDATA = [
   },
 ];
 
-// {posts}: ClientRequestProps
-export default function ClientRequest(): JSX.Element {
+export default async function ClientRequest({ posts }: ClientRequestProps) {
   const userData = USER_DUMMYDATA;
+
+  // const { data, hasNextPage, fetchNextPage } = useInfiniteQuery(
+  //   ["postScroll"],
+  //   ({ pageParam = 1 }) => getData(pageParam),
+  //   {
+  //     getNextPageParam: (lastPage, allPages) => {
+  //       const maxPages = lastPage.total_count / 30;
+  //       const nextPage = allPages.length + 1;
+  //       return nextPage <= maxPages ? nextPage : undefined;
+  //     },
+  //   },
+  // );
+
+  // useEffect(() => {
+  //   let fetching = false;
+  //   const onScroll = async event => {
+  //     const { scrollHeight, scrollTop, clientHeight } =
+  //       event.target.scrollingElement;
+
+  //     if (!fetching && scrollHeight - scrollTop <= clientHeight * 1.5) {
+  //       fetching = true;
+  //       if (hasNextPage) await fetchNextPage();
+  //       fetching = false;
+  //     }
+  //   };
+
+  //   document.addEventListener("scroll", onScroll);
+  //   return () => {
+  //     document.removeEventListener("scroll", onScroll);
+  //   };
+  // }, []);
+
+  // console.log(data);
 
   return (
     <>
@@ -71,6 +117,7 @@ export default function ClientRequest(): JSX.Element {
             </Link>
           </div>
         ))}
+
       </Section>
     </>
   );

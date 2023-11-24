@@ -3,6 +3,7 @@
 import { notFound } from "next/navigation";
 import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
+import InputMessage from "@/Components/Molecure/input-kmr/InputMessage";
 
 interface Props {
   params: {
