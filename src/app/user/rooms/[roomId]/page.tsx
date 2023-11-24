@@ -1,5 +1,6 @@
 "use client";
 
+<<<<<<< Updated upstream
 import { notFound } from "next/navigation";
 <<<<<<< Updated upstream
 =======
@@ -7,12 +8,22 @@ import InputMessage from "@/Components/Molecure/input-kmr/InputMessage";
 >>>>>>> Stashed changes
 import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
+=======
+import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
+import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
+import InputMessage from "@/Components/Molecure/input-kmr/InputMessage";
+import { notFound } from "next/navigation";
+>>>>>>> Stashed changes
 
 interface Props {
   params: {
     roomId: string;
   };
+<<<<<<< Updated upstream
 };
+=======
+}
+>>>>>>> Stashed changes
 
 const CHATLIST_DUMMYDATA = [
   {
@@ -60,7 +71,11 @@ const CHATLIST_DUMMYDATA = [
 ];
 
 export default function ChatDetailPage({ params: { roomId } }: Props) {
+<<<<<<< Updated upstream
   const data = CHATLIST_DUMMYDATA.find(chat => chat.id === parseInt(roomId, 10));
+=======
+  const data = CHATLIST_DUMMYDATA.find(chat => chat.id === parseInt(roomId));
+>>>>>>> Stashed changes
 
   if (data === undefined) {
     notFound();

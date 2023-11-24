@@ -2,14 +2,11 @@
 
 import Link from "next/link";
 import { ChevronRight } from "react-bootstrap-icons";
+import { useEffect } from "react";
 import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
-import Section from "@/components-kim/Section";
-<<<<<<< Updated upstream
-=======
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { useEffect } from "react";
->>>>>>> Stashed changes
+import Section from "@/components-kim/Section";
 
 interface Props {
   postId: string;
@@ -20,6 +17,18 @@ interface Props {
 interface ClientRequestProps {
   posts: Props[];
 }
+
+const getData = async (page = 1) => {
+  const data = await fetch(process.env.BASE_URL + `/api/board/${page}`);
+
+  if (!data.ok) {
+    console.log("error");
+  } else {
+    console.log(data);
+  }
+
+  return data.json();
+};
 
 const USER_DUMMYDATA = [
   {
@@ -40,12 +49,6 @@ const USER_DUMMYDATA = [
   },
 ];
 
-<<<<<<< Updated upstream
-// {posts}: ClientRequestProps
-export default function ClientRequest(): JSX.Element {
-  const userData = USER_DUMMYDATA;
-
-=======
 export default async function ClientRequest({ posts }: ClientRequestProps) {
   const userData = USER_DUMMYDATA;
 
@@ -82,14 +85,12 @@ export default async function ClientRequest({ posts }: ClientRequestProps) {
 
   // console.log(data);
 
->>>>>>> Stashed changes
   return (
     <>
       <Section>
         <TextStore textStyle={TextStyle.TEXT_R_40}>투자문의</TextStore>
       </Section>
       <Section>
-<<<<<<< Updated upstream
         {userData.map(data => (
           <div key={data.id} className="mt-2.5">
             <Link href={`/fundmanager/clientrequest/${data.id}`}>
@@ -116,35 +117,7 @@ export default async function ClientRequest({ posts }: ClientRequestProps) {
             </Link>
           </div>
         ))}
-=======
-        {
-          userData.map(data => (
-            <div key={data.id} className="mt-2.5">
-              <Link href={`/fundmanager/clientrequest/${data.id}`}>
-                <BoxStore boxStyle={BoxStyle.BOX_CORNER_LONG} style="relative">
-                  <TextStore
-                    textStyle={TextStyle.TEXT_M_24}
-                    style="text-black font-bold"
-                  >
-                    {data.userName}
-                  </TextStore>
-                  <TextStore
-                    textStyle={TextStyle.TEXT_R_20}
-                    style="text-slate-500"
-                  >
-                    {data.title}
-                  </TextStore>
-                  <ChevronRight
-                    fill="black"
-                    width="2em"
-                    height="2em"
-                    className="absolute top-1/3 right-0 "
-                  />
-                </BoxStore>
-              </Link>
-            </div>
-          ))}
->>>>>>> Stashed changes
+
       </Section>
     </>
   );
