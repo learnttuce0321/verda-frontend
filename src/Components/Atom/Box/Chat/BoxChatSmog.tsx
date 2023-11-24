@@ -1,12 +1,9 @@
-"use client"
-
 interface Props {
-  children: React.ReactNode,
-  style?: string,
-  clickHandler?: () => void
+  children: React.ReactNode;
+  style?: string;
 };
 
-export default function BoxChatSmog({ children, clickHandler, style }: Props) {
+export default function BoxChatSmog({ children, style }: Props) {
   return (
     <div className="flex justify-start w-[100%]">
       <div className="
@@ -15,16 +12,16 @@ export default function BoxChatSmog({ children, clickHandler, style }: Props) {
           inline-block
           w-[250px]
           p-[10px]
-          mt-[7px]
           ml-[15px]
           rounded-lg
           break-keep
+          my-4
           before:absolute
           before:block
           before:top-0
           before:left-[-12.5px]
           before:content-['◀']
-          before:text-white
+          before:text-custom_smog
           before:border-0">
         {children}
       </div>

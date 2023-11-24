@@ -11,6 +11,7 @@ import BoxRectangeSkygrey from "./Rectangle/BoxRectangleSkygrey";
 import BoxRectangeWhite from "./Rectangle/BoxRectangleWhite";
 import BoxRectangeLongNavy from "./Rectangle/Long/BoxRectangleLongNavy";
 import BoxRectangeLongOrange from "./Rectangle/Long/BoxRectangleLongOrange";
+import BoxRectangleLongWhite from "./Rectangle/Long/BoxRectangleLongWhite";
 import BoxSquareMint from "./Square/BoxSquareMint";
 import BoxSquareNavy from "./Square/BoxSquareNavy";
 import BoxSquareOrange from "./Square/BoxSquareOrange";
@@ -32,67 +33,149 @@ export enum BoxStyle {
   BOX_RECTANGLE_NAVY = "BOX_RECTANGLE_NAVY",
   BOX_RECTANGLE_LONG_NAVY = "BOX_RECTANGLE_LONG_NAVY",
   BOX_RECTANGLE_LONG_ORANGE = "BOX_RECTANGLE_LONG_ORANGE",
+  BOX_RECTANGLE_LONG_WHITE = "BOX_RECTANGLE_LONG_WHITE",
   BOX_CORNER_REGULAR = "BOX_CORNER_REGULAR",
   BOX_CORNER_LARGE = "BOX_CORNER_LARGE",
   BOX_CORNER_LONG = "BOX_CORNER_LONG",
   BOX_CHAT_ORANGE = "BOX_CHAT_ORANGE",
   BOX_CHAT_SMOG = "BOX_CHAT_SMOG",
-};
+}
 
 interface Props {
-  boxStyle: BoxStyle,
-  children: React.ReactNode,
-  style?: string,
-  clickHandler?: () => void
-};
+  boxStyle: BoxStyle;
+  children: React.ReactNode;
+  style?: string;
+  clickHandler?: () => void;
+}
 
-export default function BoxStore({ boxStyle, children, style, clickHandler }: Props) {
-  const SelectBox = () => {
+export default function BoxStore({
+  boxStyle,
+  children,
+  style,
+  clickHandler,
+}: Props) {
+  const selectBox = (): React.ReactNode => {
     switch (boxStyle) {
       case "BOX_SQUARE_NAVY":
-        return <BoxSquareNavy clickHandler={clickHandler} style={style}>{children}</BoxSquareNavy>
+        return (
+          <BoxSquareNavy clickHandler={clickHandler} style={style}>
+            {children}
+          </BoxSquareNavy>
+        );
       case "BOX_SQUARE_ORANGE":
-        return <BoxSquareOrange clickHandler={clickHandler} style={style}>{children}</BoxSquareOrange>
+        return (
+          <BoxSquareOrange clickHandler={clickHandler} style={style}>
+            {children}
+          </BoxSquareOrange>
+        );
       case "BOX_SQUARE_MINT":
-        return <BoxSquareMint clickHandler={clickHandler} style={style}>{children}</BoxSquareMint>
+        return (
+          <BoxSquareMint clickHandler={clickHandler} style={style}>
+            {children}
+          </BoxSquareMint>
+        );
       case "BOX_SQUARE_YELLOW":
-        return <BoxSquareYellow clickHandler={clickHandler} style={style}>{children}</BoxSquareYellow>
+        return (
+          <BoxSquareYellow clickHandler={clickHandler} style={style}>
+            {children}
+          </BoxSquareYellow>
+        );
       case "BOX_SQUARE_WHITE":
-        return <BoxSquareWhite clickHandler={clickHandler} style={style}>{children}</BoxSquareWhite>
+        return (
+          <BoxSquareWhite clickHandler={clickHandler} style={style}>
+            {children}
+          </BoxSquareWhite>
+        );
       case "BOX_SQUARE_GRADIENT":
-        return
+        return null;
       case "BOX_RECTANGLE_CLOUD":
-        return <BoxRectangeCloud clickHandler={clickHandler} style={style}>{children}</BoxRectangeCloud>
+        return (
+          <BoxRectangeCloud clickHandler={clickHandler} style={style}>
+            {children}
+          </BoxRectangeCloud>
+        );
       case "BOX_RECTANGLE_SKYGREY":
-        return <BoxRectangeSkygrey clickHandler={clickHandler} style={style}>{children}</BoxRectangeSkygrey>
+        return (
+          <BoxRectangeSkygrey clickHandler={clickHandler} style={style}>
+            {children}
+          </BoxRectangeSkygrey>
+        );
       case "BOX_RECTANGLE_WHITE":
-        return <BoxRectangeWhite clickHandler={clickHandler} style={style}>{children}</BoxRectangeWhite>
+        return (
+          <BoxRectangeWhite clickHandler={clickHandler} style={style}>
+            {children}
+          </BoxRectangeWhite>
+        );
       case "BOX_RECTANGLE_BLUE":
-        return <BoxRectangeBlue clickHandler={clickHandler} style={style}>{children}</BoxRectangeBlue>
+        return (
+          <BoxRectangeBlue clickHandler={clickHandler} style={style}>
+            {children}
+          </BoxRectangeBlue>
+        );
       case "BOX_RECTANGLE_LIGHTBLUE":
-        return <BoxRectangeLightblue clickHandler={clickHandler} style={style}>{children}</BoxRectangeLightblue>
+        return (
+          <BoxRectangeLightblue clickHandler={clickHandler} style={style}>
+            {children}
+          </BoxRectangeLightblue>
+        );
       case "BOX_RECTANGLE_NAVY":
-        return <BoxRectangeNavy clickHandler={clickHandler} style={style}>{children}</BoxRectangeNavy>
+        return (
+          <BoxRectangeNavy clickHandler={clickHandler} style={style}>
+            {children}
+          </BoxRectangeNavy>
+        );
       case "BOX_RECTANGLE_LONG_NAVY":
-        return <BoxRectangeLongNavy clickHandler={clickHandler} style={style}>{children}</BoxRectangeLongNavy>
+        return (
+          <BoxRectangeLongNavy clickHandler={clickHandler} style={style}>
+            {children}
+          </BoxRectangeLongNavy>
+        );
       case "BOX_RECTANGLE_LONG_ORANGE":
-        return <BoxRectangeLongOrange clickHandler={clickHandler} style={style}>{children}</BoxRectangeLongOrange>
+        return (
+          <BoxRectangeLongOrange clickHandler={clickHandler} style={style}>
+            {children}
+          </BoxRectangeLongOrange>
+        );
+      case "BOX_RECTANGLE_LONG_WHITE":
+        return (
+          <BoxRectangleLongWhite clickHandler={clickHandler} style={style}>
+            {children}
+          </BoxRectangleLongWhite>
+        );
       case "BOX_CORNER_REGULAR":
-        return <BoxCornerRegular clickHandler={clickHandler} style={style}>{children}</BoxCornerRegular>
+        return (
+          <BoxCornerRegular clickHandler={clickHandler} style={style}>
+            {children}
+          </BoxCornerRegular>
+        );
       case "BOX_CORNER_LARGE":
-        return <BoxCornerLarge clickHandler={clickHandler} style={style}>{children}</BoxCornerLarge>
+        return (
+          <BoxCornerLarge clickHandler={clickHandler} style={style}>
+            {children}
+          </BoxCornerLarge>
+        );
       case "BOX_CORNER_LONG":
-        return <BoxCornerLong clickHandler={clickHandler} style={style}>{children}</BoxCornerLong>
+        return (
+          <BoxCornerLong clickHandler={clickHandler} style={style}>
+            {children}
+          </BoxCornerLong>
+        );
       case "BOX_CHAT_ORANGE":
-        return <BoxChatOrange clickHandler={clickHandler} style={style}>{children}</BoxChatOrange>
+        return (
+          <BoxChatOrange style={style}>
+            {children}
+          </BoxChatOrange>
+        )
       case "BOX_CHAT_SMOG":
-        return <BoxChatSmog clickHandler={clickHandler} style={style}>{children}</BoxChatSmog>
+        return (
+          <BoxChatSmog style={style}>
+            {children}
+          </BoxChatSmog>
+        )
+      default:
+        return null
     }
-  }
+  };
 
-  return (
-    <>
-      {SelectBox()}
-    </>
-  )
+  return <>{selectBox()}</>;
 }

@@ -6,6 +6,7 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/Component-son/**/*.{js,ts,jsx,tsx,mdx}",
+    "./**/*.{js,ts,tsx,jsx,mdx}",
   ],
   theme: {
     fontSize: {
@@ -26,7 +27,7 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       colors: {
-        custom_ice: "##CEFDF9",
+        custom_ice: "#CEFDF9",
         custom_skyblue: "#B3E2FC",
         custom_lightblue: "#96B2F9",
         custom_blue: "#797EF6",
@@ -39,6 +40,9 @@ const config: Config = {
         custom_skygrey: "#CFE1F8",
         custom_smog: "#A5B3D8 ",
         custom_mint: "#79F6BA",
+      },
+      container: {
+        center: true,
       },
     },
   },
