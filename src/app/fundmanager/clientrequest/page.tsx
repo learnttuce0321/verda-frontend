@@ -5,6 +5,11 @@ import { ChevronRight } from "react-bootstrap-icons";
 import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 import Section from "@/components-kim/Section";
+<<<<<<< Updated upstream
+=======
+import { useInfiniteQuery } from "@tanstack/react-query";
+import { useEffect } from "react";
+>>>>>>> Stashed changes
 
 interface Props {
   postId: string;
@@ -35,16 +40,56 @@ const USER_DUMMYDATA = [
   },
 ];
 
+<<<<<<< Updated upstream
 // {posts}: ClientRequestProps
 export default function ClientRequest(): JSX.Element {
   const userData = USER_DUMMYDATA;
 
+=======
+export default async function ClientRequest({ posts }: ClientRequestProps) {
+  const userData = USER_DUMMYDATA;
+
+  // const { data, hasNextPage, fetchNextPage } = useInfiniteQuery(
+  //   ["postScroll"],
+  //   ({ pageParam = 1 }) => getData(pageParam),
+  //   {
+  //     getNextPageParam: (lastPage, allPages) => {
+  //       const maxPages = lastPage.total_count / 30;
+  //       const nextPage = allPages.length + 1;
+  //       return nextPage <= maxPages ? nextPage : undefined;
+  //     },
+  //   },
+  // );
+
+  // useEffect(() => {
+  //   let fetching = false;
+  //   const onScroll = async event => {
+  //     const { scrollHeight, scrollTop, clientHeight } =
+  //       event.target.scrollingElement;
+
+  //     if (!fetching && scrollHeight - scrollTop <= clientHeight * 1.5) {
+  //       fetching = true;
+  //       if (hasNextPage) await fetchNextPage();
+  //       fetching = false;
+  //     }
+  //   };
+
+  //   document.addEventListener("scroll", onScroll);
+  //   return () => {
+  //     document.removeEventListener("scroll", onScroll);
+  //   };
+  // }, []);
+
+  // console.log(data);
+
+>>>>>>> Stashed changes
   return (
     <>
       <Section>
         <TextStore textStyle={TextStyle.TEXT_R_40}>투자문의</TextStore>
       </Section>
       <Section>
+<<<<<<< Updated upstream
         {userData.map(data => (
           <div key={data.id} className="mt-2.5">
             <Link href={`/fundmanager/clientrequest/${data.id}`}>
@@ -71,6 +116,35 @@ export default function ClientRequest(): JSX.Element {
             </Link>
           </div>
         ))}
+=======
+        {
+          userData.map(data => (
+            <div key={data.id} className="mt-2.5">
+              <Link href={`/fundmanager/clientrequest/${data.id}`}>
+                <BoxStore boxStyle={BoxStyle.BOX_CORNER_LONG} style="relative">
+                  <TextStore
+                    textStyle={TextStyle.TEXT_M_24}
+                    style="text-black font-bold"
+                  >
+                    {data.userName}
+                  </TextStore>
+                  <TextStore
+                    textStyle={TextStyle.TEXT_R_20}
+                    style="text-slate-500"
+                  >
+                    {data.title}
+                  </TextStore>
+                  <ChevronRight
+                    fill="black"
+                    width="2em"
+                    height="2em"
+                    className="absolute top-1/3 right-0 "
+                  />
+                </BoxStore>
+              </Link>
+            </div>
+          ))}
+>>>>>>> Stashed changes
       </Section>
     </>
   );
