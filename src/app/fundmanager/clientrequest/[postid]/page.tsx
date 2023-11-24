@@ -41,7 +41,7 @@ export default function RequestDetail({ params: { postId } }: Props) {
         </TextStore>
       </Section>
       <Section>
-        <BoxStore boxStyle={BoxStyle.BOX_CORNER_LARGE} style="h-96">
+        <BoxStore boxStyle={BoxStyle.BOX_CORNER_LARGE} style="h-96 ">
           <TextStore textStyle={TextStyle.TEXT_M_24} style="text-black">
             <span className="font-bold">{userData && userData.userName}</span>
           </TextStore>
@@ -59,7 +59,7 @@ export default function RequestDetail({ params: { postId } }: Props) {
         <Link href={`/fundmanager/rooms/${userData && userData.roomId}`}>
           <BoxStore
             boxStyle={BoxStyle.BOX_RECTANGLE_LONG_ORANGE}
-            style="text-center mt-3.5"
+            style="text-center mt-3.5 "
           >
             <TextStore textStyle={TextStyle.TEXT_S_32_BLUE}>
               제안서 작성하기
