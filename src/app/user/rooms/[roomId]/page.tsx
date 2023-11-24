@@ -1,34 +1,19 @@
 "use client";
 
-<<<<<<< Updated upstream
 import { notFound } from "next/navigation";
-<<<<<<< Updated upstream
-=======
-import InputMessage from "@/Components/Molecure/input-kmr/InputMessage";
->>>>>>> Stashed changes
-import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
-import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
-=======
 import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 import InputMessage from "@/Components/Molecure/input-kmr/InputMessage";
-import { notFound } from "next/navigation";
->>>>>>> Stashed changes
 
 interface Props {
   params: {
     roomId: string;
   };
-<<<<<<< Updated upstream
 };
-=======
-}
->>>>>>> Stashed changes
 
 const CHATLIST_DUMMYDATA = [
   {
     id: 1,
-<<<<<<< Updated upstream
     fundManagerName: '주상후',
     firstMessage:
       '안녕하세요. 저는 펀드매니저 주상후 입니다. 이번건에 대허서 답장을 드리기 위해 연락을 드렸습니다.',
@@ -47,41 +32,16 @@ const CHATLIST_DUMMYDATA = [
     firstMessage:
       '안녕하세요. 저는 펀드매니저 김미리 입니다. 이번건에 대허서 답장을 드리기 위해 연락을 드렸습니다.',
     secondMessage: 'ㅁ유햐',
-=======
-    fundManagerName: "주상후",
-    firstMessage:
-      "안녕하세요. 저는 펀드매니저 주상후 입니다. 이번건에 대허서 답장을 드리기 위해 연락을 드렸습니다.",
-    secondMessage: "안녕하세요",
-  },
-  {
-    id: 2,
-    fundManagerName: "손영석",
-    firstMessage:
-      "안녕하세요. 저는 펀드매니저 손영석 입니다. 이번건에 대허서 답장을 드리기 위해 연락을 드렸습니다.",
-    secondMessage: "하",
-  },
-  {
-    id: 3,
-    fundManagerName: "김미리",
-    firstMessage:
-      "안녕하세요. 저는 펀드매니저 김미리 입니다. 이번건에 대허서 답장을 드리기 위해 연락을 드렸습니다.",
-    secondMessage: "ㅁ유햐",
->>>>>>> Stashed changes
   },
 ];
 
 export default function ChatDetailPage({ params: { roomId } }: Props) {
-<<<<<<< Updated upstream
   const data = CHATLIST_DUMMYDATA.find(chat => chat.id === parseInt(roomId, 10));
-=======
-  const data = CHATLIST_DUMMYDATA.find(chat => chat.id === parseInt(roomId));
->>>>>>> Stashed changes
 
   if (data === undefined) {
     notFound();
   }
   return (
-<<<<<<< Updated upstream
     <section className="w-[100%] ">
       <TextStore textStyle={TextStyle.TEXT_R_40_BLUE} style="mb-2">
         {data?.fundManagerName}
@@ -181,109 +141,5 @@ export default function ChatDetailPage({ params: { roomId } }: Props) {
       {/* todos: input 생성해야됨 */}
       {/* <section> */}
     </section>
-=======
-    <>
-      <section className="w-[100%] mt-6">
-        <TextStore textStyle={TextStyle.TEXT_R_40_BLUE} style="mb-2">
-          {data?.fundManagerName}
-        </TextStore>
-        <div className="border-2 opacity-100 h-[calc(100vh_-_197px)] overflow-y-scroll">
-          {/* todos : 이거 백엔드랑 연결 후 설정해야됨 */}
-          <BoxStore boxStyle={BoxStyle.BOX_CHAT_SMOG}>
-            <TextStore textStyle={TextStyle.TEXT_S_16}>
-              {data?.firstMessage}
-            </TextStore>
-          </BoxStore>
-
-          <BoxStore boxStyle={BoxStyle.BOX_CHAT_ORANGE}>
-            <TextStore textStyle={TextStyle.TEXT_S_16}>
-              {data?.secondMessage}
-            </TextStore>
-          </BoxStore>
-          <BoxStore boxStyle={BoxStyle.BOX_CHAT_SMOG}>
-            <TextStore textStyle={TextStyle.TEXT_S_16}>
-              {data?.firstMessage}
-            </TextStore>
-          </BoxStore>
-
-          <BoxStore boxStyle={BoxStyle.BOX_CHAT_ORANGE}>
-            <TextStore textStyle={TextStyle.TEXT_S_16}>
-              {data?.secondMessage}
-            </TextStore>
-          </BoxStore>
-          <BoxStore boxStyle={BoxStyle.BOX_CHAT_SMOG}>
-            <TextStore textStyle={TextStyle.TEXT_S_16}>
-              {data?.firstMessage}
-            </TextStore>
-          </BoxStore>
-
-          <BoxStore boxStyle={BoxStyle.BOX_CHAT_ORANGE}>
-            <TextStore textStyle={TextStyle.TEXT_S_16}>
-              {data?.secondMessage}
-            </TextStore>
-          </BoxStore>
-          <BoxStore boxStyle={BoxStyle.BOX_CHAT_SMOG}>
-            <TextStore textStyle={TextStyle.TEXT_S_16}>
-              {data?.firstMessage}
-            </TextStore>
-          </BoxStore>
-
-          <BoxStore boxStyle={BoxStyle.BOX_CHAT_ORANGE}>
-            <TextStore textStyle={TextStyle.TEXT_S_16}>
-              {data?.secondMessage}
-            </TextStore>
-          </BoxStore>
-          <BoxStore boxStyle={BoxStyle.BOX_CHAT_SMOG}>
-            <TextStore textStyle={TextStyle.TEXT_S_16}>
-              {data?.firstMessage}
-            </TextStore>
-          </BoxStore>
-
-          <BoxStore boxStyle={BoxStyle.BOX_CHAT_ORANGE}>
-            <TextStore textStyle={TextStyle.TEXT_S_16}>
-              {data?.secondMessage}
-            </TextStore>
-          </BoxStore>
-          <BoxStore boxStyle={BoxStyle.BOX_CHAT_SMOG}>
-            <TextStore textStyle={TextStyle.TEXT_S_16}>
-              {data?.firstMessage}
-            </TextStore>
-          </BoxStore>
-
-          <BoxStore boxStyle={BoxStyle.BOX_CHAT_ORANGE}>
-            <TextStore textStyle={TextStyle.TEXT_S_16}>
-              {data?.secondMessage}
-            </TextStore>
-          </BoxStore>
-          <BoxStore boxStyle={BoxStyle.BOX_CHAT_SMOG}>
-            <TextStore textStyle={TextStyle.TEXT_S_16}>
-              {data?.firstMessage}
-            </TextStore>
-          </BoxStore>
-
-          <BoxStore boxStyle={BoxStyle.BOX_CHAT_ORANGE}>
-            <TextStore textStyle={TextStyle.TEXT_S_16}>
-              {data?.secondMessage}
-            </TextStore>
-          </BoxStore>
-          <BoxStore boxStyle={BoxStyle.BOX_CHAT_SMOG}>
-            <TextStore textStyle={TextStyle.TEXT_S_16}>
-              {data?.firstMessage}
-            </TextStore>
-          </BoxStore>
-
-          <BoxStore boxStyle={BoxStyle.BOX_CHAT_ORANGE}>
-            <TextStore textStyle={TextStyle.TEXT_S_16}>
-              {data?.secondMessage}
-            </TextStore>
-          </BoxStore>
-        </div>
-      </section>
-      {/* todos: input 생성해야됨 */}
-      <section>
-        <InputMessage></InputMessage>
-      </section>
-    </>
->>>>>>> Stashed changes
   );
 }

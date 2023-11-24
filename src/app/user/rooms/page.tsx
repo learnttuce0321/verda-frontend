@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 
 import Link from "next/link";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
@@ -22,7 +22,7 @@ const CHATLIST_DUMMYDATA = [
   },
 ];
 
-export default function ChatList() {
+export default async function ChatList() {
   // const foo = async () => {
   //   const data = await fetch(process.env.BASE_URL + '/api/board?lastPostId=10000&size=20', {
   //     method: 'GET',
@@ -46,17 +46,17 @@ export default function ChatList() {
   //   return res.json()
   // }
 
-  // const chat = async () => {
-  //   const res = await fetch(process.env.BASE_URL + '/api/rooms/user', {
-  //     method: 'GET',
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       "Authorization": "Bearer " + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTUxNjIzOTAyMn0.IW5PjeG2JUgvN4BJHLG_5P4XnGACBJb_Y4fmj4-e7xY"
-  //     },
-  //   })
-  //   return res.json()
-  // }
-  // console.log("chat", await chat())
+  const Chat = async () => {
+    const res = await fetch(`${process.env.BASE_URL}/api/rooms/user`, {
+      method: 'GET',
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTUxNjIzOTAyMn0.IW5PjeG2JUgvN4BJHLG_5P4XnGACBJb_Y4fmj4-e7xY"
+      },
+    })
+    return res.json()
+  }
+  console.log("Chat", await Chat())
 
   // const { data, isLoading, fetchNextPage, hasNextPage } = useInfiniteQuery<any>({
   //   queryKey: ['rooms'],
