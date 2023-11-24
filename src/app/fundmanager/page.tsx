@@ -5,8 +5,10 @@ import Section from "@/components-kim/Section";
 import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 
+const postid = 1;
+
 // async function getData() {
-//   const res = await fetch(process.env.BASE_URL + `/api/rooms/fm/${roomid}`);
+//   const res = await fetch(process.env.BASE_URL + `/api/board/${postid}`);
 
 //   if (!res.ok) {
 //     console.log("error");
@@ -19,7 +21,7 @@ import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 
 export default function FundmanagerLayout() {
   // const data = await getData();
-  // console.log(process.env.BASE_URL + `/api/rooms/fm/${roomid}`);
+  // console.log(process.env.BASE_URL + `/api/board/${postid}`);
   // console.log(data);
 
   return (
