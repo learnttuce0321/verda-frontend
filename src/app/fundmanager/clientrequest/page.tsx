@@ -2,16 +2,11 @@
 
 import Link from "next/link";
 import { ChevronRight } from "react-bootstrap-icons";
+import { useEffect } from "react";
 import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
-<<<<<<< Updated upstream
-import Section from "@/components-kim/Section";
-=======
-import { ChevronRight } from "react-bootstrap-icons";
 import { useInfiniteQuery } from "@tanstack/react-query";
-import Section from "@/Components-kim/Section";
-import { useEffect } from "react";
->>>>>>> Stashed changes
+import Section from "@/components-kim/Section";
 
 interface Props {
   postId: string;
@@ -54,12 +49,6 @@ const USER_DUMMYDATA = [
   },
 ];
 
-<<<<<<< Updated upstream
-// {posts}: ClientRequestProps
-export default function ClientRequest(): JSX.Element {
-  const userData = USER_DUMMYDATA;
-
-=======
 export default async function ClientRequest({ posts }: ClientRequestProps) {
   const userData = USER_DUMMYDATA;
 
@@ -96,24 +85,16 @@ export default async function ClientRequest({ posts }: ClientRequestProps) {
 
   // console.log(data);
 
->>>>>>> Stashed changes
   return (
     <>
       <Section>
         <TextStore textStyle={TextStyle.TEXT_R_40}>투자문의</TextStore>
       </Section>
       <Section>
-<<<<<<< Updated upstream
         {userData.map(data => (
           <div key={data.id} className="mt-2.5">
             <Link href={`/fundmanager/clientrequest/${data.id}`}>
               <BoxStore boxStyle={BoxStyle.BOX_CORNER_LONG} style="relative">
-=======
-        {userData.map(userData => (
-          <div key={userData.id} className="mt-2.5">
-            <Link href={`/fundmanager/clientrequest/${userData.id}`}>
-              <BoxStore boxStyle={BoxStyle.BOX_CORNER_LONG} style="relative ">
->>>>>>> Stashed changes
                 <TextStore
                   textStyle={TextStyle.TEXT_M_24}
                   style="text-black font-bold"
@@ -136,6 +117,7 @@ export default async function ClientRequest({ posts }: ClientRequestProps) {
             </Link>
           </div>
         ))}
+
       </Section>
     </>
   );

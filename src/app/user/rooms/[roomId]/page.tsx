@@ -2,6 +2,10 @@
 
 <<<<<<< Updated upstream
 import { notFound } from "next/navigation";
+<<<<<<< Updated upstream
+=======
+import InputMessage from "@/Components/Molecure/input-kmr/InputMessage";
+>>>>>>> Stashed changes
 import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 =======
