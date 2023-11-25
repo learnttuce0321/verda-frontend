@@ -1,63 +1,41 @@
 import Link from "next/link";
 import { ChevronRight } from "react-bootstrap-icons";
-import Section from "@/Components-kim/Section";
-import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
+import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
+import Section from "@/Components-kim/Section";
 
 interface Props {
-  roomId: string;
+  postId: string;
   name: string;
   title: string;
-  content: string;
 }
 
-interface ChatListProps {
-  rooms: Props[];
+interface ClientRequestProps {
+  posts: Props[];
 }
 
-const CHAT_DUMMYDATA = [
-  {
-    id: 1,
-    userName: "주상후",
-    filmId: 1,
-    title: "문의",
-    firstMessage: "최근채팅내용1",
-    roomId: 1,
-  },
-  {
-    id: 2,
-    userName: "김aa",
-    filmId: 2,
-    title: "문의",
-    firstMessage: "최근채팅내용2",
-    roomId: 2,
-  },
-];
-
-// { rooms }: ChatListProps
-export default function ChatList() {
+export default async function ClientRequest({ posts }: ClientRequestProps) {
   return (
     <>
       <Section>
-        <TextStore textStyle={TextStyle.TEXT_R_40}>채팅문의</TextStore>
+        <TextStore textStyle={TextStyle.TEXT_R_40}>투자문의</TextStore>
       </Section>
-
-      <Section>
-        {CHAT_DUMMYDATA.map(room => (
-          <div key={room.id} className="mt-2.5">
-            <Link href={`/fundmanager/rooms/${room.id}`}>
+      <Section style="mt-2.5">
+        {posts.map(data => (
+          <div key={data.postId} className="mt-2.5">
+            <Link href={`/fundmanager/clientrequest/${data.postId}`}>
               <BoxStore boxStyle={BoxStyle.BOX_CORNER_LONG} style="relative">
                 <TextStore
                   textStyle={TextStyle.TEXT_M_24}
                   style="text-black font-bold"
                 >
-                  {room.userName}
+                  {data.name}
                 </TextStore>
                 <TextStore
                   textStyle={TextStyle.TEXT_R_20}
                   style="text-slate-500"
                 >
-                  {room.firstMessage}
+                  {data.title}
                 </TextStore>
                 <ChevronRight
                   fill="black"

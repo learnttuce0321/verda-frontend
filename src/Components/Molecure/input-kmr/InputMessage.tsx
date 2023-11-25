@@ -1,6 +1,6 @@
+import { ArrowUpCircleFill } from "react-bootstrap-icons";
 import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
-import { ArrowUpCircleFill } from "react-bootstrap-icons";
 
 export default function InputMessage() {
   return (
@@ -13,7 +13,7 @@ export default function InputMessage() {
         placeholder="텍스트를 입력하세요"
       />
 
-      <button className="flex justify-center items-center pr-2">
+      <button type="button" className="flex justify-center items-center pr-2">
         <ArrowUpCircleFill fill="white" className="text-custom_24 " />
       </button>
     </BoxStore>
