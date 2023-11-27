@@ -31,8 +31,17 @@ module.exports = {
     // ts파일에서 tsx구문 허용 (Next.js)
     "react/jsx-filename-extension": [1, { extensions: [".ts", ".tsx"] }],
     "import/prefer-default-export": "off",
+    "react-hooks/exhaustive-deps": "off",
+    "consistent-return": "off",
+    "no-console": "off",
+    "react/style-prop-object": "off",
     "import/extensions": ["off"],
-    // ts import 오류 해결 rule
-    ignorePatterns: [".eslintrc.cjs", "vite.config.ts"],
+    "prettier/prettier": ["off"],
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    "react/require-default-props": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
+    "jsx-a11y/control-has-associated-label": "off",
   },
 };

@@ -22,7 +22,7 @@ interface Props {
   style?: string;
 }
 export default function TextStore({ textStyle, children, style }: Props) {
-  const SelectText = (): React.ReactNode => {
+  const selectText = (): React.ReactNode => {
     switch (textStyle) {
       case TextStyle.TEXT_R_40:
         return (
@@ -114,3 +114,4 @@ export default function TextStore({ textStyle, children, style }: Props) {
   };
   return <>{SelectText()}</>;
 }
+

@@ -65,6 +65,7 @@ function SignupUser() {
     console.log(data);
   };
   return (
+
     <>
       <div className="flex flex-col items-center mt-20">
         <div>
@@ -154,6 +155,7 @@ function SignupUser() {
         </div>
       </div>
     </>
+
   );
 }
 export default SignupUser;

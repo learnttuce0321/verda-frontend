@@ -27,6 +27,7 @@ function Contents() {
   // }, []);
 
   return (
+
     <>
       <div className="w-[24.75rem]">
         <TextStore textStyle={TextStyle.TEXT_R_40} style="flex mt-10">
@@ -96,9 +97,10 @@ function Contents() {
               {/* </Slider> */}
             </div>
           </BoxStore>
+
         </div>
       </div>
-    </>
+    </div>
   );
 }
 export default Contents;

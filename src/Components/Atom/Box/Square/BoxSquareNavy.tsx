@@ -13,7 +13,7 @@ export default function BoxSquareNavy({
 }: Props) {
   return (
     <div
-      className={`bg-custom_navy h-48 rounded-3xl p-3 w-[24.75rem] ${style}`}
+      className={`bg-custom_navy h-48 rounded-lg p-3 w-full${style}`}
       onClick={clickHandler}
     >
       {children}

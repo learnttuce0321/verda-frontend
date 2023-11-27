@@ -6,6 +6,7 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/Component-son/**/*.{js,ts,jsx,tsx,mdx}",
+    "./**/*.{js,ts,tsx,jsx,mdx}",
   ],
   theme: {
     fontSize: {

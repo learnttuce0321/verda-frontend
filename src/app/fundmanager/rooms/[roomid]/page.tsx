@@ -1,7 +1,5 @@
 "use client";
 
-import GoBackBtn from "@/Components-kim/GoBack";
-
 interface Props {
   params: {
     roomId: string;
@@ -19,25 +17,24 @@ const ROOM_DUMMYDATA = [
   },
 ];
 
-export default function Chat({ params: { roomId } }: Props) {
+// { params: { roomId } }: Props
+export default function Chat() {
   const roomdata = ROOM_DUMMYDATA[0];
   return (
-    <>
-      <section className="w-[100%]">
-        <p>채팅창</p>
+    <section className="w-[100%]">
+      <p>채팅창</p>
 
-        <p>{roomdata.userName}</p>
-        <div className="border-2 border-indigo-500/100 ">
-          <div className="border-2 border-indigo-500/100 w-72 ">
-            {roomdata.fundmanagerMessage}
-          </div>
-          <div className="border-2 border-indigo-500/100 w-72  ">
-            <p>{roomdata.userName}</p>
-            <p>{roomdata.userMessage} </p>
-          </div>
+      <p>{roomdata.userName}</p>
+      <div className="border-2 border-indigo-500/100 ">
+        <div className="border-2 border-indigo-500/100 w-72 ">
+          {roomdata.fundmanagerMessage}
         </div>
-        <input placeholder="메세지를 입력하세요" />
-      </section>
-    </>
+        <div className="border-2 border-indigo-500/100 w-72  ">
+          <p>{roomdata.userName}</p>
+          <p>{roomdata.userMessage} </p>
+        </div>
+      </div>
+      <input placeholder="메세지를 입력하세요" />
+    </section>
   );
 }

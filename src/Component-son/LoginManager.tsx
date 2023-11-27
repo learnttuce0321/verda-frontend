@@ -21,6 +21,7 @@ function LoginManager() {
     }
   };
   return (
+
     <>
       <div className="flex flex-col items-center mt-20">
         <TextStore
@@ -63,9 +64,16 @@ function LoginManager() {
               children="로그인"
             ></TextStore>
           </Link>
+
         </div>
       </div>
-    </>
+      <p>
+        혹시 투자자 이신가요?
+        <Link href="/LoginUser">
+          <p>로그인</p>
+        </Link>
+      </p>
+    </div>
   );
 }
 export default LoginManager;

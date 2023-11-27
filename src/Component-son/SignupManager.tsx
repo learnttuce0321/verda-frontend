@@ -4,6 +4,7 @@ import InputForm from "@/Components/Molecure/Input-son/InputForm";
 
 function SignupManager() {
   return (
+
     <>
       <div className="flex flex-col items-center mt-20">
         <div>
@@ -94,6 +95,7 @@ function SignupManager() {
         </div>
       </div>
     </>
+
   );
 }
 export default SignupManager;

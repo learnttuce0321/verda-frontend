@@ -1,11 +1,14 @@
 "use client";
-import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
-import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
+
 import Link from "next/link";
 import Section from "@/Components-kim/Section";
+import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
+import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
+
+const postid = 1;
 
 // async function getData() {
-//   const res = await fetch(process.env.BASE_URL + `/api/rooms/fm/${roomid}`);
+//   const res = await fetch(process.env.BASE_URL + `/api/board/${postid}`);
 
 //   if (!res.ok) {
 //     console.log("error");
@@ -16,13 +19,9 @@ import Section from "@/Components-kim/Section";
 //   return res.json();
 // }
 
-export default async function FundmanagerLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function FundmanagerLayout() {
   // const data = await getData();
-  // console.log(process.env.BASE_URL + `/api/rooms/fm/${roomid}`);
+  // console.log(process.env.BASE_URL + `/api/board/${postid}`);
   // console.log(data);
 
   return (
@@ -37,9 +36,8 @@ export default async function FundmanagerLayout({
 
       <div className="grid grid-cols-2 gap-2">
         <Section>
-          <Link href={`/fundmanager/clientrequest`}>
+          <Link href="/fundmanager/clientrequest">
             <BoxStore boxStyle={BoxStyle.BOX_SQUARE_WHITE}>
-              <div></div>
               <TextStore textStyle={TextStyle.TEXT_M_24}>
                 <span className="text-black h-48 rounded-lg p-3 ">
                   투자문의
@@ -53,7 +51,7 @@ export default async function FundmanagerLayout({
         </Section>
 
         <Section>
-          <Link href={`/fundmanager/rooms`}>
+          <Link href="/fundmanager/rooms">
             <BoxStore boxStyle={BoxStyle.BOX_SQUARE_ORANGE}>
               <TextStore textStyle={TextStyle.TEXT_M_24}>
                 <span>채팅목록</span>

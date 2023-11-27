@@ -5,8 +5,9 @@ import InfoLogin from "@/Component-son/InfoLogin";
 
 export default function Home() {
   return (
-    <>
+    <div>
       <div>
+
         {/* <div>
           <Header />
         </div> */}
@@ -18,8 +19,10 @@ export default function Home() {
           <div>
             <InfoLogin />
           </div>
+
         </div>
+        <h1>asdf</h1>
       </div>
-    </>
+    </div>
   );
 }

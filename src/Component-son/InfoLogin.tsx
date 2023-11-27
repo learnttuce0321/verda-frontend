@@ -29,12 +29,14 @@ function InfoLogin() {
             ></ButtonButton>
           </Link>
         </div>
+
       </BoxStore>
 
       <BoxStore
         boxStyle={BoxStyle.BOX_RECTANGLE_NAVY}
         style="flex flex-col items-center mt-10"
       >
+
         <div>
           <TextStore
             textStyle={TextStyle.TEXT_R_16}
@@ -43,11 +45,13 @@ function InfoLogin() {
           ></TextStore>
         </div>
         <Link href="/loginUser">
+
           <ButtonButton
             title="로그인/가입하기"
             title1=""
             style="bg-blue-200 w-auto"
           ></ButtonButton>
+
         </Link>
       </BoxStore>
     </>

@@ -54,7 +54,7 @@ export default function BoxStore({
   style,
   clickHandler,
 }: Props) {
-  const SelectBox = () => {
+  const selectBox = (): React.ReactNode => {
     switch (boxStyle) {
       case "BOX_SQUARE_NAVY":
         return (
@@ -87,7 +87,7 @@ export default function BoxStore({
           </BoxSquareWhite>
         );
       case "BOX_SQUARE_GRADIENT":
-        return;
+        return null;
       case "BOX_RECTANGLE_CLOUD":
         return (
           <BoxRectangeCloud clickHandler={clickHandler} style={style}>
@@ -172,8 +172,10 @@ export default function BoxStore({
             {children}
           </BoxChatSmog>
         )
+      default:
+        return null
     }
   };
 
-  return <>{SelectBox()}</>;
+  return <>{selectBox()}</>;
 }

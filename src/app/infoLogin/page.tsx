@@ -1,10 +1,6 @@
 import InfoLogin from "@/Component-son/InfoLogin";
 
 function InfoLoginRouter() {
-  return (
-    <>
-      <InfoLogin />
-    </>
-  );
+  return (<InfoLogin />);
 }
 export default InfoLoginRouter;
