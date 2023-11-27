@@ -27,8 +27,7 @@ function Contents() {
   // }, []);
 
   return (
-
-    <>
+    <div>
       <div className="w-[24.75rem]">
         <TextStore textStyle={TextStyle.TEXT_R_40} style="flex mt-10">
           투자는<TextStore textStyle={TextStyle.TEXT_R_40_BLUE}>신중</TextStore>
@@ -97,7 +96,6 @@ function Contents() {
               {/* </Slider> */}
             </div>
           </BoxStore>
-
         </div>
       </div>
     </div>

@@ -21,8 +21,7 @@ function LoginManager() {
     }
   };
   return (
-
-    <>
+    <div>
       <div className="flex flex-col items-center mt-20">
         <TextStore
           textStyle={TextStyle.TEXT_R_40}
@@ -64,15 +63,8 @@ function LoginManager() {
               children="로그인"
             ></TextStore>
           </Link>
-
         </div>
       </div>
-      <p>
-        혹시 투자자 이신가요?
-        <Link href="/LoginUser">
-          <p>로그인</p>
-        </Link>
-      </p>
     </div>
   );
 }

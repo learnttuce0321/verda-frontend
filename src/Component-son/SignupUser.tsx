@@ -59,14 +59,13 @@ function SignupUser() {
       name: event.target.name.value,
       gender: event.target.gender.value,
       birth: event.target.birth.value,
-      phone: event.target.phone.value,
-      type: investmentType,
+      number: event.target.phone.value,
+      investment_propensity: investmentType,
     };
     console.log(data);
   };
   return (
-
-    <>
+    <div>
       <div className="flex flex-col items-center mt-20">
         <div>
           <TextStore
@@ -154,8 +153,7 @@ function SignupUser() {
           </form>
         </div>
       </div>
-    </>
-
+    </div>
   );
 }
 export default SignupUser;
