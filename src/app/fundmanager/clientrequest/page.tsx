@@ -1,5 +1,5 @@
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
-import ClientRequest from "@/organisms/fundmanager-kim/client-request/ClientRequest";
+import ClientRequest from "@/organisms/fundmanager-kim/Client-request/ClientRequest";
 
 const size = 20;
 const lastPostId = 10000;
@@ -20,7 +20,6 @@ const getData = async (): Promise<any> => {
 
 export default async function ClientRequestData() {
   const data = await getData();
-  console.log(data);
   // const { data, hasNextPage, fetchNextPage } = useInfiniteQuery(
   //   ["postScroll"],
   //   pageParam => getData(pageParam),
