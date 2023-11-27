@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { List } from "react-bootstrap-icons"
+import { List } from "react-bootstrap-icons";
 
 export default function UserNavigation() {
   return (
@@ -10,5 +10,5 @@ export default function UserNavigation() {
         <List />
       </nav>
     </>
-  )
+  );
 }

@@ -1,3 +1,4 @@
+"use client";
 import LoginManager from "@/Component-son/LoginManager";
 
 function LoginManagerRouter() {
