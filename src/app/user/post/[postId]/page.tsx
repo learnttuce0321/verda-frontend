@@ -1,9 +1,13 @@
 "use client";
 
 import Link from "next/link";
+<<<<<<< Updated upstream
 import { notFound } from "next/navigation";
 import Section from "@/components-kim/Section";
 import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
+=======
+import Section from "@/Components-kim/Section";
+>>>>>>> Stashed changes
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 import ButtonListInfo from "@/Components/Molecure/Button-jsh/List/ButtonListInfo";
 
@@ -11,8 +15,9 @@ interface Props {
   params: {
     postId: string;
   };
-};
+}
 
+<<<<<<< Updated upstream
 const CHATLIST_DUMMYDATA = [
   {
     id: 1,
@@ -33,6 +38,14 @@ const CHATLIST_DUMMYDATA = [
       '안녕하세요. 저는 펀드매니저 김미리 입니다. 이번건에 대허서 답장을 드리기 위해 연락을 드렸습니다.',
   }
 ];
+=======
+export default async function PostDetailPage({ params: { postId } }: Props) {
+  const getPostDetail = async (): Promise<any> => {
+    const res = await fetch(`${process.env.BASE_URL}/api/board/${postId}`, {
+      method: "GET",
+      cache: "no-store",
+    });
+>>>>>>> Stashed changes
 
 const POST_DUMMYDATA = [
   {
@@ -51,12 +64,17 @@ const POST_DUMMYDATA = [
   },
 ];
 
+<<<<<<< Updated upstream
 export default function PostDetailPage({ params: { postId } }: Props) {
   const data = POST_DUMMYDATA.find(post => post.id === parseInt(postId, 10));
 
   if (data === undefined) {
     notFound();
   }
+=======
+  // todos : 타입지정
+  const post: Post = await getPostDetail();
+>>>>>>> Stashed changes
 
   return (
     <>

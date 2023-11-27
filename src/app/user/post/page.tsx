@@ -1,7 +1,11 @@
+<<<<<<< Updated upstream
 "use client";
 
 import Link from "next/link";
 import Section from "@/components-kim/Section";
+=======
+import Section from "@/Components-kim/Section";
+>>>>>>> Stashed changes
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 import ButtonListTitle from "@/Components/Molecure/Button-jsh/List/ButtonListTitle";
 

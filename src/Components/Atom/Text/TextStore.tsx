@@ -57,6 +57,7 @@ export default function TextStore({ textStyle, children, style }: Props) {
       default:
         return null;
     }
+<<<<<<< Updated upstream
   }
   return (
     <>
@@ -64,3 +65,8 @@ export default function TextStore({ textStyle, children, style }: Props) {
     </>
   )
 }
+=======
+  };
+  return <>{selectText()}</>;
+}
+>>>>>>> Stashed changes
