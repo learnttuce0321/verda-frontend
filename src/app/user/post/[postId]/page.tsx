@@ -1,7 +1,4 @@
-import Link from "next/link";
-import { notFound } from "next/navigation";
-import Section from "@/components-kim/Section";
-import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
+import Section from "@/Components-kim/Section";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 import ButtonListInfo from "@/Components/Molecure/Button-jsh/List/ButtonListInfo";
 import PostDetailMain from "@/Components/Organism/Post/PostDetailMain";

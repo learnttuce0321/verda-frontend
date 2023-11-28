@@ -110,6 +110,8 @@ export default function TextStore({ textStyle, children, style }: Props) {
         return (
           <p className={`text-custom_10 font-semibold ${style}`}>{children}</p>
         );
+      default:
+        return null
     }
   };
   return (

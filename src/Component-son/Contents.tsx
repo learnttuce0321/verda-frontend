@@ -1,4 +1,5 @@
 "use client";
+
 import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 // import Slider from "react-slick";
@@ -101,4 +102,5 @@ function Contents() {
     </div>
   );
 }
+
 export default Contents;

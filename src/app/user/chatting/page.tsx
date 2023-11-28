@@ -13,7 +13,7 @@ export default function Chatingroom() {
 
   // stomp 채널 구독
   useEffect(() => {
-    const webSocket = new WebSocket("ws://verda.monster/stomp/chat");
+    const webSocket = new WebSocket("wss://verda.monster:8080/wss");
     webSocket.onopen = () => {
       console.log("소켓 연결");
     }
