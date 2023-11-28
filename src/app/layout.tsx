@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 import RecoilProvider from "@/utils/provider/RecoilProvider";
 import ReactQueryProvider from "@/utils/provider/ReactQueryProvider";
+import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
+import Link from "next/link";
+import { List } from "react-bootstrap-icons";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,6 +19,16 @@ export default function RootLayout({
     <html lang="en">
       <body className="h-screen w-[100%]">
         <ReactQueryProvider>
+          <div className="flex justify-center mt-10">
+            <div className="flex justify-between w-[24.75rem]">
+              <TextStore textStyle={TextStyle.TEXT_R_30} style="">
+                <Link href={{ pathname: "/" }}>VERDA</Link>
+              </TextStore>
+              <button type="button" className="flex">
+                <List width="2em" height="2em" />
+              </button>
+            </div>
+          </div>
           <RecoilProvider>{children}</RecoilProvider>
         </ReactQueryProvider>
         <div className="hidden bg-custom_ice bg-custom_skyBlue bg-custom_lightBlue bg-custom_blue bg-custom_navy bg-custom_yellow bg-custom_peach bg-custom_orange bg-custom_lightGrey bg-custom_cloud bg-custom_skyGrey bg-custom_smog bg-custom_mint " />
