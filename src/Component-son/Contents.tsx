@@ -1,4 +1,5 @@
 "use client";
+
 import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 // import Slider from "react-slick";
@@ -27,78 +28,75 @@ function Contents() {
   // }, []);
 
   return (
+    <div className="w-[24.75rem]">
+      <TextStore textStyle={TextStyle.TEXT_R_40} style="flex mt-10">
+        투자는<TextStore textStyle={TextStyle.TEXT_R_40_BLUE}>신중</TextStore>
+        하게
+      </TextStore>
+      <TextStore textStyle={TextStyle.TEXT_R_40} style="flex">
+        선택은<TextStore textStyle={TextStyle.TEXT_R_40_BLUE}>과감</TextStore>
+        하게
+      </TextStore>
 
-    <>
-      <div className="w-[24.75rem]">
-        <TextStore textStyle={TextStyle.TEXT_R_40} style="flex mt-10">
-          투자는<TextStore textStyle={TextStyle.TEXT_R_40_BLUE}>신중</TextStore>
-          하게
-        </TextStore>
-        <TextStore textStyle={TextStyle.TEXT_R_40} style="flex">
-          선택은<TextStore textStyle={TextStyle.TEXT_R_40_BLUE}>과감</TextStore>
-          하게
-        </TextStore>
-
-        <div className="mt-10">
-          <BoxStore
-            boxStyle={BoxStyle.BOX_SQUARE_NAVY}
-            style="w-full h-auto bg-gradient-to-b from-cyan-500 to-blue-500 p-10"
-          >
-            <div>
-              <TextStore textStyle={TextStyle.TEXT_M_24} style="leading-10">
-                어떻게 투자해야할지
-              </TextStore>
-              <TextStore textStyle={TextStyle.TEXT_M_24} style="leading-10">
-                모른다면 verda에
-              </TextStore>
-              <TextStore textStyle={TextStyle.TEXT_M_24} style="leading-10">
-                문의하세요
-              </TextStore>
+      <div className="mt-10">
+        <BoxStore
+          boxStyle={BoxStyle.BOX_SQUARE_NAVY}
+          style="w-full h-auto bg-gradient-to-b from-cyan-500 to-blue-500 p-10"
+        >
+          <div>
+            <TextStore textStyle={TextStyle.TEXT_M_24} style="leading-10">
+              어떻게 투자해야할지
+            </TextStore>
+            <TextStore textStyle={TextStyle.TEXT_M_24} style="leading-10">
+              모른다면 verda에
+            </TextStore>
+            <TextStore textStyle={TextStyle.TEXT_M_24} style="leading-10">
+              문의하세요
+            </TextStore>
+            <TextStore
+              textStyle={TextStyle.TEXT_R_16}
+              style="flex text-indigo-900 "
+            >
+              검증된 전문
               <TextStore
                 textStyle={TextStyle.TEXT_R_16}
-                style="flex text-indigo-900 "
+                style="text-white bg-indigo-700"
               >
-                검증된 전문
-                <TextStore
-                  textStyle={TextStyle.TEXT_R_16}
-                  style="text-white bg-indigo-700"
-                >
-                  펀드매니저
-                </TextStore>
-                가 답해드립니다.
+                펀드매니저
               </TextStore>
+              가 답해드립니다.
+            </TextStore>
+          </div>
+          <div className="flex justify-around mt-10">
+            {/* <Slider ref={sliderRef} {...settings}> */}
+            <div>
+              <BoxStore
+                boxStyle={BoxStyle.BOX_SQUARE_WHITE}
+                style="w-24 h-24"
+              >
+                이미지1
+              </BoxStore>
             </div>
-            <div className="flex justify-around mt-10">
-              {/* <Slider ref={sliderRef} {...settings}> */}
-              <div>
-                <BoxStore
-                  boxStyle={BoxStyle.BOX_SQUARE_WHITE}
-                  style="w-24 h-24"
-                >
-                  이미지1
-                </BoxStore>
-              </div>
-              <div>
-                <BoxStore
-                  boxStyle={BoxStyle.BOX_SQUARE_WHITE}
-                  style="w-24 h-24"
-                >
-                  이미지2
-                </BoxStore>
-              </div>
-              <div>
-                <BoxStore
-                  boxStyle={BoxStyle.BOX_SQUARE_WHITE}
-                  style="w-24 h-24"
-                >
-                  이미지3
-                </BoxStore>
-              </div>
-              {/* </Slider> */}
+            <div>
+              <BoxStore
+                boxStyle={BoxStyle.BOX_SQUARE_WHITE}
+                style="w-24 h-24"
+              >
+                이미지2
+              </BoxStore>
             </div>
-          </BoxStore>
+            <div>
+              <BoxStore
+                boxStyle={BoxStyle.BOX_SQUARE_WHITE}
+                style="w-24 h-24"
+              >
+                이미지3
+              </BoxStore>
+            </div>
+            {/* </Slider> */}
+          </div>
+        </BoxStore>
 
-        </div>
       </div>
     </div>
   );
