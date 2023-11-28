@@ -49,7 +49,7 @@ function SignupUser() {
     setInvestmentType(type);
   };
 
-  const registerHandle = async event => {
+  const registerHandle = async (event: any) => {
     event.preventDefault();
     const typeValue = parseInt(event.target.type.value);
     let type = "";
