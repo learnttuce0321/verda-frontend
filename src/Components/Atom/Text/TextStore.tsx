@@ -114,6 +114,9 @@ export default function TextStore({ textStyle, children, style }: Props) {
         return null
     }
   };
-  return <>{selectText()}</>;
+  return (
+    <>
+      {selectText()}
+    </>
+  )
 }
-

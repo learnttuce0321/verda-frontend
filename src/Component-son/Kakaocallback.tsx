@@ -1,37 +1,48 @@
 import { useSearchParams } from "next/navigation";
+import { useEffect } from "react";
 
 function KakaoCallback() {
   const router = useSearchParams();
-  console.log("카카오톡 authorizationCode :", router);
+  const authorizationCode = router.get("code");
+  console.log(authorizationCode);
 
-  // async function sendCodeForAccessToken(code) {
-  //   const response = await fetch("/api/auth/kakao", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({ code }),
-  //   });
+  useEffect(() => {
+    console.log("Authorization Code:", authorizationCode);
+    if (authorizationCode) {
+      sendCodeToBackend(authorizationCode);
+      console.log("useEffect : ", authorizationCode);
+    }
+  }, [authorizationCode]);
 
-  //   if (!response.ok) {
-  //     throw new Error("Failed to request access token");
-  //   }
+  const sendCodeToBackend = async (code: string | null) => {
+    try {
+      if (code === null) {
+        console.error("Authorization code is null");
+        return;
+      }
 
-  //   const data = await response.json();
-  //   return data;
-  // }
-  // const authorizationCode = router.code; // 인가코드 추출
+      try {
+        const response = await fetch("https://verda.monster/api/auth/kakao", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ authorizationCode: code }),
+        });
 
-  // if (authorizationCode) {
-  //   sendCodeForAccessToken(authorizationCode)
-  //     .then(data => {
-  //       // 여기서 받은 데이터를 처리합니다.
-  //       console.log("access token data:", data);
-  //     })
-  //     .catch(error => {
-  //       console.error("Error :", error);
-  //     });
-  // }
+        if (!response.ok) {
+          throw new Error("Failed to request access token");
+        }
+
+        const data = await response.json();
+        console.log("Data from backend:", data);
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
 
   return <div>카카오톡 인가코드 받음</div>;
 }

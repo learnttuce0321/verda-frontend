@@ -49,7 +49,7 @@ function SignupUser() {
     setInvestmentType(type);
   };
 
-  const registerHandle = async event => {
+  const registerHandle = async (event: any) => {
     event.preventDefault();
     const typeValue = parseInt(event.target.type.value);
     let type = "";
@@ -59,14 +59,45 @@ function SignupUser() {
       name: event.target.name.value,
       gender: event.target.gender.value,
       birth: event.target.birth.value,
-      phone: event.target.phone.value,
-      type: investmentType,
+      number: event.target.phone.value,
+      investment_propensity: investmentType,
     };
     console.log(data);
+    const sendCodeToBackend = async (code: string | null) => {
+      try {
+        if (code === null) {
+          console.error("data is null");
+          return;
+        }
+
+        try {
+          const response = await fetch(
+            "https://verda.monster/api/members/user/{email}/addinfo",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ authorizationCode: code }),
+            },
+          );
+
+          if (!response.ok) {
+            throw new Error("Failed to request access token");
+          }
+
+          const data = await response.json();
+          console.log("Data from backend:", data);
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    };
   };
   return (
-
-    <>
+    <div>
       <div className="flex flex-col items-center mt-20">
         <div>
           <TextStore
@@ -154,8 +185,7 @@ function SignupUser() {
           </form>
         </div>
       </div>
-    </>
-
+    </div>
   );
 }
 export default SignupUser;

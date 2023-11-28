@@ -24,8 +24,7 @@ function LoginUser() {
   };
 
   return (
-
-    <>
+    <div>
       <div>
         <div className="flex flex-col items-center mt-20">
           <TextStore
@@ -69,15 +68,8 @@ function LoginUser() {
               ></TextStore>
             </Link>
           </div>
-
         </div>
       </div>
-      <p>
-        혹시 펀드매니저 이신가요?
-        <Link href="/LoginManager">
-          <p>펀드매니저로 회원가입</p>
-        </Link>
-      </p>
     </div>
   );
 }

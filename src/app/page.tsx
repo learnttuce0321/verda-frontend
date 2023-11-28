@@ -7,11 +7,6 @@ export default function Home() {
   return (
     <div>
       <div>
-
-        {/* <div>
-          <Header />
-        </div> */}
-
         <div className="flex flex-col items-center ">
           <div>
             <Contents />
@@ -19,9 +14,7 @@ export default function Home() {
           <div>
             <InfoLogin />
           </div>
-
         </div>
-        <h1>asdf</h1>
       </div>
     </div>
   );
