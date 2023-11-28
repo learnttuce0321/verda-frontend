@@ -19,7 +19,6 @@ const ROOM_DUMMYDATA = [
   },
 ];
 
-// { params: { roomId } }: Props
 export default function Chat() {
   const roomdata = ROOM_DUMMYDATA[0];
   return (

@@ -1,7 +1,9 @@
+import { ArrowUpCircleFill } from "react-bootstrap-icons";
 import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
+
 import { useState, forwardRef, useEffect } from "react";
 import type { ChangeEvent, LegacyRef } from "react";
-import { ArrowUpCircleFill } from "react-bootstrap-icons";
+
 
 interface Props {
   placeHolder: string;
@@ -45,7 +47,7 @@ export default forwardRef(function InputContent(
         onChange={handleInputChange}
       />
 
-      <button className="flex justify-center items-center pr-2">
+      <button type="button" className="flex justify-center items-center pr-2">
         <ArrowUpCircleFill fill="white" className="text-custom_24 " />
       </button>
     </BoxStore>
