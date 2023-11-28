@@ -1,5 +1,7 @@
 "use client";
 
+import InputMessage from "@/Components/Molecure/input-kmr/InputMessage";
+
 interface Props {
   params: {
     roomId: string;
@@ -17,7 +19,6 @@ const ROOM_DUMMYDATA = [
   },
 ];
 
-// { params: { roomId } }: Props
 export default function Chat() {
   const roomdata = ROOM_DUMMYDATA[0];
   return (
@@ -34,7 +35,7 @@ export default function Chat() {
           <p>{roomdata.userMessage} </p>
         </div>
       </div>
-      <input placeholder="메세지를 입력하세요" />
+      <InputMessage rows={50} placeHolder="텍스트를 입력하세요" />
     </section>
   );
 }
