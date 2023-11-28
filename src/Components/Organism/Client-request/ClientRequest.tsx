@@ -1,90 +1,94 @@
+"use client";
+
 import Link from "next/link";
 import { ChevronRight } from "react-bootstrap-icons";
-import { useInfiniteQuery, InfiniteQueryObserverResult } from "react-query";
+import { useInfiniteQuery } from "react-query";
 import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
-import Section from "@/Components-kim/Section";
+import Section from "@/components-kim/Section";
+import { useInView } from "react-intersection-observer";
+import { useEffect, useState } from "react";
 
-interface Props {
-  postId: string;
-  name: string;
-  title: string;
-}
+export default function ClientRequest() {
+  const [ref, inView] = useInView();
+  const [fetchData, setFetchData] = useState([]);
 
-interface ClientRequestProps {
-  posts: Props[];
-  pageNum: number;
-  getData: (pageNum: ClientRequestProps) => Promise<any>;
-}
+  // 참고자료
+  //https://velog.io/@wmc1415/react-query%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-infinity-scroll-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0
 
-export default async function ClientRequest({
-  // posts,
-  getData,
-  pageNum,
-}: ClientRequestProps) {
-  function InfiniteScrollFun() {
-    const fetchList = ({ pageParam = 1 }) => getData({ pageNum: pageParam });
-
-    const {
-      data,
-      error,
-      fetchNextPage,
-      hasNextPage,
-      isFetching,
-      isFetchingNextPage,
-      status,
-    } = useInfiniteQuery("clientRequestList", fetchList, {
-      getNextPageParam: (lastPage, pages) => {
-        console.log(lastPage);
-
-        if (lastPage.currentPage === lastPage.totalPage) return undefined;
-        return lastPage.currentPage + 1;
+  const getData = async (pageParam: number): Promise<any> => {
+    const size = 20;
+    const lastPostId = 10000;
+    console.log(pageParam);
+    const res = await fetch(
+      `${process.env.BASE_URL}/api/board?lastPostId=${
+        lastPostId + pageParam
+      }&size=${size}`,
+      {
+        method: "GET",
       },
-    });
+    );
 
-    function handleScroll(event: { target: any }) {
-      const element = event.target;
-      if (element.scrollHeight - element.scrollTop === element.clientHeight) {
-        if (hasNextPage) {
-          fetchNextPage();
-        }
-      }
+    if (!res.ok) {
+      return <> Loading ...</>;
     }
 
-    return (
-      <>
-        <Section>
-          <TextStore textStyle={TextStyle.TEXT_R_40}>투자문의</TextStore>
-        </Section>
-        <Section style="mt-2.5">
-          {posts.map(Listdata => (
-            <div key={Listdata.postId} className="mt-2.5">
-              <Link href={`/fundmanager/clientrequest/${Listdata.postId}`}>
+    const fetchData = await res.json();
+
+    return fetchData;
+  };
+
+  const { data, fetchNextPage, hasNextPage } = useInfiniteQuery(
+    ["clientList"],
+    ({ pageParam = 1 }) => getData(pageParam),
+    {
+      getNextPageParam: lastPage => lastPage.nextPage,
+    },
+  );
+
+  useEffect(() => {
+    if (inView && hasNextPage) {
+      fetchNextPage();
+    }
+    console.log("data", data);
+  }, [inView, fetchNextPage, hasNextPage]);
+
+  return (
+    <>
+      <Section>
+        <TextStore textStyle={TextStyle.TEXT_R_40}>dial</TextStore>
+      </Section>
+      <Section style="mt-2.5">
+        {fetchData.map((ListData, index) => {
+          return (
+            <div key={index} className="mt-2.5">
+              <Link href={`/fundmanager/clientrequest/${ListData.postId}`}>
                 <BoxStore boxStyle={BoxStyle.BOX_CORNER_LONG} style="relative">
                   <TextStore
                     textStyle={TextStyle.TEXT_M_24}
                     style="text-black font-bold"
                   >
-                    {Listdata.name}
+                    {ListData.name}
                   </TextStore>
                   <TextStore
                     textStyle={TextStyle.TEXT_R_20}
                     style="text-slate-500"
                   >
-                    {Listdata.title}
+                    {ListData.title}
                   </TextStore>
                   <ChevronRight
                     fill="black"
-                    width="2em"
-                    height="2em"
+                    width="2 in"
+                    height="2m"
                     className="absolute top-1/3 right-0 "
                   />
                 </BoxStore>
               </Link>
             </div>
-          ))}
-        </Section>
-      </>
-    );
-  }
+          );
+        })}
+        <div ref={ref} />
+      </Section>
+    </>
+  );
 }
