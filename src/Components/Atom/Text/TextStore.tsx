@@ -111,7 +111,12 @@ export default function TextStore({ textStyle, children, style }: Props) {
           <p className={`text-custom_10 font-semibold ${style}`}>{children}</p>
         );
     }
-  };
-  return <>{SelectText()}</>;
+
+  }
+  return (
+    <>
+      {selectText()}
+    </>
+  )
 }
 

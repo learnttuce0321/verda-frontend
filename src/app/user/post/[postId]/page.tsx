@@ -1,5 +1,7 @@
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import Section from "@/components-kim/Section";
+import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 import ButtonListInfo from "@/Components/Molecure/Button-jsh/List/ButtonListInfo";
 import PostDetailMain from "@/Components/Organism/Post/PostDetailMain";
@@ -9,7 +11,7 @@ interface Props {
   params: {
     postId: string;
   };
-};
+}
 
 export default async function PostDetailPage({ params: { postId } }: Props) {
   const getPostDetail = async (): Promise<any> => {

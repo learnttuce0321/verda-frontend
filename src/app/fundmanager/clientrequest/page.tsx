@@ -1,9 +1,11 @@
-import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
+
+
 import ClientRequest from "@/organisms/fundmanager-kim/Client-request/ClientRequest";
 
 const size = 20;
 const lastPostId = 10000;
 const getData = async (): Promise<any> => {
+
   const res = await fetch(
     `${process.env.BASE_URL}/api/board?lastPostId=${lastPostId}&size=${size}`,
     {
@@ -12,11 +14,15 @@ const getData = async (): Promise<any> => {
   );
 
   if (!res.ok) {
-    return <p>Loading...</p>;
+
+    return <>Loading...</>;
+
   }
 
   return res.json();
 };
+
+
 
 export default async function ClientRequestData() {
   const data = await getData();
@@ -50,4 +56,5 @@ export default async function ClientRequestData() {
   // };
 
   return <ClientRequest posts={data} />;
+
 }

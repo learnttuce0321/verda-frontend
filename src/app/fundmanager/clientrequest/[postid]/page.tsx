@@ -1,4 +1,6 @@
-import ClientRequestDetail from "@/organisms/fundmanager-kim/Client-request/ClientRequestDetail";
+
+import ClientRequestDetail from "@/Components/Organism/Client-request/ClientRequestDetail";
+
 
 interface Props {
   params: {
@@ -6,23 +8,28 @@ interface Props {
   };
 }
 
-const GetUserWriteData = async ({
-  params: { postid },
+
+const GetclientRequestListData = async ({
+  params: { postId },
 }: Props): Promise<any> => {
-  const userPost = await fetch(`${process.env.BASE_URL}/api/board/${postid}`, {
+  const userPost = await fetch(`${process.env.BASE_URL}/api/board/${postId}`, {
+
     method: "GET",
   });
 
   if (!userPost.ok) {
     console.log("error");
-    return <div>is Loading...</div>;
+
+    return <>is Loading...</>;
+
   }
 
   return userPost.json();
 };
 
-const GetUserRoomData = async ({ params: { postid } }: Props): Promise<any> => {
-  const userRoom = await fetch(`${process.env.BASE_URL}/api/rooms/${postid}`, {
+
+const GetUserRoomData = async ({ params: { postId } }: Props): Promise<any> => {
+  const userRoom = await fetch(`${process.env.BASE_URL}/api/rooms/${postId}`, {
     method: "GET",
   });
 
@@ -30,12 +37,13 @@ const GetUserRoomData = async ({ params: { postid } }: Props): Promise<any> => {
     console.log("error");
   } else if (!userRoom || Object.keys(userRoom).length === 0) {
     console.log(postid);
-    return PostMakeRoom({ params: { postid } });
+    return PostMakeRoom({ params: { postId } });
   }
 };
 
-const PostMakeRoom = async ({ params: { postid } }: Props): Promise<any> => {
-  console.log("postid", postid);
+const PostMakeRoom = async ({ params: { postId } }: Props): Promise<any> => {
+  console.log("postId", postId);
+
   const makeRoom = await fetch(`${process.env.BASE_URL}/api/chat`, {
     method: "POST",
     headers: {
@@ -44,12 +52,12 @@ const PostMakeRoom = async ({ params: { postid } }: Props): Promise<any> => {
     body: JSON.stringify({
       fm_id: 1,
       user_id: 1,
-      post_id: postid,
+
+      post_id: postId,
+
     }),
   });
 
-  if (!makeRoom.ok) {
-    console.log("error");
     return <div>is Loading...</div>;
   }
   return makeRoom.json();
@@ -57,6 +65,7 @@ const PostMakeRoom = async ({ params: { postid } }: Props): Promise<any> => {
 
 export default async function ClientRequestDetailFun({ params }: Props) {
   const postData = await GetUserWriteData({ params });
+
   const roomData = await GetUserRoomData({ params });
   console.log("roomData", roomData);
 
