@@ -63,6 +63,38 @@ function SignupUser() {
       investment_propensity: investmentType,
     };
     console.log(data);
+    const sendCodeToBackend = async (code: string | null) => {
+      try {
+        if (code === null) {
+          console.error("data is null");
+          return;
+        }
+
+        try {
+          const response = await fetch(
+            "https://verda.monster/api/members/user/{email}/addinfo",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ authorizationCode: code }),
+            },
+          );
+
+          if (!response.ok) {
+            throw new Error("Failed to request access token");
+          }
+
+          const data = await response.json();
+          console.log("Data from backend:", data);
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    };
   };
   return (
     <div>

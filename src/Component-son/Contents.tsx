@@ -41,7 +41,7 @@ function Contents() {
         <div className="mt-10">
           <BoxStore
             boxStyle={BoxStyle.BOX_SQUARE_NAVY}
-            style="w-full h-auto bg-gradient-to-b from-cyan-500 to-blue-500 p-10"
+            style="w-full h-auto rounded-3xl bg-gradient-to-b from-cyan-500 to-blue-500 p-35"
           >
             <div>
               <TextStore textStyle={TextStyle.TEXT_M_24} style="leading-10">
@@ -67,12 +67,12 @@ function Contents() {
                 가 답해드립니다.
               </TextStore>
             </div>
-            <div className="flex justify-around mt-10">
+            <div className="flex justify-around mt-5 w-full">
               {/* <Slider ref={sliderRef} {...settings}> */}
               <div>
                 <BoxStore
                   boxStyle={BoxStyle.BOX_SQUARE_WHITE}
-                  style="w-24 h-24"
+                  style="w-28 h-28 ml-5"
                 >
                   이미지1
                 </BoxStore>
@@ -80,7 +80,7 @@ function Contents() {
               <div>
                 <BoxStore
                   boxStyle={BoxStyle.BOX_SQUARE_WHITE}
-                  style="w-24 h-24"
+                  style="w-28 h-28 ml-5"
                 >
                   이미지2
                 </BoxStore>
@@ -88,7 +88,7 @@ function Contents() {
               <div>
                 <BoxStore
                   boxStyle={BoxStyle.BOX_SQUARE_WHITE}
-                  style="w-24 h-24"
+                  style="w-28 h-28 ml-5"
                 >
                   이미지3
                 </BoxStore>
