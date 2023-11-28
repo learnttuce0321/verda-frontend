@@ -35,7 +35,7 @@ export default function Chat() {
           <p>{roomdata.userMessage} </p>
         </div>
       </div>
-      <InputMessage rows={50} placeHolder="텍스트를 입력하세요" />
+      {/* <InputMessage rows={50} placeHolder="텍스트를 입력하세요" /> */}
     </section>
   );
 }
