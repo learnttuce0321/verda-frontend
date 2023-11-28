@@ -32,6 +32,7 @@ module.exports = {
     "react/jsx-filename-extension": [1, { extensions: [".ts", ".tsx"] }],
     "import/prefer-default-export": "off",
     "react-hooks/exhaustive-deps": "off",
+    "react/no-array-index-key": "off",
     "consistent-return": "off",
     "no-console": "off",
     "react/style-prop-object": "off",
