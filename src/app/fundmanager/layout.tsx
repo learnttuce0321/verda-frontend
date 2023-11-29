@@ -12,9 +12,10 @@ export default function FundmanagerMainPage({
   const [click, setClick] = useState<boolean>(false);
   return (
     <main className="bg-gradient-to-b from-indigo-800 to-indigo-300 text-white h-screen">
-      <Navi setClick={setClick} click={click} />
       <div className="p-3">{children}</div>
-      {click ? <Modal /> : null}
+      {/* <Navi setClick={setClick} click={click} />
+      
+      {click ? <Modal /> : null} */}
     </main>
   );
 }

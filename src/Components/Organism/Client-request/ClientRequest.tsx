@@ -18,7 +18,6 @@ interface ItemArray {
 
 export interface IRepository {
   total_count: number;
-  items: ItemArray[];
 }
 
 export default function ClientRequest() {
@@ -26,29 +25,26 @@ export default function ClientRequest() {
 
   const getData = async (page: number): Promise<IRepository> => {
     const size = 20;
-    const lastPostId = 10000;
+    // const lastPostId = 10000;
     console.log("pageParam", page);
     const res = await fetch(
-      `${process.env.BASE_URL}/api/board?lastPostId=${
-        lastPostId + page
-      }&size=${size}`,
+      `${process.env.BASE_URL}/api/board?lastPostId=${page}&size=${size}`,
       {
         method: "GET",
       },
     );
 
     const fetchData = await res.json();
-    console.log(fetchData);
 
     return fetchData;
   };
 
   const { data, fetchNextPage, status, hasNextPage } = useInfiniteQuery(
     ["clientList"],
-    ({ pageParam = 1 }) => getData(pageParam),
+    ({ pageParam = 20 }) => getData(pageParam),
     {
       getNextPageParam: (lastPage, allPages) => {
-        const maxPage = lastPage.total_count / 20;
+        const maxPage = lastPage.total_count;
         const nextPage = allPages.length + 1;
         return nextPage <= maxPage ? nextPage : undefined;
       },
@@ -59,13 +55,13 @@ export default function ClientRequest() {
     if (inView && hasNextPage) {
       fetchNextPage();
     }
-    console.log("data", data);
+    const content = data?.pages.map(test => console.log("content", test));
   }, [inView, fetchNextPage, hasNextPage]);
 
   return (
     <>
       <Section>
-        <TextStore textStyle={TextStyle.TEXT_R_40}>dial</TextStore>
+        <TextStore textStyle={TextStyle.TEXT_R_40}>투자문의</TextStore>
       </Section>
       <Section style="mt-2.5">
         {status !== "loading" && status !== "error" && (
