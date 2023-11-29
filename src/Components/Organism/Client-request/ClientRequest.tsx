@@ -7,42 +7,51 @@ import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 import Section from "@/components-kim/Section";
 import { useInView } from "react-intersection-observer";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+
+interface ItemArray {
+  postId: string;
+  name: string;
+  title: string;
+  content: string;
+}
+
+export interface IRepository {
+  total_count: number;
+  items: ItemArray[];
+}
 
 export default function ClientRequest() {
-  const [ref, inView] = useInView();
-  const [fetchData, setFetchData] = useState([]);
+  const [ref, inView] = useInView({ threshold: 0.3 });
 
-  // 참고자료
-  //https://velog.io/@wmc1415/react-query%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-infinity-scroll-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0
-
-  const getData = async (pageParam: number): Promise<any> => {
+  const getData = async (page: number): Promise<IRepository> => {
     const size = 20;
     const lastPostId = 10000;
-    console.log(pageParam);
+    console.log("pageParam", page);
     const res = await fetch(
       `${process.env.BASE_URL}/api/board?lastPostId=${
-        lastPostId + pageParam
+        lastPostId + page
       }&size=${size}`,
       {
         method: "GET",
       },
     );
 
-    if (!res.ok) {
-      return <> Loading ...</>;
-    }
-
     const fetchData = await res.json();
+    console.log(fetchData);
 
     return fetchData;
   };
 
-  const { data, fetchNextPage, hasNextPage } = useInfiniteQuery(
+  const { data, fetchNextPage, status, hasNextPage } = useInfiniteQuery(
     ["clientList"],
     ({ pageParam = 1 }) => getData(pageParam),
     {
-      getNextPageParam: lastPage => lastPage.nextPage,
+      getNextPageParam: (lastPage, allPages) => {
+        const maxPage = lastPage.total_count / 20;
+        const nextPage = allPages.length + 1;
+        return nextPage <= maxPage ? nextPage : undefined;
+      },
     },
   );
 
@@ -59,36 +68,180 @@ export default function ClientRequest() {
         <TextStore textStyle={TextStyle.TEXT_R_40}>dial</TextStore>
       </Section>
       <Section style="mt-2.5">
-        {fetchData.map((ListData, index) => {
-          return (
-            <div key={index} className="mt-2.5">
-              <Link href={`/fundmanager/clientrequest/${ListData.postId}`}>
-                <BoxStore boxStyle={BoxStyle.BOX_CORNER_LONG} style="relative">
-                  <TextStore
-                    textStyle={TextStyle.TEXT_M_24}
-                    style="text-black font-bold"
-                  >
-                    {ListData.name}
-                  </TextStore>
-                  <TextStore
-                    textStyle={TextStyle.TEXT_R_20}
-                    style="text-slate-500"
-                  >
-                    {ListData.title}
-                  </TextStore>
-                  <ChevronRight
-                    fill="black"
-                    width="2 in"
-                    height="2m"
-                    className="absolute top-1/3 right-0 "
-                  />
-                </BoxStore>
-              </Link>
-            </div>
-          );
-        })}
+        {status !== "loading" && status !== "error" && (
+          <div>
+            {data &&
+              data.pages?.map((listData, pageIndex) => (
+                <React.Fragment key={pageIndex}>
+                  {listData.items.map(item => (
+                    <Link
+                      key={pageIndex}
+                      href={`/fundmanager/clientrequest/${item.postId}`}
+                    >
+                      <BoxStore
+                        boxStyle={BoxStyle.BOX_CORNER_LONG}
+                        style="relative"
+                      >
+                        <TextStore
+                          textStyle={TextStyle.TEXT_M_24}
+                          style="text-black font-bold"
+                        >
+                          {item.name}
+                        </TextStore>
+                        <TextStore
+                          textStyle={TextStyle.TEXT_R_20}
+                          style="text-slate-500"
+                        >
+                          {item.title}
+                        </TextStore>
+                        <ChevronRight
+                          fill="black"
+                          width="2 in"
+                          height="2m"
+                          className="absolute top-1/3 right-0 "
+                        />
+                      </BoxStore>
+                    </Link>
+                  ))}
+                </React.Fragment>
+              ))}
+          </div>
+        )}
         <div ref={ref} />
       </Section>
     </>
   );
 }
+
+// {status !== "loading" && status !== "error" && (
+//   <div>
+//     {data &&
+//       data.pages?.map((listData, pageIndex) => (
+//         <React.Fragment key={pageIndex}>
+//           {listData.items.map(item => (
+//             <Link
+//               key={pageIndex}
+//               href={`/fundmanager/clientrequest/${item.postId}`}
+//             >
+//               <BoxStore
+//                 boxStyle={BoxStyle.BOX_CORNER_LONG}
+//                 style="relative"
+//               >
+//                 <TextStore
+//                   textStyle={TextStyle.TEXT_M_24}
+//                   style="text-black font-bold"
+//                 >
+//                   {item.name}
+//                 </TextStore>
+//                 <TextStore
+//                   textStyle={TextStyle.TEXT_R_20}
+//                   style="text-slate-500"
+//                 >
+//                   {item.title}
+//                 </TextStore>
+//                 <ChevronRight
+//                   fill="black"
+//                   width="2 in"
+//                   height="2m"
+//                   className="absolute top-1/3 right-0 "
+//                 />
+//               </BoxStore>
+//             </Link>
+//           ))}
+//         </React.Fragment>
+//       ))}
+//   </div>
+// )}
+
+// {status === "loading" ? (
+//   <p>Loading...</p>
+// ) : (
+//   status === "error" && <span>Error:</span>
+// )}
+// {status !== "loading" && status !== "error" && (
+//   <div>
+//     {data &&
+//       data.pages?.map((listData, pageIndex) => (
+//         <React.Fragment key={pageIndex}>
+//           <Link
+//             key={pageIndex}
+//             href={`/fundmanager/clientrequest/${listData.postId}`}
+//           >
+//             <BoxStore
+//               boxStyle={BoxStyle.BOX_CORNER_LONG}
+//               style="relative"
+//             >
+//               <TextStore
+//                 textStyle={TextStyle.TEXT_M_24}
+//                 style="text-black font-bold"
+//               >
+//                 {listData.name}
+//               </TextStore>
+//               <TextStore
+//                 textStyle={TextStyle.TEXT_R_20}
+//                 style="text-slate-500"
+//               >
+//                 {listData.title}
+//               </TextStore>
+//               <ChevronRight
+//                 fill="black"
+//                 width="2 in"
+//                 height="2m"
+//                 className="absolute top-1/3 right-0 "
+//               />
+//             </BoxStore>
+//           </Link>
+//         </React.Fragment>
+//       ))}
+//   </div>
+// )}
+// <div ref={ref} />
+// </Section>
+// </>
+// );
+// }
+
+// {status !== "loading" && status !== "error" && (
+//   <div>
+//     {data &&
+//       data.pages?.map((listData, pageIndex) => (
+//         <React.Fragment key={pageIndex}>
+//           {listData.items.map(item => (
+//             <Link
+//               key={pageIndex}
+//               href={`/fundmanager/clientrequest/${item.postId}`}
+//             >
+//               <BoxStore
+//                 boxStyle={BoxStyle.BOX_CORNER_LONG}
+//                 style="relative"
+//               >
+//                 <TextStore
+//                   textStyle={TextStyle.TEXT_M_24}
+//                   style="text-black font-bold"
+//                 >
+//                   {item.name}
+//                 </TextStore>
+//                 <TextStore
+//                   textStyle={TextStyle.TEXT_R_20}
+//                   style="text-slate-500"
+//                 >
+//                   {item.title}
+//                 </TextStore>
+//                 <ChevronRight
+//                   fill="black"
+//                   width="2 in"
+//                   height="2m"
+//                   className="absolute top-1/3 right-0 "
+//                 />
+//               </BoxStore>
+//             </Link>
+//           ))}
+//         </React.Fragment>
+//       ))}
+//   </div>
+// )}
+// <div ref={ref} />
+// </Section>
+// </>
+// );
+// }
