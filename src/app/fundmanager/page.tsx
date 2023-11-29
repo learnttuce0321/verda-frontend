@@ -7,23 +7,7 @@ import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 
 const postid = 1;
 
-// async function getData() {
-//   const res = await fetch(process.env.BASE_URL + `/api/board/${postid}`);
-
-//   if (!res.ok) {
-//     console.log("error");
-//   } else {
-//     console.log(res);
-//   }
-
-//   return res.json();
-// }
-
 export default function FundmanagerLayout() {
-  // const data = await getData();
-  // console.log(process.env.BASE_URL + `/api/board/${postid}`);
-  // console.log(data);
-
   return (
     <>
       <Section style=" text-2xl font-semibold">

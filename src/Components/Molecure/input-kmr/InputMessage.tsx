@@ -4,7 +4,6 @@ import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
 import { useState, forwardRef, useEffect } from "react";
 import type { ChangeEvent, LegacyRef } from "react";
 
-
 interface Props {
   placeHolder: string;
   style?: string;
@@ -14,26 +13,22 @@ export default forwardRef(function InputContent(
   { placeHolder, style }: Props,
   ref: LegacyRef<HTMLTextAreaElement> | undefined,
 ) {
-  const [textareaHeight, setTextareaHeight] = useState<number>(30);
-
   const handleInputChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
     const targetTextarea = event.target;
     const rowCount = targetTextarea.value.split(/\r\n|\r|\n/).length;
-    const minHeight = 100;
+    console.log(rowCount);
+    const textareaHeight = 56;
+    const newH = 100;
 
-    const newHeight = Math.max(minHeight, rowCount * 18);
-    setTextareaHeight(newHeight + 2);
-
-    targetTextarea.style.height = `${newHeight}px`;
-  };
-
-  useEffect(() => {
-    const targetTextarea = document.querySelector("textarea");
-
-    if (targetTextarea) {
-      targetTextarea.style.height = `${textareaHeight}px`;
+    if (rowCount >= 0 && rowCount <= 3) {
+      targetTextarea.style.height = textareaHeight.toString();
+      console.log("rowCount", rowCount);
+      console.log("세로", targetTextarea.style.height);
+    } else {
+      const newHeight = Math.min(newH, rowCount * 18 + 2);
+      targetTextarea.style.height = `${newHeight}px`;
     }
-  }, [ref, textareaHeight]);
+  };
 
   return (
     <BoxStore
@@ -42,7 +37,7 @@ export default forwardRef(function InputContent(
     >
       <textarea
         ref={ref}
-        className={`appearance-none bg-transparent text-white w-10/12 focus:outline-none text-custom_24 leading-[24px] font-normal pl-3 overflow-hidden ${style}`}
+        className={`resize-none appearance-none bg-transparent text-white w-10/12 focus:outline-none h-14 placeholder-white overflow-y-auto placeholder-shown:align-middle text-custom_24 leading-[24px] font-normal px-7 py-2 overflow-hidden ${style}`}
         placeholder={placeHolder}
         onChange={handleInputChange}
       />
