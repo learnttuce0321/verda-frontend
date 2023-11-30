@@ -1,6 +1,4 @@
-
 import ClientRequestDetail from "@/Components/Organism/Client-request/ClientRequestDetail";
-
 
 interface Props {
   params: {
@@ -8,12 +6,10 @@ interface Props {
   };
 }
 
-
 const GetclientRequestListData = async ({
   params: { postId },
 }: Props): Promise<any> => {
   const userPost = await fetch(`${process.env.BASE_URL}/api/board/${postId}`, {
-
     method: "GET",
   });
 
@@ -21,7 +17,6 @@ const GetclientRequestListData = async ({
     console.log("error");
 
     return <>is Loading...</>;
-
   }
 
   return userPost.json();
@@ -40,9 +35,9 @@ const PostMakeRoom = async ({ params: { postId } }: Props): Promise<any> => {
       user_id: 1,
 
       post_id: postId,
-
     }),
   });
+
   return makeRoom.json();
 };
 
