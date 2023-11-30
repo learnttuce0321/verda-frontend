@@ -1,7 +1,7 @@
 "use client";
 
+import Stomp from "stompjs";
 import { useRef, useEffect, useState } from "react";
-import { Stomp } from "@stomp/stompjs"
 
 export default function Chatingroom() {
   const [message, setMessage] = useState("");
@@ -9,33 +9,10 @@ export default function Chatingroom() {
   const [stompClient, setStompClient] = useState<any>(null); // WebSocket 클라이언트 객체를 업데이트하거나 초기화
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // 웹소켓 연결
 
-  // stomp 채널 구독
-  useEffect(() => {
-    const webSocket = new WebSocket("wss://verda.monster:8080/wss");
-    webSocket.onopen = () => {
-      console.log("소켓 연결");
-    }
-
-    console.log(Stomp)
-    const client = Stomp.over(webSocket);
-    client.connect(
-      {},
-      () => {
-        client.subscribe(`/sub/chat/room/${1}`, (msg: any) => {
-          console.log(msg);
-        });
-        setStompClient(client)
-      },
-      (error: any) => {
-        console.log("errorMsg", error)
-      }
-    )
-  }, [])
   /**
-   * 메세지 받았을 때 처리
-   */
+ * 메세지 받았을 때 처리
+ */
   const onMessageReceived = (messageBody: any) => {
     const messageb = JSON.parse(messageBody)
 
@@ -71,8 +48,35 @@ export default function Chatingroom() {
     }
   }
 
+  // stomp 채널 구독
+  useEffect(() => {
+    const socket = new WebSocket("wss://verda.monster/wss");
+
+    const client = Stomp.over(socket);
+    client.connect(
+      {},
+      () => {
+        client.subscribe(`/sub/chat/room${1}`, (messageB) => {
+          onMessageReceived(messageB);
+        });
+        setStompClient(client);
+      },
+      (error) => {
+        console.log("error", error)
+      },
+    );
+
+    return () => {
+      if (stompClient) {
+        stompClient.disconnect();
+      }
+    }
+  }, [])
+
+
   return (
     <>
     </>
   )
 };
+

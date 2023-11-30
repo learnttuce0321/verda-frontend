@@ -33,6 +33,7 @@ module.exports = {
     "import/prefer-default-export": "off",
     "react-hooks/exhaustive-deps": "off",
     "react/no-array-index-key": "off",
+    "import/no-extraneous-dependencies": "off",
     "consistent-return": "off",
     "no-console": "off",
     "react/style-prop-object": "off",

@@ -1,3 +1,5 @@
+"use client";
+
 import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 import InputForm from "@/Components/Molecure/Input-son/InputForm";
@@ -7,7 +9,7 @@ function SignupUser() {
   const [investmentType, setInvestmentType] = useState("중간");
 
   const handleRangeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const typeValue = parseInt(event.target.value);
+    const typeValue = parseInt(event.target.value, 10);
     let type = "";
     switch (typeValue) {
       case 0:
@@ -51,8 +53,8 @@ function SignupUser() {
 
   const registerHandle = async (event: any) => {
     event.preventDefault();
-    const typeValue = parseInt(event.target.type.value);
-    let type = "";
+    const typeValue = parseInt(event.target.type.value, 10);
+    const type = "";
 
     const data = {
       email: event.target.email.value,
@@ -86,8 +88,8 @@ function SignupUser() {
             throw new Error("Failed to request access token");
           }
 
-          const data = await response.json();
-          console.log("Data from backend:", data);
+          const data1 = await response.json();
+          console.log("Data from backend:", data1);
         } catch (error) {
           console.error("Error:", error);
         }
@@ -149,8 +151,9 @@ function SignupUser() {
             <div className="flex flex-col mt-10 self-start">
               <TextStore
                 textStyle={TextStyle.TEXT_R_30}
-                children="나의 투자 성향"
-              ></TextStore>
+              >
+                나의 투자 성향
+              </TextStore>
               <TextStore
                 textStyle={TextStyle.TEXT_R_30}
                 style="text-custom_navy"
@@ -167,7 +170,7 @@ function SignupUser() {
               id="type"
               name="type"
               onChange={handleRangeChange}
-            ></input>
+            />
 
             <BoxStore
               boxStyle={BoxStyle.BOX_RECTANGLE_NAVY}

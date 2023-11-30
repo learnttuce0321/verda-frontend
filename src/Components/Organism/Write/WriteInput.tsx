@@ -20,7 +20,7 @@ export default function WriteInput() {
       content: contentInput
     }
 
-    const res = await fetch(`https://verda.monster/api/board`, {
+    const res = await fetch(`${process.env.BASE_URL}/api/board`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -47,7 +47,7 @@ export default function WriteInput() {
 
       <section className="mt-5">
         <button type="button">
-          <ButtonButtonNavy clickHandler={SubmitHandler}>
+          <ButtonButtonNavy clickHandler={SubmitHandler} style="p-2">
             작성완료
           </ButtonButtonNavy>
         </button>

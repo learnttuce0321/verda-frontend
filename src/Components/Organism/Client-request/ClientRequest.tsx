@@ -23,7 +23,7 @@ export interface IRepository {
 export default function ClientRequest() {
   const [ref, inView] = useInView({ threshold: 0.3 });
 
-  const getData = async (page: number): Promise<IRepository> => {
+  const getData = async (page: number): Promise<any> => {
     const size = 20;
     // const lastPostId = 10000;
     console.log("pageParam", page);
@@ -67,9 +67,9 @@ export default function ClientRequest() {
         {status !== "loading" && status !== "error" && (
           <div>
             {data &&
-              data.pages?.map((listData, pageIndex) => (
+              data.pages.map((listData, pageIndex) => (
                 <React.Fragment key={pageIndex}>
-                  {listData.items.map(item => (
+                  {listData.items.map((item: any) => (
                     <Link
                       key={pageIndex}
                       href={`/fundmanager/clientrequest/${item.postId}`}
