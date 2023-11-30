@@ -4,7 +4,7 @@ import ClientRequestDetail from "@/Components/Organism/Client-request/ClientRequ
 
 interface Props {
   params: {
-    postid: string;
+    postId: string;
   };
 }
 
@@ -27,20 +27,6 @@ const GetclientRequestListData = async ({
   return userPost.json();
 };
 
-
-const GetUserRoomData = async ({ params: { postId } }: Props): Promise<any> => {
-  const userRoom = await fetch(`${process.env.BASE_URL}/api/rooms/${postId}`, {
-    method: "GET",
-  });
-
-  if (!userRoom.ok) {
-    console.log("error");
-  } else if (!userRoom || Object.keys(userRoom).length === 0) {
-    console.log(postid);
-    return PostMakeRoom({ params: { postId } });
-  }
-};
-
 const PostMakeRoom = async ({ params: { postId } }: Props): Promise<any> => {
   console.log("postId", postId);
 
@@ -57,14 +43,24 @@ const PostMakeRoom = async ({ params: { postId } }: Props): Promise<any> => {
 
     }),
   });
-
-    return <div>is Loading...</div>;
-  }
   return makeRoom.json();
 };
 
+const GetUserRoomData = async ({ params: { postId } }: Props): Promise<any> => {
+  const userRoom = await fetch(`${process.env.BASE_URL}/api/rooms/${postId}`, {
+    method: "GET",
+  });
+
+  if (!userRoom.ok) {
+    console.log("error");
+  } else if (!userRoom || Object.keys(userRoom).length === 0) {
+    console.log(postId);
+    return PostMakeRoom({ params: { postId } });
+  }
+};
+
 export default async function ClientRequestDetailFun({ params }: Props) {
-  const postData = await GetUserWriteData({ params });
+  const postData = await GetclientRequestListData({ params });
 
   const roomData = await GetUserRoomData({ params });
   console.log("roomData", roomData);

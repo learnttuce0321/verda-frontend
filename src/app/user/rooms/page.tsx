@@ -1,5 +1,3 @@
-// "use client";
-
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 import ChatLists from "@/Components/Organism/Chat/ChatLists";
 

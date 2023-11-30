@@ -1,6 +1,4 @@
-
-
-import ClientRequest from "@/organisms/fundmanager-kim/Client-request/ClientRequest";
+import ClientRequest from "@/Components/Organism/Client-request/ClientRequest";
 
 const size = 20;
 const lastPostId = 10000;

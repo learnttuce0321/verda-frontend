@@ -3,7 +3,7 @@ import { ChevronRight } from "react-bootstrap-icons";
 import { useInfiniteQuery, InfiniteQueryObserverResult } from "react-query";
 import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
-import Section from "@/Components-kim/Section";
+import Section from "@/components-kim/Section";
 
 interface Props {
   postId: string;

@@ -1,4 +1,4 @@
-import Section from "@/Components-kim/Section";
+import Section from "@/components-kim/Section";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 import ButtonListInfo from "@/Components/Molecure/Button-jsh/List/ButtonListInfo";
 import PostDetailMain from "@/Components/Organism/Post/PostDetailMain";
@@ -21,7 +21,7 @@ export default async function PostDetailPage({ params: { postId } }: Props) {
   };
 
   // todos : 타입지정
-  const post: Post = await getPostDetail()
+  const post = await getPostDetail()
 
   return (
     <>

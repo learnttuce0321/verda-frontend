@@ -21,15 +21,21 @@ export default function UserMainPage() {
 
       <Section>
         <div className="grid grid-cols-2 gap-2">
-          <Link href="/user/write">
-            <BoxStore boxStyle={BoxStyle.BOX_SQUARE_ORANGE}>투자 문의 작성하기</BoxStore>
-          </Link>
-          <Link href="/user/rooms">
-            <BoxStore boxStyle={BoxStyle.BOX_SQUARE_NAVY}>채팅</BoxStore>
-          </Link>
-          <Link href="/user/post">
-            <BoxStore boxStyle={BoxStyle.BOX_SQUARE_MINT}>투자 글 보러가기</BoxStore>
-          </Link>
+          <button type="button" name="투자 문의" className="text-left">
+            <Link href="/user/write">
+              <BoxStore boxStyle={BoxStyle.BOX_SQUARE_ORANGE}>투자 문의 작성하기</BoxStore>
+            </Link>
+          </button>
+          <button type="button" name="문의" className="text-left">
+            <Link href="/user/rooms">
+              <BoxStore boxStyle={BoxStyle.BOX_SQUARE_NAVY}>채팅</BoxStore>
+            </Link>
+          </button>
+          <button type="button" name="투자 글" className="text-left">
+            <Link href="/user/post">
+              <BoxStore boxStyle={BoxStyle.BOX_SQUARE_MINT}>투자 글 보러가기</BoxStore>
+            </Link>
+          </button>
         </div>
       </Section >
     </>

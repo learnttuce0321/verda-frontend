@@ -22,7 +22,7 @@ function KakaoCallback() {
       }
 
       try {
-        const response = await fetch("https://verda.monster/api/auth/kakao", {
+        const response = await fetch(`${process.env.BASE_URL}}/api/auth/kakao`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
