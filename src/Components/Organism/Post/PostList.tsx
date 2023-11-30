@@ -1,13 +1,12 @@
 "use client";
 
-import { useState, useEffect, Fragment } from "react";
+import { useEffect, Fragment } from "react";
 import Link from "next/link";
 import { useInfiniteQuery } from "react-query";
 import { useInView } from "react-intersection-observer";
 import ButtonListTitle from "@/Components/Molecure/Button-jsh/List/ButtonListTitle";
 
 export default function PostList() {
-  const [lastPostId, setLastPostId] = useState(99999)
   const { ref, inView } = useInView({
     threshold: 0.3,
   });
@@ -54,7 +53,7 @@ export default function PostList() {
         } */}
         {
           data ? (
-            data?.pages.map((page, idx) => {
+            data.pages.map((page, idx) => {
               return (
                 <Fragment key={idx}>
                   {
