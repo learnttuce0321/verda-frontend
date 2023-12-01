@@ -7,7 +7,7 @@ interface TokenProps {
 // { token }: TokenProps
 
 
-export default function FundmanagerRoomsInfo({ token }: TokenProps) {
+export default function FundmanagerRoomsInfo() {
   const getRoomsData = async (): Promise<any> => {
     const res = await fetch(`${process.env.BASE_URL}/api/rooms/fm/`, {
       method: "GET",

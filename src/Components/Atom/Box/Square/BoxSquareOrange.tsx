@@ -13,7 +13,7 @@ export default function BoxSquareOrange({
 }: Props) {
   return (
     <div
-      className={`bg-custom_orange h-48 rounded-lg p-3 w-full ${style}`}
+      className={`bg-custom_orange h-48 rounded-3xl p-5 w-full ${style}`}
       onClick={clickHandler}
     >
       {children}

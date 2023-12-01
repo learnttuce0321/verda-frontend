@@ -67,40 +67,43 @@ export default function ClientRequest() {
         {status !== "loading" && status !== "error" && (
           <div>
             {data &&
-              data.pages.map((listData, pageIndex) => (
-                <React.Fragment key={pageIndex}>
-                  {listData.items.map((item: any) => (
-                    <Link
-                      key={pageIndex}
-                      href={`/fundmanager/clientrequest/${item.postId}`}
-                    >
-                      <BoxStore
-                        boxStyle={BoxStyle.BOX_CORNER_LONG}
-                        style="relative"
+              data.pages.map((listData, pageIndex) => {
+                console.log(listData)
+                return (
+                  <React.Fragment key={pageIndex}>
+                    {listData.map((item: any) => (
+                      <Link
+                        key={pageIndex}
+                        href={`/fundmanager/clientrequest/${item.postId}`}
                       >
-                        <TextStore
-                          textStyle={TextStyle.TEXT_M_24}
-                          style="text-black font-bold"
+                        <BoxStore
+                          boxStyle={BoxStyle.BOX_CORNER_LONG}
+                          style="relative"
                         >
-                          {item.name}
-                        </TextStore>
-                        <TextStore
-                          textStyle={TextStyle.TEXT_R_20}
-                          style="text-slate-500"
-                        >
-                          {item.title}
-                        </TextStore>
-                        <ChevronRight
-                          fill="black"
-                          width="2 in"
-                          height="2m"
-                          className="absolute top-1/3 right-0 "
-                        />
-                      </BoxStore>
-                    </Link>
-                  ))}
-                </React.Fragment>
-              ))}
+                          <TextStore
+                            textStyle={TextStyle.TEXT_M_24}
+                            style="text-black font-bold"
+                          >
+                            {item.name}
+                          </TextStore>
+                          <TextStore
+                            textStyle={TextStyle.TEXT_R_20}
+                            style="text-slate-500"
+                          >
+                            {item.title}
+                          </TextStore>
+                          <ChevronRight
+                            fill="black"
+                            width="2 in"
+                            height="2m"
+                            className="absolute top-1/3 right-0 "
+                          />
+                        </BoxStore>
+                      </Link>
+                    ))}
+                  </React.Fragment>
+                )
+              })}
           </div>
         )}
         <div ref={ref} />
