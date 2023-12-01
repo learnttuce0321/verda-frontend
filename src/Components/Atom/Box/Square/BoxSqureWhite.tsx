@@ -13,7 +13,7 @@ export default function BoxSquareWhite({
 }: Props) {
   return (
     <div
-      className={`bg-white h-28 rounded-lg p-3 ${style}`}
+      className={`bg-white h-48 rounded-3xl p-5 ${style}`}
       onClick={clickHandler}
     >
       {children}

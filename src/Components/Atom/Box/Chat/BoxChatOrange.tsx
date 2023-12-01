@@ -6,7 +6,7 @@ interface Props {
 export default function BoxChatOrange({ children, style }: Props) {
   return (
     <div className="flex justify-end w-[100%]">
-      <div className="
+      <div className={`
           bg-custom_orange
           relative
           inline-block
@@ -22,7 +22,8 @@ export default function BoxChatOrange({ children, style }: Props) {
           before:top-0
           before:content-['▶']
           before:text-custom_orange
-          before:border-0">
+          before:border-0
+          ${style}`}>
         {children}
       </div>
     </div>
