@@ -15,19 +15,16 @@ export default function PostList() {
   const getPostList = async (pageParam: (null | number) = 99999): Promise<any> => {
     const res = await fetch(`${process.env.BASE_URL}/api/board?lastPostId=${pageParam}&size=20`, {
       method: 'GET',
-      // cache: 'no-store'
     });
 
     return res.json();
   };
-  // const data = await getPostList(99999)
   const { data, hasNextPage, fetchNextPage } = useInfiniteQuery(
     ['specialPostList'],
     ({ pageParam = 99999 }) => getPostList(pageParam),
     {
       getNextPageParam: (lastPage, allPages) => {
         const nextPage = lastPage[lastPage.length - 1].postId
-        // console.log("?", allPages[0].slice(-1)[0].postId)
         return nextPage === 1 ? false : nextPage
       }
     }

@@ -1,9 +1,9 @@
 "use client"
 
 interface Props {
-  children: React.ReactNode,
-  style?: string,
-  clickHandler?: () => void
+  children: React.ReactNode;
+  style?: string;
+  clickHandler?: () => void;
 };
 
 export default function BoxRectangeCloud({ children, clickHandler, style }: Props) {

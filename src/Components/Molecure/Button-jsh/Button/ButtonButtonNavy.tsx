@@ -9,7 +9,7 @@ interface Props {
 export default function ButtonButtonNavy({ children, style, clickHandler }: Props) {
   return (
     <BoxStore boxStyle={BoxStyle.BOX_RECTANGLE_LONG_NAVY} clickHandler={clickHandler} style={`${style}`}>
-      <TextStore textStyle={TextStyle.TEXT_E_32} style="text-white m-auto">{children}</TextStore>
+      <TextStore textStyle={TextStyle.TEXT_R_32} style="text-white m-auto">{children}</TextStore>
     </BoxStore>
   )
 }

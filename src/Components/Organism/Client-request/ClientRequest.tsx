@@ -20,39 +20,35 @@ interface ClientRequestProps {
   getData: (pageNum: ClientRequestProps) => Promise<any>;
 }
 
-export default async function ClientRequest({
-  // posts,
-  getData,
-  pageNum,
-}: ClientRequestProps) {
+export default async function ClientRequest() {
   function InfiniteScrollFun() {
-    const fetchList = ({ pageParam = 1 }) => getData({ pageNum: pageParam });
+    // const fetchList = ({ pageParam = 1 }) => getData({ pageNum: pageParam });
 
-    const {
-      data,
-      error,
-      fetchNextPage,
-      hasNextPage,
-      isFetching,
-      isFetchingNextPage,
-      status,
-    } = useInfiniteQuery("clientRequestList", fetchList, {
-      getNextPageParam: (lastPage, pages) => {
-        console.log(lastPage);
+    // const {
+    //   data,
+    //   error,
+    //   fetchNextPage,
+    //   hasNextPage,
+    //   isFetching,
+    //   isFetchingNextPage,
+    //   status,
+    // } = useInfiniteQuery("clientRequestList", fetchList, {
+    //   getNextPageParam: (lastPage, pages) => {
+    //     console.log(lastPage);
 
-        if (lastPage.currentPage === lastPage.totalPage) return undefined;
-        return lastPage.currentPage + 1;
-      },
-    });
+    //     if (lastPage.currentPage === lastPage.totalPage) return undefined;
+    //     return lastPage.currentPage + 1;
+    //   },
+    // });
 
-    function handleScroll(event: { target: any }) {
-      const element = event.target;
-      if (element.scrollHeight - element.scrollTop === element.clientHeight) {
-        if (hasNextPage) {
-          fetchNextPage();
-        }
-      }
-    }
+    // function handleScroll(event: { target: any }) {
+    //   const element = event.target;
+    //   if (element.scrollHeight - element.scrollTop === element.clientHeight) {
+    //     if (hasNextPage) {
+    //       fetchNextPage();
+    //     }
+    //   }
+    // }
 
     return (
       <>
@@ -60,7 +56,7 @@ export default async function ClientRequest({
           <TextStore textStyle={TextStyle.TEXT_R_40}>투자문의</TextStore>
         </Section>
         <Section style="mt-2.5">
-          {posts.map(Listdata => (
+          {/* {posts.map(Listdata => (
             <div key={Listdata.postId} className="mt-2.5">
               <Link href={`/fundmanager/clientrequest/${Listdata.postId}`}>
                 <BoxStore boxStyle={BoxStyle.BOX_CORNER_LONG} style="relative">
@@ -85,7 +81,7 @@ export default async function ClientRequest({
                 </BoxStore>
               </Link>
             </div>
-          ))}
+          ))} */}
         </Section>
       </>
     );

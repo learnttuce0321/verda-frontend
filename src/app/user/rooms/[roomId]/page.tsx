@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 import ChatMessageInput from "@/Components/Organism/Chat/ChatMessageInput";
@@ -18,7 +18,7 @@ export default function ChatDetailPage({ params: { roomId } }: Props) {
   return (
     <section className="w-[100%] ">
       <TextStore textStyle={TextStyle.TEXT_R_40_BLUE} style="mb-2">
-        {/* {data?.fundManagerName} */}ㅎㅇ
+        ㅎㅇ
       </TextStore>
 
       <div className="border-2 opacity-100 h-[calc(100vh_-_145px)] overflow-y-scroll">
