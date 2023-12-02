@@ -1,7 +1,7 @@
+"use client";
 import Link from "next/link";
 import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
-
 import ButtonButton from "@/Components/Molecure/Button-son/ButtonButton";
 
 function InfoLogin() {
@@ -25,18 +25,15 @@ function InfoLogin() {
             <ButtonButton
               title="펀드매니저 "
               title1=" 로그인/가입하기"
-              style="w-auto bg-blue-100 text-center flex"
+              style="w-auto !bg-blue-50 text-center flex p-1"
             ></ButtonButton>
           </Link>
         </div>
-
       </BoxStore>
-
       <BoxStore
         boxStyle={BoxStyle.BOX_RECTANGLE_NAVY}
         style="flex flex-col items-center mt-10"
       >
-
         <div>
           <TextStore
             textStyle={TextStyle.TEXT_R_16}
@@ -45,13 +42,11 @@ function InfoLogin() {
           ></TextStore>
         </div>
         <Link href="/loginUser">
-
           <ButtonButton
             title="로그인/가입하기"
             title1=""
-            style="bg-blue-200 w-auto"
+            style="!bg-blue-300 w-auto p-1"
           ></ButtonButton>
-
         </Link>
       </BoxStore>
     </>
