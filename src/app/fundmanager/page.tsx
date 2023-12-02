@@ -1,29 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import Section from "@/Components-kim/Section";
+import Section from "@/components-kim/Section";
 import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
+import { ChatLeftDotsFill, PenFill } from "react-bootstrap-icons";
 
 const postid = 1;
 
-// async function getData() {
-//   const res = await fetch(process.env.BASE_URL + `/api/board/${postid}`);
-
-//   if (!res.ok) {
-//     console.log("error");
-//   } else {
-//     console.log(res);
-//   }
-
-//   return res.json();
-// }
-
 export default function FundmanagerLayout() {
-  // const data = await getData();
-  // console.log(process.env.BASE_URL + `/api/board/${postid}`);
-  // console.log(data);
-
   return (
     <>
       <Section style=" text-2xl font-semibold">
@@ -35,31 +20,40 @@ export default function FundmanagerLayout() {
       </Section>
 
       <div className="grid grid-cols-2 gap-2">
-        <Section>
+        <button type="button" name="투자 글" className="text-left">
           <Link href="/fundmanager/clientrequest">
-            <BoxStore boxStyle={BoxStyle.BOX_SQUARE_WHITE}>
-              <TextStore textStyle={TextStyle.TEXT_M_24}>
-                <span className="text-black h-48 rounded-lg p-3 ">
+            <BoxStore boxStyle={BoxStyle.BOX_SQUARE_WHITE} style="relative">
+              <div className="absolute bottom-[1.25rem] right-[1.25rem]">
+                <TextStore textStyle={TextStyle.TEXT_M_24} style="text-custom_orange">
                   투자문의
-                </span>
-              </TextStore>
-              <TextStore textStyle={TextStyle.TEXT_M_24}>
-                <span className="text-black ">보러가기 </span>
-              </TextStore>
-            </BoxStore>
-          </Link>
-        </Section>
+                </TextStore>
+                <TextStore textStyle={TextStyle.TEXT_M_24} style="text-custom_navy">
+                  보러가기
+                </TextStore>
+              </div>
 
-        <Section>
-          <Link href="/fundmanager/rooms">
-            <BoxStore boxStyle={BoxStyle.BOX_SQUARE_ORANGE}>
-              <TextStore textStyle={TextStyle.TEXT_M_24}>
-                <span>채팅목록</span>
-              </TextStore>
+              <div className="w-[37px] h-[37px] border-[1px] border-black rounded-full flex justify-center items-center absolute">
+                <PenFill className="text-black" />
+              </div>
             </BoxStore>
           </Link>
-        </Section>
-      </div>
+        </button>
+
+        <button type="button" name="투자 글" className="text-left">
+          <Link href="/fundmanager/rooms">
+            <BoxStore boxStyle={BoxStyle.BOX_SQUARE_ORANGE} style="relative">
+              <div className="absolute bottom-[1.25rem] right-[1.25rem]">
+                <TextStore textStyle={TextStyle.TEXT_M_24} style="text-custom_navy">
+                  채팅
+                </TextStore>
+              </div>
+              <div className="w-[37px] h-[37px] border-[1px] border-black rounded-full flex justify-center items-center absolute">
+                <ChatLeftDotsFill className="text-black" />
+              </div>
+            </BoxStore>
+          </Link>
+        </button>
+      </div >
     </>
   );
 }

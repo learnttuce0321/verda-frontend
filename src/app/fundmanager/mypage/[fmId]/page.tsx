@@ -1,4 +1,4 @@
-import MyPage from "@/organisms/fundmanager-kim/Mypage/mypage";
+import MyPage from "@/Components/Organism/FundmanagerMypage/mypage";
 
 const token = null;
 const getUserData = async (): Promise<any> => {

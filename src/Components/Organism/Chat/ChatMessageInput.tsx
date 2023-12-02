@@ -1,41 +1,42 @@
 "use client";
 
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import Stomp from "stompjs";
-import { useRef, useEffect, useState } from "react";
+import InputMessage from "@/Components/Molecure/Button-jsh/Type/InputMessage";
 
-export default function Chatingroom() {
-  const [message, setMessage] = useState("");
-  const [chatMessages, setChatMessages] = useState<any>([]);
+interface Props {
+  setChatMessages: Dispatch<SetStateAction<any>>;
+  roomId: string
+};
+
+export default function ChatMessageInput({ setChatMessages, roomId }: Props) {
+  const textareaRef = useRef<HTMLTextAreaElement>(null)
+  const [textareaHeight, setTextareaHeight] = useState<string>("3.5rem")
   const [stompClient, setStompClient] = useState<any>(null); // WebSocket 클라이언트 객체를 업데이트하거나 초기화
   const inputRef = useRef<HTMLInputElement>(null);
 
-
-  /**
- * 메세지 받았을 때 처리
- */
   const onMessageReceived = (messageBody: any) => {
     const messageb = JSON.parse(messageBody)
+    console.log(messageb)
 
     const data = {
       content: messageb.content,
       sender_email: messageb.sender_email,
-      send_time: messageb.send_time,
-      room_id: messageb.room_id
     }
     setChatMessages((prev: any) => [...prev, data])
   }
   /**
    * 메세지 작성했을 때 처리
    */
-  const submitHandler = () => {
-    const inputValue = inputRef.current;
+  const submitHandler = (): void => {
+    const inputValue = textareaRef.current;
 
     if (stompClient && inputValue!.value.length !== 0) {
-      const url = `/pub/api/send/messages/${1}`
+      const url = `/pub/api/send/messages/${1}`;
+
       const messageData = {
         room_id: 1,
-        content: inputValue,
-        // 전역으로 할 것
+        content: inputValue!.value,
         sender_email: "jusanghoo0321@naver.com",
       }
 
@@ -48,7 +49,6 @@ export default function Chatingroom() {
     }
   }
 
-  // stomp 채널 구독
   useEffect(() => {
     const socket = new WebSocket("wss://verda.monster/wss");
 
@@ -56,7 +56,7 @@ export default function Chatingroom() {
     client.connect(
       {},
       () => {
-        client.subscribe(`/sub/chat/room${1}`, (messageB) => {
+        client.subscribe(`/sub/chat/room/${1}`, (messageB) => {
           onMessageReceived(messageB);
         });
         setStompClient(client);
@@ -73,10 +73,7 @@ export default function Chatingroom() {
     }
   }, [])
 
-
   return (
-    <>
-    </>
+    <InputMessage textareaHeight={textareaHeight} setTextareaHeight={setTextareaHeight} submitHandler={submitHandler} ref={textareaRef} />
   )
-};
-
+}

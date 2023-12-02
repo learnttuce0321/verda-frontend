@@ -19,7 +19,7 @@ function SignupUser() {
 
   const [investmentType, setInvestmentType] = useState("안정추구형");
   const handleRangeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const typeValue = parseInt(event.target.value);
+    const typeValue = parseInt(event.target.value, 10);
     let type = "";
     switch (typeValue) {
       case 0:
@@ -49,8 +49,9 @@ function SignupUser() {
 
   const registerHandle = async (event: any) => {
     event.preventDefault();
-    const typeValue = parseInt(event.target.type.value);
-    let type = "";
+    const typeValue = parseInt(event.target.type.value, 10);
+    const type = "";
+
     const data = {
       number: event.target.phone.value,
       investmentPropensity: investmentType,
@@ -105,10 +106,9 @@ function SignupUser() {
               name="phone"
             />
             <div className="flex flex-col mt-10 self-start">
-              <TextStore
-                textStyle={TextStyle.TEXT_R_30}
-                children="나의 투자 성향"
-              ></TextStore>
+              <TextStore textStyle={TextStyle.TEXT_R_30}>
+                나의 투자 성향
+              </TextStore>
               <TextStore
                 textStyle={TextStyle.TEXT_R_30}
                 style="text-custom_navy"
@@ -124,7 +124,8 @@ function SignupUser() {
               id="type"
               name="type"
               onChange={handleRangeChange}
-            ></input>
+            />
+
             <BoxStore
               boxStyle={BoxStyle.BOX_RECTANGLE_NAVY}
               style="rounded-3xl mt-10"
