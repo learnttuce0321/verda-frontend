@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="h-screen w-[100%]">
+      <body className="h-screen w-[100%] bg-transparent">
         <ReactQueryProvider>
           <div className="flex justify-center mt-10">
             <div className="flex justify-between w-[24.75rem]">
