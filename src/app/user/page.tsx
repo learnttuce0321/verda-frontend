@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import Section from "@/components-kim/Section";
+import Section from "@/Components-kim/Section";
 import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 import { CashCoin, ChatLeftDotsFill, PenFill } from "react-bootstrap-icons";

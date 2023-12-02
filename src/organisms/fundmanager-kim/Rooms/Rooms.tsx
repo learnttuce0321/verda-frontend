@@ -1,4 +1,4 @@
-// "use client";
+"use client";
 
 import Link from "next/link";
 import Section from "@/Components-kim/Section";
@@ -10,10 +10,10 @@ import { Fragment, useEffect } from "react";
 import ButtonListInfo from "@/Components/Molecure/Button-jsh/List/ButtonListInfo";
 
 
-export default async function FundmanagerChatList() {
-  // const { ref, inView } = useInView({
-  //   threshold: 0.3,
-  // });
+export default function FundmanagerChatList() {
+  const { ref, inView } = useInView({
+    threshold: 0.3,
+  });
 
   const GetChatList = async (pageParam: (null | number) = null) => {
     const res = await fetch(`https://verda.monster/api/rooms/fm?page=${0}&size=20`, {
@@ -27,24 +27,24 @@ export default async function FundmanagerChatList() {
     console.log(`${process.env.BASE_URL}/api/rooms/fm?page=${0}&size=20`)
     return res.json();
   }
-  const res = await GetChatList()
+  // const res = await GetChatList()
 
-  // const { data, hasNextPage, fetchNextPage } = useInfiniteQuery(
-  //   ['specialChatListFm'],
-  //   ({ pageParam = 0 }) => GetChatList(pageParam),
-  //   {
-  //     getNextPageParam: (lastPage, allPages) => {
-  //       const nextPage = allPages.length;
-  //       return nextPage
-  //     },
-  //   }
-  // )
+  const { data, hasNextPage, fetchNextPage } = useInfiniteQuery(
+    ['specialChatListFm'],
+    ({ pageParam = 0 }) => GetChatList(pageParam),
+    {
+      getNextPageParam: (lastPage, allPages) => {
+        const nextPage = allPages.length;
+        return nextPage
+      },
+    }
+  )
 
-  // useEffect(() => {
-  //   if (inView && hasNextPage) {
-  //     fetchNextPage()
-  //   }
-  // }, [inView])
+  useEffect(() => {
+    if (inView && hasNextPage) {
+      fetchNextPage()
+    }
+  }, [inView])
   return (
     <Section>
       <div className="flex items-center flex-col">
@@ -56,31 +56,32 @@ export default async function FundmanagerChatList() {
           //   )
           // })
         }
-        {/* {
-            data ? (
-              data?.pages.map((page, idx) => {
-                return (
-                  <Fragment key={idx}>
-                    {
-                      page.content.map((chat: any, id: number) => {
-                        return (
-                          <Link href={`/fundmanager/rooms/${chat.roomId}`} key={`${chat.roomId} + ${id}`}>
-                            <ButtonListInfo chat={chat} />
-                          </Link>
-                        )
-                      })
-                    }
-                  </Fragment>
-                )
-              })
-            ) : (
-              <>
-                loading...
-              </>
-            )
-          } */}
+        {
+          data ? (
+            data?.pages.map((page, idx) => {
+              console.log(page)
+              return (
+                <Fragment key={idx}>
+                  {/* {
+                    page.content.map((chat: any, id: number) => {
+                      return (
+                        <Link href={`/fundmanager/rooms/${chat.roomId}`} key={`${chat.roomId} + ${id}`}>
+                          <ButtonListInfo chat={chat} />
+                        </Link>
+                      )
+                    })
+                  } */}
+                </Fragment>
+              )
+            })
+          ) : (
+            <>
+              loading...
+            </>
+          )
+        }
       </div>
-      {/* <div ref={ref} className="h-[1rem]" /> */}
+      <div ref={ref} className="h-[1rem]" />
     </Section>
   );
 }

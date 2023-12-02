@@ -1,6 +1,6 @@
 interface Props {
-  children: React.ReactNode,
-  style?: string,
+  children: React.ReactNode;
+  style?: string;
 };
 
 export default function BoxChatOrange({ children, style }: Props) {

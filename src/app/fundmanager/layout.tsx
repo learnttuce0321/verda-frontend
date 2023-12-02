@@ -7,10 +7,9 @@ export default function FundmanagerMainPage({
 }) {
   return (
     <main className="bg-gradient-to-b from-custom_fmbg_start to-custom_fmbg_end text-white min-h-screen">
-      <div className="px-5 pb-3 pt-[100px]">{children}</div>
-      {/* <Navi setClick={setClick} click={click} />
-      
-      {click ? <Modal /> : null} */}
+      <div className="px-5 pb-3 pt-[100px]">
+        {children}
+      </div>
     </main>
   );
 }

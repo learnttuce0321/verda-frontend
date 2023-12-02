@@ -20,7 +20,8 @@ interface Props {
   textStyle: TextStyle;
   children: React.ReactNode;
   style?: string;
-}
+};
+
 export default function TextStore({ textStyle, children, style }: Props) {
   const selectText = (): React.ReactNode => {
     switch (textStyle) {
