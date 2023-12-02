@@ -73,12 +73,13 @@ function LoginManager() {
       const response = await fetch(
         `https://verda.monster/api/members/fund/exist/${encodedEmail}`,
       );
-      if (response) {
-        console.log("등록된 정보 있음 유저페이지로 이동");
-        routerUser.push("/fundmanager");
-      } else {
+      const data = await response.json();
+      if (data) {
         console.log("해당 이메일에 등록된 정보가 없음 회원가입 진행");
         routerUser.push("/signupManager");
+      } else {
+        console.log("등록된 정보 있음 유저페이지로 이동");
+        routerUser.push("/fundmanager");
       }
     } catch (error) {
       console.error("Error:", error);

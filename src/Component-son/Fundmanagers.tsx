@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 import React, { ReactElement } from "react";
 import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
