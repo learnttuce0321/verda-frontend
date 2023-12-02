@@ -12,6 +12,7 @@ export default function ChatLists() {
   });
 
   const GetChatList = async (pageParam: (null | number) = null) => {
+    console.log(`${process.env.BASE_URL}/api/rooms/user?page=${pageParam}&size=20`)
     const res = await fetch(`${process.env.BASE_URL}/api/rooms/user?page=${pageParam}&size=20`, {
       method: 'GET',
       headers: {
@@ -23,12 +24,11 @@ export default function ChatLists() {
     return res.json();
   }
 
-  const { data, hasNextPage, fetchNextPage, isFetchingNextPage } = useInfiniteQuery(
-    ['specialChatList'],
+  const { data, hasNextPage, fetchNextPage } = useInfiniteQuery(
+    ['specialChatListUser'],
     ({ pageParam = 0 }) => GetChatList(pageParam),
     {
       getNextPageParam: (lastPage, allPages) => {
-        // const maxPage = lastPage.total_count / 20;
         const nextPage = allPages.length;
         return nextPage
       },
@@ -52,7 +52,7 @@ export default function ChatLists() {
                   {
                     page.content.map((chat: any, id: number) => {
                       return (
-                        <Link href={`/user/rooms/${chat.roomId}`} key={`${chat.roomId} + ${id} + '123'`}>
+                        <Link href={`/user/rooms/${chat.roomId}`} key={`${chat.roomId} + ${id}`}>
                           <ButtonListInfo chat={chat} />
                         </Link>
                       );
@@ -63,12 +63,11 @@ export default function ChatLists() {
             })
           ) : (
             <>
-              loading
+              loading...
             </>
           )
         }
       </div>
-      {isFetchingNextPage && <>loading  </>}
       <div ref={ref} className="h-[1rem]" />
     </section>
   )

@@ -26,6 +26,7 @@ export default function ChatRoom({ roomId, chatMessages, setChatMessages }: Prop
   useEffect(() => {
     const tempFunc = async () => {
       const chats = await getChat()
+      console.log(chats)
       setChatMessages(chats)
     }
     tempFunc()
@@ -36,9 +37,9 @@ export default function ChatRoom({ roomId, chatMessages, setChatMessages }: Prop
   }, [chatMessages]);
 
   return (
-    <section>
+    <section className="h-full">
       {
-        chatMessages.length !== 0 && (
+        chatMessages.length !== 0 ? (
           chatMessages.map((chat: any, idx: number) => {
             return (
               <Fragment key={idx}>
@@ -60,6 +61,12 @@ export default function ChatRoom({ roomId, chatMessages, setChatMessages }: Prop
               </Fragment>
             )
           })
+        ) : (
+          <div className="flex h-full justify-center items-center">
+            <TextStore textStyle={TextStyle.TEXT_R_24}>
+              loading...
+            </TextStore>
+          </div>
         )
       }
       <div ref={scrollRef} />

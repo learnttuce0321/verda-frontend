@@ -4,6 +4,9 @@ import { useInfiniteQuery } from "react-query";
 import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 import Section from "@/Components-kim/Section";
+import { useInView } from "react-intersection-observer";
+import React, { useEffect, useState } from "react";
+
 
 interface Props {
   postId: string;
