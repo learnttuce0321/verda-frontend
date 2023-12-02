@@ -19,7 +19,7 @@ export default function FundmanagerLayout() {
         </TextStore>
       </Section>
 
-      <div className="grid grid-cols-2 gap-2">
+      <div className="grid grid-cols-2 gap-4 mt-5">
         <button type="button" name="투자 글" className="text-left">
           <Link href="/fundmanager/clientrequest">
             <BoxStore boxStyle={BoxStyle.BOX_SQUARE_WHITE} style="relative">

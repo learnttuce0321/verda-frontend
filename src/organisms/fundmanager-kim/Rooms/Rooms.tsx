@@ -1,74 +1,86 @@
+// "use client";
+
 import Link from "next/link";
-import { ChevronRight } from "react-bootstrap-icons";
 import Section from "@/Components-kim/Section";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
+import { useInView } from "react-intersection-observer";
+import { useInfiniteQuery } from "react-query";
+import { Fragment, useEffect } from "react";
+import ButtonListInfo from "@/Components/Molecure/Button-jsh/List/ButtonListInfo";
 
-interface Props {
-  roomId: string;
-  name: string;
-  title: string;
-  content: string;
-}
 
-interface ChatListProps {
-  rooms: Props[];
-}
+export default async function FundmanagerChatList() {
+  // const { ref, inView } = useInView({
+  //   threshold: 0.3,
+  // });
 
-const CHAT_DUMMYDATA = [
-  {
-    id: 1,
-    userName: "주상후",
-    filmId: 1,
-    title: "문의",
-    firstMessage: "최근채팅내용1",
-    roomId: 1,
-  },
-  {
-    id: 2,
-    userName: "김aa",
-    filmId: 2,
-    title: "문의",
-    firstMessage: "최근채팅내용2",
-    roomId: 2,
-  },
-];
+  const GetChatList = async (pageParam: (null | number) = null) => {
+    const res = await fetch(`https://verda.monster/api/rooms/fm?page=${0}&size=20`, {
+      method: 'GET',
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmbUlkIjoiMSIsImlhdCI6MTUxNjIzOTAyMn0.AwXkiRwMpXJqmtk-XAPpos1uDCsFrEoJz0J1LtOZuNc`
+      },
+      cache: "no-store"
+    })
+    console.log(`${process.env.BASE_URL}/api/rooms/fm?page=${0}&size=20`)
+    return res.json();
+  }
+  const res = await GetChatList()
 
-export default function FundmanagerChatList() {
+  // const { data, hasNextPage, fetchNextPage } = useInfiniteQuery(
+  //   ['specialChatListFm'],
+  //   ({ pageParam = 0 }) => GetChatList(pageParam),
+  //   {
+  //     getNextPageParam: (lastPage, allPages) => {
+  //       const nextPage = allPages.length;
+  //       return nextPage
+  //     },
+  //   }
+  // )
+
+  // useEffect(() => {
+  //   if (inView && hasNextPage) {
+  //     fetchNextPage()
+  //   }
+  // }, [inView])
   return (
-    <>
-      <Section>
-        <TextStore textStyle={TextStyle.TEXT_R_40}>채팅문의</TextStore>
-      </Section>
-
-      <Section>
-        {CHAT_DUMMYDATA.map(room => (
-          <div key={room.id} className="mt-2.5">
-            <Link href={`/fundmanager/rooms/${room.id}`}>
-              <BoxStore boxStyle={BoxStyle.BOX_CORNER_LONG} style="relative">
-                <TextStore
-                  textStyle={TextStyle.TEXT_M_24}
-                  style="text-black font-bold"
-                >
-                  {room.userName}
-                </TextStore>
-                <TextStore
-                  textStyle={TextStyle.TEXT_R_20}
-                  style="text-slate-500"
-                >
-                  {room.firstMessage}
-                </TextStore>
-                <ChevronRight
-                  fill="black"
-                  width="2em"
-                  height="2em"
-                  className="absolute top-1/3 right-0 "
-                />
-              </BoxStore>
-            </Link>
-          </div>
-        ))}
-      </Section>
-    </>
+    <Section>
+      <div className="flex items-center flex-col">
+        {
+          // res.map((d: any) => {
+          //   console.log(d)
+          //   return (
+          //     <div>asdf</div>
+          //   )
+          // })
+        }
+        {/* {
+            data ? (
+              data?.pages.map((page, idx) => {
+                return (
+                  <Fragment key={idx}>
+                    {
+                      page.content.map((chat: any, id: number) => {
+                        return (
+                          <Link href={`/fundmanager/rooms/${chat.roomId}`} key={`${chat.roomId} + ${id}`}>
+                            <ButtonListInfo chat={chat} />
+                          </Link>
+                        )
+                      })
+                    }
+                  </Fragment>
+                )
+              })
+            ) : (
+              <>
+                loading...
+              </>
+            )
+          } */}
+      </div>
+      {/* <div ref={ref} className="h-[1rem]" /> */}
+    </Section>
   );
 }

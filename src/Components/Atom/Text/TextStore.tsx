@@ -1,7 +1,7 @@
 export enum TextStyle {
   TEXT_R_40 = "TEXT_R_40",
   TEXT_R_40_BLUE = "TEXT_R_40_BLUE",
-  TEXT_E_32 = "TEXT_E_32",
+  TEXT_R_32 = "TEXT_E_32",
   TEXT_S_32_BLUE = "TEXT_S_32_BLUE",
   TEXT_R_30 = "TEXT_R_30",
   TEXT_S_30_BLUE = "TEXT_S_30_BLUE",
@@ -38,10 +38,10 @@ export default function TextStore({ textStyle, children, style }: Props) {
             {children}
           </p>
         );
-      case TextStyle.TEXT_E_32:
+      case TextStyle.TEXT_R_32:
         return (
           <p
-            className={`text-custom_32 font-extrabold leading-[32px] ${style}`}
+            className={`text-custom_32 font-normal leading-[32px] ${style}`}
           >
             {children}
           </p>

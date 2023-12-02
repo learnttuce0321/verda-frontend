@@ -1,18 +1,13 @@
-"use client";
-
 import { useState } from "react";
-import Navi from "@/components-kim/navi";
-import Modal from "@/components-kim/modal";
 
 export default function FundmanagerMainPage({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const [click, setClick] = useState<boolean>(false);
   return (
-    <main className="bg-gradient-to-b from-indigo-800 to-indigo-300 text-white h-screen">
-      <div className="p-3">{children}</div>
+    <main className="bg-gradient-to-b from-custom_fmbg_start to-custom_fmbg_end text-white min-h-screen">
+      <div className="px-5 pb-3 pt-[100px]">{children}</div>
       {/* <Navi setClick={setClick} click={click} />
       
       {click ? <Modal /> : null} */}

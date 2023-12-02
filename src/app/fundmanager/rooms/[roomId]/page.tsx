@@ -11,7 +11,6 @@ interface Props {
   };
 };
 
-
 export default function Chat({ params: { roomId } }: Props) {
 
   const [chatMessages, setChatMessages] = useState<any>([]);
@@ -21,7 +20,6 @@ export default function Chat({ params: { roomId } }: Props) {
       <TextStore textStyle={TextStyle.TEXT_R_40_BLUE} style="mb-2">
         {/* {data?.fundManagerName} */}ㅎㅇ
       </TextStore>
-
 
       <div className="border-2 opacity-100 h-[calc(100vh_-_140px)] overflow-y-scroll">
         <ChatRoom roomId={roomId} chatMessages={chatMessages} setChatMessages={setChatMessages} />
