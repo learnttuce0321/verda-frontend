@@ -6,12 +6,14 @@ import React, { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useRecoilState } from "recoil";
 import { loginState } from "../utils/recoil/loginState";
+import { CodeState } from "../utils/recoil/code";
 
 function LoginUser() {
   const routerUser = useRouter();
   const router = useSearchParams();
   const authorizationCode = router.get("code");
   const [recoildata, setRecoildata] = useRecoilState(loginState);
+  const [kakaocode, setKakaoode] = useRecoilState(CodeState);
 
   useEffect(() => {
     if (authorizationCode) {
@@ -23,7 +25,6 @@ function LoginUser() {
     try {
       const API_KEY = "90085a0fa6f999d431f31e0de484536a";
       const REDIRECT_URI = "http://localhost:3000/loginUser";
-
       // 카카오 로그인 요청을 위한 URL 생성
       const kakaoAuthUrl = `https://kauth.kakao.com/oauth/authorize?client_id=${API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
 
@@ -31,21 +32,22 @@ function LoginUser() {
       routerUser.push(kakaoAuthUrl);
 
       const code = new URL(window.location.href).searchParams.get("code");
-
-      console.log(code);
+      if (code) {
+        await sendCodeToBackend(code);
+      }
     } catch (error) {
       console.error("카카오 로그인에 실패했습니다.", error);
     }
   };
   //----------------------after redirect-------------
 
-  const sendCodeToBackend = async (code: string | null) => {
+  const sendCodeToBackend = async code => {
     try {
       if (code === null) {
         console.error("Authorization code is null");
         return;
       }
-
+      console.log("-----------2---------------", code);
       const response = await fetch(
         `${process.env.BASE_URL}/api/auth/kakaouser`,
         {
@@ -56,7 +58,7 @@ function LoginUser() {
           body: JSON.stringify({ authorizationCode: code }),
         },
       );
-
+      console.log(response);
       if (!response.ok) {
         throw new Error("Failed to request access token");
       }
@@ -64,7 +66,7 @@ function LoginUser() {
       //Recoil상태 업데이트
       setRecoildata(data);
       console.log("userEmail from backend:", data.email);
-      const encodedEmail = encodeURIComponent(data.email);
+      const encodedEmail = data.email;
       console.log("encodedEmail from backend:", encodedEmail);
       await checkEmailExistence(encodedEmail);
     } catch (error) {
@@ -73,16 +75,18 @@ function LoginUser() {
   };
   //동일한 이메일의 회원정보 있는지 확인
   const checkEmailExistence = async (encodedEmail: string) => {
+    console.log(encodedEmail);
     try {
       const response = await fetch(
         `https://verda.monster/api/members/user/exist/${encodedEmail}`,
       );
-      if (response) {
-        console.log("등록된 정보 있음 유저페이지로 이동");
-        routerUser.push("/user");
-      } else {
+      const data = await response.json();
+      if (data) {
         console.log("해당 이메일에 등록된 정보가 없음 회원가입 진행");
         routerUser.push("/signupUser");
+      } else {
+        console.log("등록된 정보 있음 유저페이지로 이동");
+        routerUser.push("/user");
       }
     } catch (error) {
       console.error("Error:", error);

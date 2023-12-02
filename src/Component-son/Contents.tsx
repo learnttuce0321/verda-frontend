@@ -1,8 +1,7 @@
-"use client";
-
+import React from "react";
+import FundManagers from "./Fundmanagers";
 import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
-import FundManagers from "./Fundmanagers";
 
 function Contents() {
   const imageAnimationStyle = `
@@ -20,22 +19,32 @@ function Contents() {
       }
     }
   `;
+
   return (
-    <div>
+    <>
       <style>{imageAnimationStyle}</style>
       <div className="w-[24.75rem]">
-        <TextStore textStyle={TextStyle.TEXT_R_40} style="flex mt-10">
-          투자는<TextStore textStyle={TextStyle.TEXT_R_40_BLUE}>신중</TextStore>
-          하게
-        </TextStore>
-        <TextStore textStyle={TextStyle.TEXT_R_40} style="flex">
-          선택은<TextStore textStyle={TextStyle.TEXT_R_40_BLUE}>과감</TextStore>
-          하게
-        </TextStore>
+        <div className="mt-10">
+          <div className="flex">
+            <TextStore textStyle={TextStyle.TEXT_R_40} style="mr-2">
+              투자는
+            </TextStore>
+            <TextStore textStyle={TextStyle.TEXT_R_40_BLUE}>신중</TextStore>
+            <TextStore textStyle={TextStyle.TEXT_R_40}>하게</TextStore>
+          </div>
+          <div className="flex">
+            <TextStore textStyle={TextStyle.TEXT_R_40} style="mr-2">
+              선택은
+            </TextStore>
+            <TextStore textStyle={TextStyle.TEXT_R_40_BLUE}>과감</TextStore>
+            <TextStore textStyle={TextStyle.TEXT_R_40}>하게</TextStore>
+          </div>
+        </div>
+
         <div className="mt-10">
           <BoxStore
             boxStyle={BoxStyle.BOX_SQUARE_NAVY}
-            style="w-full h-auto rounded-3xl bg-gradient-to-b from-cyan-500 to-blue-500"
+            style="w-full h-auto rounded-3xl bg-gradient-to-b from-custom_userbg_start to-custom_userbg_end"
           >
             <div>
               <div className="p-8">
@@ -48,19 +57,26 @@ function Contents() {
                 <TextStore textStyle={TextStyle.TEXT_M_24} style="leading-10">
                   문의하세요
                 </TextStore>
-                <TextStore
-                  textStyle={TextStyle.TEXT_R_16}
-                  style="flex text-indigo-900 "
-                >
-                  검증된 전문
+                <div className="flex">
+                  <TextStore
+                    textStyle={TextStyle.TEXT_R_16}
+                    style="text-indigo-900 mr-1"
+                  >
+                    검증된 전문
+                  </TextStore>
                   <TextStore
                     textStyle={TextStyle.TEXT_R_16}
                     style="text-white bg-indigo-700"
                   >
                     펀드매니저
                   </TextStore>
-                  가 답해드립니다.
-                </TextStore>
+                  <TextStore
+                    textStyle={TextStyle.TEXT_R_16}
+                    style="text-indigo-900"
+                  >
+                    가 답해드립니다.
+                  </TextStore>
+                </div>
               </div>
             </div>
             <div className="flex justify-around mt-5 w-full overflow-hidden">
@@ -112,7 +128,7 @@ function Contents() {
           </BoxStore>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
