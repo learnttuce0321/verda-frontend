@@ -1,21 +1,14 @@
-"use client";
-
 import Link from "next/link";
 import Section from "@/Components-kim/Section";
 import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 import { CashCoin, ChatLeftDotsFill, PenFill } from "react-bootstrap-icons";
+import UserName from "@/Component-son/UserName";
 
 export default function UserMainPage() {
   return (
     <>
-      <Section>
-        <TextStore textStyle={TextStyle.TEXT_R_40}>안녕하세요</TextStore>
-        <TextStore textStyle={TextStyle.TEXT_R_40_BLUE}>
-          USER01<span className="text-black">님!</span>
-        </TextStore>
-      </Section>
-
+      <UserName />
       <Section>
         <div className="bg-white h-48 mt-5" />
       </Section>
@@ -26,7 +19,10 @@ export default function UserMainPage() {
             <Link href="/user/write">
               <BoxStore boxStyle={BoxStyle.BOX_SQUARE_NAVY} style="relative">
                 <div className="absolute bottom-[1.25rem] right-[1.25rem]">
-                  <TextStore textStyle={TextStyle.TEXT_M_24} style="text-custom_orange">
+                  <TextStore
+                    textStyle={TextStyle.TEXT_M_24}
+                    style="text-custom_orange"
+                  >
                     투자문의
                   </TextStore>
                   <TextStore textStyle={TextStyle.TEXT_M_24} style="text-white">
@@ -45,7 +41,10 @@ export default function UserMainPage() {
             <Link href="/user/rooms">
               <BoxStore boxStyle={BoxStyle.BOX_SQUARE_ORANGE} style="relative">
                 <div className="absolute bottom-[1.25rem] right-[1.25rem]">
-                  <TextStore textStyle={TextStyle.TEXT_M_24} style="text-custom_navy">
+                  <TextStore
+                    textStyle={TextStyle.TEXT_M_24}
+                    style="text-custom_navy"
+                  >
                     채팅
                   </TextStore>
                 </div>
@@ -61,10 +60,13 @@ export default function UserMainPage() {
             <Link href="/user/post">
               <BoxStore boxStyle={BoxStyle.BOX_SQUARE_MINT} style="relative">
                 <div className="absolute bottom-[1.25rem] right-[1.25rem]">
-                  <TextStore textStyle={TextStyle.TEXT_M_24} style="text-custom_navy">
+                  <TextStore
+                    textStyle={TextStyle.TEXT_M_24}
+                    style="text-custom_navy"
+                  >
                     투자 글
                   </TextStore>
-                  <TextStore textStyle={TextStyle.TEXT_M_24} >
+                  <TextStore textStyle={TextStyle.TEXT_M_24}>
                     보러가기
                   </TextStore>
                 </div>
@@ -75,9 +77,8 @@ export default function UserMainPage() {
               </BoxStore>
             </Link>
           </button>
-
         </div>
-      </Section >
+      </Section>
     </>
   );
 }

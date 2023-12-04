@@ -88,18 +88,20 @@ function LoginManager() {
   return (
     <div>
       <div className="flex flex-col items-center mt-20">
-        <TextStore
-          textStyle={TextStyle.TEXT_R_40}
-          style="flex flex-col mt-10 mb-20"
-        >
-          고객문의를 확인하고
+        <div>
+          <TextStore
+            textStyle={TextStyle.TEXT_R_40}
+            style="flex flex-col mt-20"
+          >
+            고객문의를 확인하고
+          </TextStore>
+        </div>
+        <div className="flex">
+          <TextStore textStyle={TextStyle.TEXT_R_40_BLUE}>투자수수료</TextStore>
           <TextStore textStyle={TextStyle.TEXT_R_40} style="flex">
-            <TextStore textStyle={TextStyle.TEXT_R_40_BLUE}>
-              투자수수료
-            </TextStore>
             를 받으세요
           </TextStore>
-        </TextStore>
+        </div>
         <BoxStore
           boxStyle={BoxStyle.BOX_RECTANGLE_LIGHTBLUE}
           style="flex bg-yellow-300 "
