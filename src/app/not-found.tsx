@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
+import ButtonButtonNavy from "@/Components/Molecure/Button-jsh/Button/ButtonButtonNavy";
 
 export default function NotFound() {
   const router = useRouter()
@@ -24,17 +25,14 @@ export default function NotFound() {
       <TextStore textStyle={TextStyle.TEXT_R_24} style="">
         잘못된 경로를 이용 하셨어요.
       </TextStore>
-      <BoxStore boxStyle={BoxStyle.BOX_RECTANGLE_LONG_NAVY} style="flex justify-center items-center text-white mt-[30px]">
-        {/* <Link href="/"> */}
-        <button type="button" onClick={() => {
-          router.back()
-        }}>
-          <TextStore textStyle={TextStyle.TEXT_R_32} style="m-2">
-            뒤로 가기
-          </TextStore>
+      <ButtonButtonNavy clickHandler={() => {
+        router.back()
+      }} style="flex justify-center items-center text-white mt-[30px] p-2">
+        <button type="button">
+          뒤로 가기
         </button>
-        {/* </Link> */}
-      </BoxStore>
+      </ButtonButtonNavy>
+
     </div>
   );
 }
