@@ -16,18 +16,17 @@ export default function FundmanagerChatList() {
   });
 
   const GetChatList = async (pageParam: (null | number) = null) => {
-    const res = await fetch(`https://verda.monster/api/rooms/fm?page=${0}&size=20`, {
+    const res = await fetch(`https://verda.monster/api/rooms/fm?page=${pageParam}&size=20`, {
       method: 'GET',
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmbUlkIjoiMSIsImlhdCI6MTUxNjIzOTAyMn0.AwXkiRwMpXJqmtk-XAPpos1uDCsFrEoJz0J1LtOZuNc`
+        "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmbUlkIjoxLCJpYXQiOjE1MTYyMzkwMjJ9.vbzCMc2yJR23aSJGPbiiXhd32JLKBwmjB57A3r8U9yQ`
       },
       cache: "no-store"
     })
-    console.log(`${process.env.BASE_URL}/api/rooms/fm?page=${0}&size=20`)
+    console.log(`${process.env.BASE_URL}/api/rooms/fm?page=${pageParam}&size=20`)
     return res.json();
   }
-  // const res = await GetChatList()
 
   const { data, hasNextPage, fetchNextPage } = useInfiniteQuery(
     ['specialChatListFm'],
@@ -59,18 +58,18 @@ export default function FundmanagerChatList() {
         {
           data ? (
             data?.pages.map((page, idx) => {
-              console.log(page)
               return (
                 <Fragment key={idx}>
-                  {/* {
+                  {
                     page.content.map((chat: any, id: number) => {
+                      console.log(chat)
                       return (
-                        <Link href={`/fundmanager/rooms/${chat.roomId}`} key={`${chat.roomId} + ${id}`}>
+                        <Link href={`/fundmanager/rooms/${chat.roomId}`} key={`${chat.roomId} + ${id}`} className="!text-black">
                           <ButtonListInfo chat={chat} />
                         </Link>
                       )
                     })
-                  } */}
+                  }
                 </Fragment>
               )
             })

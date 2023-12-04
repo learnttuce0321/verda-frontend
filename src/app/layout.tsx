@@ -16,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="h-screen w-screen relative">
+      <body className="h-screen w-screen overflow-x-hidden relative">
 
         <ReactQueryProvider>
           <RecoilProvider>

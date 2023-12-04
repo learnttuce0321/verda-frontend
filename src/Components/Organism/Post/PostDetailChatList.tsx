@@ -14,7 +14,8 @@ export default async function PostDetailChatList({ postId }: Props) {
 
     return res.json();
   };
-  const { chatList }: { chatList: Array<SummarizedChat> } = await getChatList()
+
+  const chatList: Array<SummarizedChat> = await getChatList()
 
   return (
     <section className="pb-5">
