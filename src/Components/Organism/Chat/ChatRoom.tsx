@@ -3,6 +3,8 @@
 import { Dispatch, Fragment, SetStateAction, useEffect, useRef } from "react";
 import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
+import { useRecoilState } from "recoil";
+import { loginState } from "@/utils/recoil/loginState";
 
 interface Props {
   roomId: string;
@@ -14,6 +16,7 @@ export default function ChatRoom({ roomId, chatMessages, setChatMessages }: Prop
   // todos: 지워야됨
   const myEmail = "ssoert123@naver.com";
   const scrollRef = useRef<HTMLDivElement>(null)
+  const [loginEmail, setLoginEmail] = useRecoilState(loginState)
 
   const getChat = async (): Promise<any> => {
     const res = await fetch(`${process.env.BASE_URL}/api/chat/${roomId}`, {
@@ -33,6 +36,7 @@ export default function ChatRoom({ roomId, chatMessages, setChatMessages }: Prop
   }, []);
 
   useEffect(() => {
+    console.log("change")
     scrollRef.current?.scrollIntoView({ behavior: "smooth" })
   }, [chatMessages]);
 
@@ -44,7 +48,7 @@ export default function ChatRoom({ roomId, chatMessages, setChatMessages }: Prop
             return (
               <Fragment key={idx}>
                 {
-                  myEmail === chat.sender_email ? (
+                  loginEmail.email === chat.sender_email ? (
                     <BoxStore boxStyle={BoxStyle.BOX_CHAT_ORANGE}>
                       <TextStore textStyle={TextStyle.TEXT_R_16}>
                         {chat.content}
