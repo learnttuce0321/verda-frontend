@@ -6,14 +6,12 @@ import React, { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useRecoilState } from "recoil";
 import { loginState } from "../utils/recoil/loginState";
-import { CodeState } from "../utils/recoil/code";
 
 function LoginUser() {
   const routerUser = useRouter();
   const router = useSearchParams();
   const authorizationCode = router.get("code");
   const [recoildata, setRecoildata] = useRecoilState(loginState);
-  const [kakaocode, setKakaoode] = useRecoilState(CodeState);
 
   useEffect(() => {
     if (authorizationCode) {
@@ -41,7 +39,7 @@ function LoginUser() {
   };
   //----------------------after redirect-------------
 
-  const sendCodeToBackend = async code => {
+  const sendCodeToBackend = async (code: string | null) => {
     try {
       if (code === null) {
         console.error("Authorization code is null");
@@ -97,18 +95,21 @@ function LoginUser() {
     <div>
       <div>
         <div className="flex flex-col items-center mt-20">
-          <TextStore
-            textStyle={TextStyle.TEXT_R_40}
-            style="flex flex-col mt-10 mb-20"
-          >
-            회원가입하고 맞춤형
+          <div>
+            <TextStore
+              textStyle={TextStyle.TEXT_R_40}
+              style="flex flex-col mt-20"
+            >
+              회원가입하고 맞춤형
+            </TextStore>
+          </div>
+          <div className="flex">
+            <TextStore textStyle={TextStyle.TEXT_R_40_BLUE}>투자제안</TextStore>
             <TextStore textStyle={TextStyle.TEXT_R_40} style="flex">
-              <TextStore textStyle={TextStyle.TEXT_R_40_BLUE}>
-                투자제안
-              </TextStore>
               을 받으세요
             </TextStore>
-          </TextStore>
+          </div>
+
           <BoxStore
             boxStyle={BoxStyle.BOX_RECTANGLE_LIGHTBLUE}
             style="flex bg-yellow-300 "
