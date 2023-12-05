@@ -37,3 +37,10 @@ body {
 textarea::-webkit-scrollbar {
   display: none;
 }
+
+@media screen and (min-width: 1280px) {
+  #pc-screen {
+    background: rgb(206, 253, 249);
+    background: linear-gradient(135deg, rgba(206, 253, 249, 1) 0%, rgba(255, 255, 255, 1) 25%, rgba(255, 255, 255, 1) 49%, rgba(255, 255, 255, 1) 75%, rgba(184, 213, 231, 1) 100%);
+  }
+}

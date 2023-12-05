@@ -17,14 +17,20 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="h-screen w-screen overflow-x-hidden relative">
-
         <ReactQueryProvider>
           <RecoilProvider>
-            <Navigation />
+            <div className="flex justify-center" id="pc-screen">
+              <div className="hidden lg:block">content</div>
+              <div className="w-[432px] h-[932px] border-[1px] overflow-y-scroll">
+                <Navigation />
 
-            <div className="w-screen top-[72px]">
-              {children}
+                <div className="w-full top-[72px] h-full ">
+                  {children}
+                </div>
+              </div>
             </div>
+
+
           </RecoilProvider>
         </ReactQueryProvider>
         <div className="hidden bg-custom_ice bg-custom_skyBlue bg-custom_lightBlue bg-custom_blue bg-custom_navy bg-custom_yellow bg-custom_peach bg-custom_orange bg-custom_lightGrey bg-custom_cloud bg-custom_skyGrey bg-custom_smog bg-custom_mint " />
