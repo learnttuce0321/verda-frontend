@@ -1,4 +1,5 @@
 "use client";
+
 import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 import Link from "next/link";
@@ -13,31 +14,25 @@ function LoginUser() {
   const authorizationCode = router.get("code");
   const [recoildata, setRecoildata] = useRecoilState(loginState);
 
-  useEffect(() => {
-    if (authorizationCode) {
-      sendCodeToBackend(authorizationCode);
-    }
-  }, [authorizationCode]);
-
-  const handleKakaoLogin = async () => {
+  // 동일한 이메일의 회원정보 있는지 확인
+  const checkEmailExistence = async (encodedEmail: string) => {
+    console.log(encodedEmail);
     try {
-      const API_KEY = "90085a0fa6f999d431f31e0de484536a";
-      const REDIRECT_URI = "http://localhost:3000/loginUser";
-      // 카카오 로그인 요청을 위한 URL 생성
-      const kakaoAuthUrl = `https://kauth.kakao.com/oauth/authorize?client_id=${API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
-
-      // 클라이언트 측에서 카카오 로그인 페이지로 리다이렉트
-      routerUser.push(kakaoAuthUrl);
-
-      const code = new URL(window.location.href).searchParams.get("code");
-      if (code) {
-        await sendCodeToBackend(code);
+      const response = await fetch(
+        `https://verda.monster/api/members/user/exist/${encodedEmail}`,
+      );
+      const data = await response.json();
+      if (data) {
+        console.log("해당 이메일에 등록된 정보가 없음 회원가입 진행");
+        routerUser.push("/signupUser");
+      } else {
+        console.log("등록된 정보 있음 유저페이지로 이동");
+        routerUser.push("/user");
       }
     } catch (error) {
-      console.error("카카오 로그인에 실패했습니다.", error);
+      console.error("Error:", error);
     }
   };
-  //----------------------after redirect-------------
 
   const sendCodeToBackend = async (code: string | null) => {
     try {
@@ -61,9 +56,18 @@ function LoginUser() {
         throw new Error("Failed to request access token");
       }
       const data = await response.json();
-      //Recoil상태 업데이트
-      setRecoildata(data);
-      console.log("userEmail from backend:", data.email);
+      // Recoil상태 업데이트
+      const recoilData = {
+        email: data.email,
+        authToken: {
+          accessToken: data.authToken.accessToken,
+          refreshToken: data.authToken.refreshToken
+        },
+        name: data.authToken.name
+      }
+      localStorage.setItem("loginData", JSON.stringify(recoilData))
+      setRecoildata(recoilData);
+      console.log("userEmail from backend:", data);
       const encodedEmail = data.email;
       console.log("encodedEmail from backend:", encodedEmail);
       await checkEmailExistence(encodedEmail);
@@ -71,25 +75,32 @@ function LoginUser() {
       console.error("Error:", error);
     }
   };
-  //동일한 이메일의 회원정보 있는지 확인
-  const checkEmailExistence = async (encodedEmail: string) => {
-    console.log(encodedEmail);
+
+  const handleKakaoLogin = async () => {
     try {
-      const response = await fetch(
-        `https://verda.monster/api/members/user/exist/${encodedEmail}`,
-      );
-      const data = await response.json();
-      if (data) {
-        console.log("해당 이메일에 등록된 정보가 없음 회원가입 진행");
-        routerUser.push("/signupUser");
-      } else {
-        console.log("등록된 정보 있음 유저페이지로 이동");
-        routerUser.push("/user");
+      const API_KEY = "90085a0fa6f999d431f31e0de484536a";
+      const REDIRECT_URI = "http://localhost:3000/loginUser";
+      // 카카오 로그인 요청을 위한 URL 생성
+      const kakaoAuthUrl = `https://kauth.kakao.com/oauth/authorize?client_id=${API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+
+      // 클라이언트 측에서 카카오 로그인 페이지로 리다이렉트
+      routerUser.push(kakaoAuthUrl);
+
+      const code = new URL(window.location.href).searchParams.get("code");
+      if (code) {
+        await sendCodeToBackend(code);
       }
     } catch (error) {
-      console.error("Error:", error);
+      console.error("카카오 로그인에 실패했습니다.", error);
     }
   };
+  // ----------------------after redirect-------------
+
+  useEffect(() => {
+    if (authorizationCode) {
+      sendCodeToBackend(authorizationCode);
+    }
+  }, [authorizationCode]);
 
   return (
     <div>
@@ -118,20 +129,17 @@ function LoginUser() {
             <TextStore
               textStyle={TextStyle.TEXT_R_16}
               style="w-full"
-              children="카카오톡으로 로그인하기"
-            ></TextStore>
+            >카카오톡으로 로그인하기</TextStore>
           </BoxStore>
           <div className="flex mt-10">
             <TextStore
               textStyle={TextStyle.TEXT_R_16}
-              children="혹시 펀드매니저 이신가요?"
-            ></TextStore>
-            <Link href={"/loginManager"}>
+            >혹시 펀드매니저 이신가요?</TextStore>
+            <Link href="/loginManager">
               <TextStore
                 textStyle={TextStyle.TEXT_R_16}
                 style=" text-custom_navy"
-                children="펀드매니저로 회원가입"
-              ></TextStore>
+              >펀드매니저로 회원가입</TextStore>
             </Link>
           </div>
         </div>

@@ -5,8 +5,11 @@ import Link from "next/link";
 import { useInfiniteQuery } from "react-query";
 import { useInView } from "react-intersection-observer";
 import ButtonListInfo from "@/Components/Molecure/Button-jsh/List/ButtonListInfo";
+import { useRecoilState } from "recoil";
+import { loginState } from "@/utils/recoil/loginState";
 
 export default function ChatLists() {
+  const [loginData, setLoginData] = useRecoilState(loginState)
   const { ref, inView } = useInView({
     threshold: 0.3,
   });
@@ -17,7 +20,7 @@ export default function ChatLists() {
       method: 'GET',
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTUxNjIzOTAyMn0.IW5PjeG2JUgvN4BJHLG_5P4XnGACBJb_Y4fmj4-e7xY`
+        "Authorization": `Bearer ${loginData.authToken.accessToken}`
       },
       cache: "no-store"
     })
@@ -36,6 +39,7 @@ export default function ChatLists() {
   )
 
   useEffect(() => {
+    console.log("data", data)
     if (inView && hasNextPage) {
       fetchNextPage()
     }
@@ -50,13 +54,15 @@ export default function ChatLists() {
               return (
                 <Fragment key={idx}>
                   {
-                    page.content.map((chat: any, id: number) => {
-                      return (
-                        <Link href={`/user/rooms/${chat.roomId}`} key={`${chat.roomId} + ${id}`}>
-                          <ButtonListInfo chat={chat} />
-                        </Link>
-                      );
-                    })
+                    page.content && (
+                      page.content.map((chat: any, id: number) => {
+                        return (
+                          <Link href={`/user/rooms/${chat.roomId}`} key={`${chat.roomId} + ${id}`}>
+                            <ButtonListInfo chat={chat} />
+                          </Link>
+                        );
+                      })
+                    )
                   }
                 </Fragment>
               )

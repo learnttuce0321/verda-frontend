@@ -5,29 +5,35 @@ import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 import Link from "next/link";
 import { useRecoilState } from "recoil";
 import { loginState } from "@/utils/recoil/loginState";
-import { useState } from "react";
-import { CodeState } from "@/utils/recoil/code";
+import { useEffect, useState } from "react";
 
 export default function Navigation() {
   const [toggle, setToggle] = useState<boolean>(false)
-  const [code, setCode] = useRecoilState(CodeState)
-  const [loginEmail, setLoginEmail] = useRecoilState(loginState)
+  const [loginToken, setLoginToken] = useRecoilState(loginState)
+
+  useEffect(() => {
+    const loginData = localStorage.getItem("loginData") as string
+    if (loginData) {
+      setLoginToken(JSON.parse(loginData))
+    }
+  }, [])
 
   return (
-    <div className="flex justify-center mt-10 lg:pr-3 px-2 bg-transparent absolute z-10 w-screen overflow-hidden">
+    <div className="flex justify-center mt-10 lg:pr-3 px-2 bg-transparent absolute z-10 w-[432px] overflow-hidden">
 
-      <div className="flex justify-between px-4 w-screen bg-transparent">
+      <div className="flex justify-between px-4 w-full bg-transparent">
         <Link href={{ pathname: "/" }}>
           <TextStore textStyle={TextStyle.TEXT_R_32} style="leading-[61px]">
             VERDA
           </TextStore>
         </Link>
+
         <div>
-          <div className="lg:hidden flex">
+          <div className="flex">
             {/* todos : 위치 조정 및 링크 설정 */}
             {
-              !loginEmail.email.length ? (
-                toggle && (
+              toggle && (
+                !loginToken.email.length ? (
                   <div className="w-[118px] h-[155px] relative z-50 p-3 border-[1px] bg-white">
                     <div className="mb-3">
                       <Link href="/loginUser" onClick={() => { setToggle(false) }}>
@@ -45,18 +51,22 @@ export default function Navigation() {
                       </Link>
                     </div>
                   </div>
-                )
-              ) : (
-                <div className="w-[118px] h-[155px] relative z-50 p-3 border-[1px] bg-white">
-                  <div className="mb-3">
-                    <Link href="/" onClick={() => { setToggle(false); setLoginEmail({ email: "" }); setCode({ code: "" }) }}>
-                      <TextStore textStyle={TextStyle.TEXT_R_20} style="mb-2">로그아웃</TextStore>
-                    </Link>
-                    <Link href="/" onClick={() => { setToggle(false) }}>
-                      <TextStore textStyle={TextStyle.TEXT_R_20}>마이페이지</TextStore>
-                    </Link>
+                ) : (
+                  <div className="w-[118px] h-[155px] relative z-50 p-3 border-[1px] bg-white">
+                    <div className="mb-3">
+                      <Link href="/" onClick={() => {
+                        setToggle(false);
+                        setLoginToken({ email: "", authToken: {}, name: "" });
+                        localStorage.removeItem("loginData")
+                      }}>
+                        <TextStore textStyle={TextStyle.TEXT_R_20} style="mb-2">로그아웃</TextStore>
+                      </Link>
+                      <Link href="/" onClick={() => { setToggle(false) }}>
+                        <TextStore textStyle={TextStyle.TEXT_R_20}>마이페이지</TextStore>
+                      </Link>
+                    </div>
                   </div>
-                </div>
+                )
               )
             }
             {
@@ -72,7 +82,7 @@ export default function Navigation() {
             }
           </div>
 
-          <div className="hidden lg:block">
+          <div className="hidden">
             <div className="flex">
               <Link href="/loginUser" onClick={() => { setToggle(false) }}>
                 <TextStore textStyle={TextStyle.TEXT_R_20} style="w-[70px] leading-[61px]">로그인</TextStore>

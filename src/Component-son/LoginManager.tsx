@@ -1,4 +1,5 @@
 "use client";
+
 import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 import Link from "next/link";
@@ -13,11 +14,24 @@ function LoginManager() {
   const authorizationCode = router.get("code");
   const [recoildata, setRecoildata] = useRecoilState(loginState);
 
-  useEffect(() => {
-    if (authorizationCode) {
-      sendCodeToBackend(authorizationCode);
+  // 동일한 이메일의 회원정보 있는지 확인
+  const checkEmailExistence = async (encodedEmail: string) => {
+    try {
+      const response = await fetch(
+        `https://verda.monster/api/members/fund/exist/${encodedEmail}`,
+      );
+      const data = await response.json();
+      if (data) {
+        console.log("해당 이메일에 등록된 정보가 없음 회원가입 진행");
+        routerUser.push("/signupManager");
+      } else {
+        console.log("등록된 정보 있음 유저페이지로 이동");
+        routerUser.push("/fundmanager");
+      }
+    } catch (error) {
+      console.error("Error:", error);
     }
-  }, [authorizationCode]);
+  };
 
   const handleKakaoLogin = async () => {
     try {
@@ -35,7 +49,7 @@ function LoginManager() {
       console.error("카카오 로그인에 실패했습니다.", error);
     }
   };
-  //----------------------after redirect-------------
+  // ----------------------after redirect-------------
 
   const sendCodeToBackend = async (code: string | null) => {
     try {
@@ -57,9 +71,18 @@ function LoginManager() {
         throw new Error("Failed to request access token");
       }
       const data = await response.json();
-      //Recoil상태 업데이트
-      setRecoildata(data);
-      console.log("userEmail from backend:", data.email);
+      // Recoil상태 업데이트
+      const recoilData = {
+        email: data.email,
+        authToken: {
+          accessToken: data.authToken.accessToken,
+          refreshToken: data.authToken.refreshToken
+        },
+        name: data.authToken.name
+      }
+      localStorage.setItem('loginData', JSON.stringify(recoilData))
+      setRecoildata(recoilData);
+      console.log("userEmail from backend:", data);
       const encodedEmail = encodeURIComponent(data.email);
       console.log("encodedEmail from backend:", encodedEmail);
       await checkEmailExistence(encodedEmail);
@@ -67,24 +90,13 @@ function LoginManager() {
       console.error("Error:", error);
     }
   };
-  //동일한 이메일의 회원정보 있는지 확인
-  const checkEmailExistence = async (encodedEmail: string) => {
-    try {
-      const response = await fetch(
-        `https://verda.monster/api/members/fund/exist/${encodedEmail}`,
-      );
-      const data = await response.json();
-      if (data) {
-        console.log("해당 이메일에 등록된 정보가 없음 회원가입 진행");
-        routerUser.push("/signupManager");
-      } else {
-        console.log("등록된 정보 있음 유저페이지로 이동");
-        routerUser.push("/fundmanager");
-      }
-    } catch (error) {
-      console.error("Error:", error);
+
+  useEffect(() => {
+    if (authorizationCode) {
+      sendCodeToBackend(authorizationCode);
     }
-  };
+  }, [authorizationCode]);
+
   return (
     <div>
       <div className="flex flex-col items-center mt-20">
@@ -110,20 +122,17 @@ function LoginManager() {
           <TextStore
             textStyle={TextStyle.TEXT_R_16}
             style="w-full"
-            children="카카오톡으로 로그인하기"
-          ></TextStore>
+          >카카오톡으로 로그인하기</TextStore>
         </BoxStore>
         <div className="flex mt-10">
           <TextStore
             textStyle={TextStyle.TEXT_R_16}
-            children="혹시 투자자 이신가요?"
-          ></TextStore>
-          <Link href={"/loginUser"}>
+          >혹시 투자자 이신가요?</TextStore>
+          <Link href="/loginUser">
             <TextStore
               textStyle={TextStyle.TEXT_R_16}
               style=" text-custom_navy"
-              children="로그인"
-            ></TextStore>
+            >로그인</TextStore>
           </Link>
         </div>
       </div>
