@@ -32,7 +32,7 @@ function LoginManager() {
       const code = new URL(window.location.href).searchParams.get("code");
       console.log(code);
     } catch (error) {
-      console.error("카카오 로그인에 실패했습니다.", error);
+      console.error("카카오 로그인에 실패", error);
     }
   };
   //----------------------after redirect-------------
@@ -59,12 +59,10 @@ function LoginManager() {
       const data = await response.json();
       //Recoil상태 업데이트
       setRecoildata(data);
-      console.log("userEmail from backend:", data.email);
       const encodedEmail = encodeURIComponent(data.email);
-      console.log("encodedEmail from backend:", encodedEmail);
       await checkEmailExistence(encodedEmail);
     } catch (error) {
-      console.error("Error:", error);
+      console.error(error);
     }
   };
   //동일한 이메일의 회원정보 있는지 확인
@@ -75,10 +73,8 @@ function LoginManager() {
       );
       const data = await response.json();
       if (data) {
-        console.log("해당 이메일에 등록된 정보가 없음 회원가입 진행");
         routerUser.push("/signupManager");
       } else {
-        console.log("등록된 정보 있음 유저페이지로 이동");
         routerUser.push("/fundmanager");
       }
     } catch (error) {

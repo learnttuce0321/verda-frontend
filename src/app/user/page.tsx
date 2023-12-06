@@ -4,13 +4,15 @@ import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 import { CashCoin, ChatLeftDotsFill, PenFill } from "react-bootstrap-icons";
 import UserName from "@/Component-son/UserName";
-
+import InvestmentTypeUpdate from "@/Component-son/InvestmentTypeUpdate";
 export default function UserMainPage() {
   return (
     <>
       <UserName />
       <Section>
-        <div className="bg-white h-48 mt-5" />
+        {/* <div className="bg-white "> */}
+        <InvestmentTypeUpdate />
+        {/* </div> */}
       </Section>
 
       <Section>

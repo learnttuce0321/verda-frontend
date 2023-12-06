@@ -3,29 +3,42 @@ import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 import InputForm from "@/Components/Molecure/Input-son/InputForm";
 
-import { useSearchParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useRecoilValue } from "recoil";
 import { loginState } from "../utils/recoil/loginState";
 
 function SignupManager() {
-  const router = useSearchParams();
-  const authorizationCode = router.get("code");
-  console.log(authorizationCode);
   const routerUser = useRouter();
   const recoildata = useRecoilValue(loginState);
-  console.log("recoil에서 가져온 data 값: ", recoildata);
   const [investmentType, setInvestmentType] = useState("50%");
 
   const handleRangeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const typeValue = parseInt(event.target.value);
     setInvestmentType(typeValue.toString() + "%");
   };
+  const [Image, setImage] = useState<string | null>(null);
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedFile: File | null = event.target.files
+      ? event.target.files[0]
+      : null;
+    if (selectedFile) {
+      const reader = new FileReader();
+
+      reader.onload = (e: ProgressEvent<FileReader>) => {
+        if (e.target && e.target.result) {
+          setImage(e.target.result as string);
+        }
+      };
+      reader.readAsDataURL(selectedFile);
+    }
+  };
+
   const registerHandle = async (event: any) => {
     event.preventDefault();
     const data = {
       number: event.target.phone.value,
-      file: "testtest",
+      file: event.target.file.value,
       record: investmentType,
       location: event.target.location.value,
     };
@@ -52,8 +65,6 @@ function SignupManager() {
       if (!response.ok) {
         throw new Error("Failed to send data to the backend");
       }
-      const responseData = await response.json();
-      console.log("Data from backend:", responseData);
     } catch (error) {
       console.error("Error:", error);
     }
@@ -128,13 +139,23 @@ function SignupManager() {
                 children="서류 첨부하기"
               ></TextStore>
             </label>
-            <InputForm
-              style="hidden"
+            <input
+              className="hidden"
               type="file"
               placeholder="파일"
               id="file"
               name="file"
+              onChange={handleFileChange}
             />
+            <div className="m-auto">
+              {Image && (
+                <img
+                  src={Image}
+                  alt="File Preview"
+                  style={{ maxWidth: "200px", maxHeight: "200px" }}
+                />
+              )}
+            </div>
             <BoxStore
               boxStyle={BoxStyle.BOX_RECTANGLE_NAVY}
               style="rounded-3xl mt-10"
