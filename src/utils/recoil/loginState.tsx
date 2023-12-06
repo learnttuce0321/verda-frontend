@@ -4,14 +4,17 @@ import { atom } from "recoil";
 
 interface LoginData {
   email: string;
-  authToken: [];
+  authToken: {
+    accessToken?: string;
+    refreshToken?: string;
+  };
   name: string;
 }
 export const loginState = atom<LoginData>({
   key: "loginState",
   default: {
     email: "",
-    authToken: [],
+    authToken: {},
     name: "",
   },
 });

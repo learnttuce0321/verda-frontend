@@ -4,18 +4,14 @@ import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 import InputForm from "@/Components/Molecure/Input-son/InputForm";
 
-import { useSearchParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useRecoilValue } from "recoil";
 import { loginState } from "../utils/recoil/loginState";
 
 function SignupUser() {
-  const router = useSearchParams();
-  const authorizationCode = router.get("code");
-  console.log(authorizationCode);
   const routerUser = useRouter();
   const recoildata = useRecoilValue(loginState);
-  console.log("recoil에서 가져온 data 값: ", recoildata);
 
   const [investmentType, setInvestmentType] = useState("안정추구형");
   const handleRangeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -49,8 +45,6 @@ function SignupUser() {
 
   const registerHandle = async (event: any) => {
     event.preventDefault();
-    const typeValue = parseInt(event.target.type.value, 10);
-    const type = "";
 
     const data = {
       number: event.target.phone.value,
@@ -77,8 +71,6 @@ function SignupUser() {
       if (!response.ok) {
         throw new Error("Failed to send data to the backend");
       }
-      const responseData = await response.json();
-      console.log("Data from backend:", responseData);
     } catch (error) {
       console.error("Error:", error);
     }

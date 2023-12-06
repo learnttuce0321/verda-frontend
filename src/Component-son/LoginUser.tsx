@@ -34,7 +34,7 @@ function LoginUser() {
         await sendCodeToBackend(code);
       }
     } catch (error) {
-      console.error("카카오 로그인에 실패했습니다.", error);
+      console.error("카카오 로그인에 실패", error);
     }
   };
   //----------------------after redirect-------------
@@ -56,16 +56,13 @@ function LoginUser() {
           body: JSON.stringify({ authorizationCode: code }),
         },
       );
-      console.log(response);
       if (!response.ok) {
         throw new Error("Failed to request access token");
       }
       const data = await response.json();
       //Recoil상태 업데이트
       setRecoildata(data);
-      console.log("userEmail from backend:", data.email);
       const encodedEmail = data.email;
-      console.log("encodedEmail from backend:", encodedEmail);
       await checkEmailExistence(encodedEmail);
     } catch (error) {
       console.error("Error:", error);
@@ -80,10 +77,8 @@ function LoginUser() {
       );
       const data = await response.json();
       if (data) {
-        console.log("해당 이메일에 등록된 정보가 없음 회원가입 진행");
         routerUser.push("/signupUser");
       } else {
-        console.log("등록된 정보 있음 유저페이지로 이동");
         routerUser.push("/user");
       }
     } catch (error) {
