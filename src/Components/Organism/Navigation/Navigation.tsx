@@ -6,10 +6,23 @@ import Link from "next/link";
 import { useRecoilState } from "recoil";
 import { loginState } from "@/utils/recoil/loginState";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 export default function Navigation() {
   const [toggle, setToggle] = useState<boolean>(false)
   const [loginToken, setLoginToken] = useRecoilState(loginState)
+  const url = usePathname()
+
+  const setRedirectURL = (): string => {
+    switch (url.split('/')[1]) {
+      case "user":
+        return "/user";
+      case "fundmanager":
+        return "/fundmanager"
+      default:
+        return "/";
+    }
+  }
 
   useEffect(() => {
     const loginData = localStorage.getItem("loginData") as string
@@ -22,7 +35,7 @@ export default function Navigation() {
     <div className="flex justify-center mt-10 lg:pr-3 px-2 bg-transparent absolute z-10 w-[432px] overflow-hidden">
 
       <div className="flex justify-between px-4 w-full bg-transparent">
-        <Link href={{ pathname: "/" }}>
+        <Link href={{ pathname: setRedirectURL() }}>
           <TextStore textStyle={TextStyle.TEXT_R_32} style="leading-[61px]">
             VERDA
           </TextStore>

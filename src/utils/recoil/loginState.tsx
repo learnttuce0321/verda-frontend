@@ -9,7 +9,8 @@ interface LoginData {
     refreshToken?: string;
   };
   name: string;
-}
+};
+
 export const loginState = atom<LoginData>({
   key: "loginState",
   default: {
