@@ -46,7 +46,7 @@ function LoginManager() {
       const code = new URL(window.location.href).searchParams.get("code");
       console.log(code);
     } catch (error) {
-      console.error("카카오 로그인에 실패했습니다.", error);
+      console.error("카카오 로그인에 실패", error);
     }
   };
   // ----------------------after redirect-------------
@@ -84,10 +84,9 @@ function LoginManager() {
       setRecoildata(recoilData);
       console.log("userEmail from backend:", data);
       const encodedEmail = encodeURIComponent(data.email);
-      console.log("encodedEmail from backend:", encodedEmail);
       await checkEmailExistence(encodedEmail);
     } catch (error) {
-      console.error("Error:", error);
+      console.error(error);
     }
   };
 

@@ -51,7 +51,6 @@ function LoginUser() {
           body: JSON.stringify({ authorizationCode: code }),
         },
       );
-      console.log(response);
       if (!response.ok) {
         throw new Error("Failed to request access token");
       }
@@ -69,7 +68,6 @@ function LoginUser() {
       setRecoildata(recoilData);
       console.log("userEmail from backend:", data);
       const encodedEmail = data.email;
-      console.log("encodedEmail from backend:", encodedEmail);
       await checkEmailExistence(encodedEmail);
     } catch (error) {
       console.error("Error:", error);

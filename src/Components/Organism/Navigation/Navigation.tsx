@@ -82,35 +82,76 @@ export default function Navigation() {
                 )
               )
             }
-            {
-              !toggle ? (
-                <button type="button" className="flex items-center h-[61px] relative" onClick={() => { setToggle(true) }}>
-                  <List width="2em" height="2em" />
-                </button>
-              ) : (
-                <button type="button" className="flex items-center h-[61px] relative" onClick={() => { setToggle(false) }}>
-                  <X width="2em" height="2em" />
-                </button>
-              )
-            }
+
+            {!toggle ? (
+              <button
+                type="button"
+                className="flex items-center h-[61px] relative"
+                onClick={() => {
+                  setToggle(true);
+                }}
+              >
+                <List width="2em" height="2em" />
+              </button>
+            ) : (
+              <button
+                type="button"
+                className="flex items-center h-[61px] relative"
+                onClick={() => {
+                  setToggle(false);
+                }}
+              >
+                <X width="2em" height="2em" />
+              </button>
+            )}
           </div>
 
           <div className="hidden">
             <div className="flex">
-              <Link href="/loginUser" onClick={() => { setToggle(false) }}>
-                <TextStore textStyle={TextStyle.TEXT_R_20} style="w-[70px] leading-[61px]">로그인</TextStore>
+              <Link
+                href="/loginUser"
+                onClick={() => {
+                  setToggle(false);
+                }}
+              >
+                <TextStore
+                  textStyle={TextStyle.TEXT_R_20}
+                  style="w-[70px] leading-[61px]"
+                >
+                  로그인
+                </TextStore>
               </Link>
-              <Link href="/loginUser" onClick={() => { setToggle(false) }}>
-                <TextStore textStyle={TextStyle.TEXT_R_20} style="w-[90px] leading-[61px]">회원가입</TextStore>
+              <Link
+                href="/loginUser"
+                onClick={() => {
+                  setToggle(false);
+                }}
+              >
+                <TextStore
+                  textStyle={TextStyle.TEXT_R_20}
+                  style="w-[90px] leading-[61px]"
+                >
+                  회원가입
+                </TextStore>
               </Link>
-              <Link href="/loginManager" className="bg-custom_lightblue w-full p-1 flex flex-col justify-center items-center" onClick={() => { setToggle(false) }}>
-                <TextStore textStyle={TextStyle.TEXT_R_15}>펀드매니저</TextStore>
-                <TextStore textStyle={TextStyle.TEXT_R_15}>가입/로그인</TextStore>
+              <Link
+                href="/loginManager"
+                className="bg-custom_lightblue w-full p-1 flex flex-col justify-center items-center"
+                onClick={() => {
+                  setToggle(false);
+                }}
+              >
+                <TextStore textStyle={TextStyle.TEXT_R_15}>
+                  펀드매니저
+                </TextStore>
+                <TextStore textStyle={TextStyle.TEXT_R_15}>
+                  가입/로그인
+                </TextStore>
               </Link>
             </div>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
