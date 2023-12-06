@@ -11,9 +11,9 @@ export default function UserName() {
   return (
     <Section style=" text-2xl font-semibold">
       <TextStore textStyle={TextStyle.TEXT_R_40}> 안녕하세요</TextStore>
-      <TextStore textStyle={TextStyle.TEXT_R_40_BLUE}>
+      <TextStore textStyle={TextStyle.TEXT_R_40} style="text-custom_skyblue">
         {recoildata.name}
-        <span className="!text-black">님!</span>
+        <span>님!</span>
       </TextStore>
     </Section>
   );

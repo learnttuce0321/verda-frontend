@@ -5,11 +5,14 @@ import { notFound, useRouter } from "next/navigation";
 import ButtonButtonNavy from "@/Components/Molecure/Button-jsh/Button/ButtonButtonNavy";
 import InputContent from "@/Components/Molecure/Input-jsh/InputContent";
 import InputTitle from "@/Components/Molecure/Input-jsh/InputTitle";
+import { useRecoilState } from "recoil";
+import { loginState } from "@/utils/recoil/loginState";
 
 export default function WriteInput() {
   const router = useRouter()
   const titleRef = useRef<HTMLInputElement>(null)
   const contentRef = useRef<HTMLTextAreaElement>(null)
+  const [loginData, setLoginData] = useRecoilState(loginState)
 
   const SubmitHandler = async (): Promise<any> => {
     const titleInput = titleRef.current!.value;
@@ -24,7 +27,7 @@ export default function WriteInput() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTUxNjIzOTAyMn0.IW5PjeG2JUgvN4BJHLG_5P4XnGACBJb_Y4fmj4-e7xY"
+        "Authorization": `bearer ${loginData.authToken.accessToken}`
       },
       body: JSON.stringify(postData)
     })

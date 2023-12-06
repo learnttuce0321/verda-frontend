@@ -1,14 +1,13 @@
 import Link from "next/link";
-import Section from "@/Components-kim/Section";
 import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 import { ChatLeftDotsFill, PenFill } from "react-bootstrap-icons";
-import UserName from "@/Component-son/UserName";
+import FmName from "@/Component-son/FmName"
 
 export default function FundmanagerLayout() {
   return (
     <>
-      <UserName />
+      <FmName />
       <div className="grid grid-cols-2 gap-4 mt-5">
         <button type="button" name="투자 글" className="text-left">
           <Link href="/fundmanager/clientrequest">
