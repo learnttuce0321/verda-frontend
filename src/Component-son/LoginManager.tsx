@@ -76,11 +76,11 @@ function LoginManager() {
         email: data.email,
         authToken: {
           accessToken: data.authToken.accessToken,
-          refreshToken: data.authToken.refreshToken
+          refreshToken: data.authToken.refreshToken,
         },
-        name: data.authToken.name
-      }
-      localStorage.setItem('loginData', JSON.stringify(recoilData))
+        name: data.authToken.name,
+      };
+      localStorage.setItem("loginData", JSON.stringify(recoilData));
       setRecoildata(recoilData);
       console.log("userEmail from backend:", data);
       const encodedEmail = encodeURIComponent(data.email);
@@ -113,25 +113,23 @@ function LoginManager() {
             를 받으세요
           </TextStore>
         </div>
-        <BoxStore
-          boxStyle={BoxStyle.BOX_RECTANGLE_LIGHTBLUE}
-          style="flex bg-yellow-300 "
-          clickHandler={handleKakaoLogin}
-        >
-          <TextStore
-            textStyle={TextStyle.TEXT_R_16}
-            style="w-full"
-          >카카오톡으로 로그인하기</TextStore>
-        </BoxStore>
+        <img
+          src="/kakao_login_large_wide.png"
+          className="w-10/12 mt-10"
+          alt="kakao_login"
+          onClick={handleKakaoLogin}
+        />
         <div className="flex mt-10">
-          <TextStore
-            textStyle={TextStyle.TEXT_R_16}
-          >혹시 투자자 이신가요?</TextStore>
+          <TextStore textStyle={TextStyle.TEXT_R_16}>
+            혹시 투자자 이신가요?
+          </TextStore>
           <Link href="/loginUser">
             <TextStore
               textStyle={TextStyle.TEXT_R_16}
               style=" text-custom_navy"
-            >로그인</TextStore>
+            >
+              로그인
+            </TextStore>
           </Link>
         </div>
       </div>

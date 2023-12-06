@@ -47,7 +47,7 @@ function InvestmentTypeUpdate() {
     `${userdata?.investmentPropensity}`,
   );
   const handleRangeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const typeValue = parseInt(event.target.value, 10);
+    const typeValue = parseInt(event.target.value, 6);
     let type = "";
     switch (typeValue) {
       case 0:
@@ -123,6 +123,21 @@ function InvestmentTypeUpdate() {
             max="5"
             id="type"
             name="type"
+            value={
+              investmentType === "관심없음"
+                ? 0
+                : investmentType === "겁쟁이형"
+                  ? 1
+                  : investmentType === "몸사리는형"
+                    ? 2
+                    : investmentType === "안정추구형"
+                      ? 3
+                      : investmentType === "살짝 공격형"
+                        ? 4
+                        : investmentType === "투자광"
+                          ? 5
+                          : 3
+            }
             onChange={handleRangeChange}
           />
           <BoxStore

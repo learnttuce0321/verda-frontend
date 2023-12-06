@@ -15,7 +15,7 @@ function SignupUser() {
 
   const [investmentType, setInvestmentType] = useState("안정추구형");
   const handleRangeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const typeValue = parseInt(event.target.value, 10);
+    const typeValue = parseInt(event.target.value, 6);
     let type = "";
     switch (typeValue) {
       case 0:

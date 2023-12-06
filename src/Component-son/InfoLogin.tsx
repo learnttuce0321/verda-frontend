@@ -24,7 +24,7 @@ function InfoLogin() {
             <ButtonButton
               title="펀드매니저 "
               title1=" 로그인/가입하기"
-              style="w-auto !bg-blue-50 text-center flex p-1"
+              style="w-auto !bg-blue-50 text-center flex p-2 ml-5"
             />
           </Link>
         </div>
@@ -44,7 +44,7 @@ function InfoLogin() {
           <ButtonButton
             title="로그인/가입하기"
             title1=""
-            style="!bg-blue-300 w-auto p-1"
+            style="!bg-blue-300 w-auto p-2"
           />
         </Link>
       </BoxStore>

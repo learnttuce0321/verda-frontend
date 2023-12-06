@@ -1,6 +1,7 @@
 import React from "react";
 import Contents from "@/Component-son/Contents";
 import InfoLogin from "@/Component-son/InfoLogin";
+import Reviews from "@/Component-son/Reviews";
 
 export default function Home() {
   return (
@@ -8,6 +9,9 @@ export default function Home() {
       <div className="flex flex-col items-center ">
         <div>
           <Contents />
+        </div>
+        <div>
+          <Reviews />
         </div>
         <div>
           <InfoLogin />
