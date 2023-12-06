@@ -1,7 +1,9 @@
-import Section from "@/Components-kim/Section";
+import Section from "@/components-kim/Section";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 import PostDetailMain from "@/Components/Organism/Post/PostDetailMain";
 import PostDetailChatList from "@/Components/Organism/Post/PostDetailChatList";
+import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
+import Link from "next/link";
 
 interface Props {
   params: {
@@ -12,22 +14,37 @@ interface Props {
 export default async function PostDetailPage({ params: { postId } }: Props) {
   const getPostDetail = async (): Promise<any> => {
     const res = await fetch(`${process.env.BASE_URL}/api/board/${postId}`, {
-      method: 'GET',
-      cache: "no-store"
+      method: "GET",
+      cache: "no-store",
     });
 
     return res.json();
   };
 
   // todos : 타입지정
-  const post = await getPostDetail()
+  const post = await getPostDetail();
 
   return (
     <>
-      <Section>
+      <Section style="flex justify-between ">
         <TextStore textStyle={TextStyle.TEXT_R_40_BLUE} style="mb-[2.5rem]">
           {post.title}
         </TextStore>
+        <div>
+          <Link href="/user/reviewWrite">
+            <BoxStore
+              boxStyle={BoxStyle.BOX_RECTANGLE_NAVY}
+              style="rounded-3xl w-full"
+            >
+              <TextStore
+                textStyle={TextStyle.TEXT_R_16}
+                style=" text-white text-center"
+              >
+                <button type="submit">후기 작성하기</button>
+              </TextStore>
+            </BoxStore>
+          </Link>
+        </div>
       </Section>
 
       <PostDetailMain post={post} />

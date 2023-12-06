@@ -82,46 +82,46 @@ function Contents() {
             <div className="flex justify-around mt-5 w-full overflow-hidden">
               <div className="flex image-animation">
                 <FundManagers
-                  name="손투자"
+                  name="손영석"
                   location="서울"
+                  record="12%"
                   investmentAmount="760만원"
-                  solution="좋은 제안서 많습니다."
-                  solution1="최선을 다하겠습니다."
+                  solution="좋은 제안서 많습니다. 글 한번 검토해보시고 연락주시면 최선을 다하겠습니다."
                 />
                 <FundManagers
-                  name="최투자"
+                  name="석영손"
+                  record="11.2%"
                   location="서울"
                   investmentAmount="550만원"
-                  solution="첨부해주신 자료를 보면 "
-                  solution1="투자 가능성이 좋습니다."
+                  solution="첨부해주신 자료를 보면 제가 진행해왔던 사례들과 비슷한점들이 많습니다. 검토해보시고 알려주세요"
                 />
                 <FundManagers
-                  name="최부자"
+                  name="최고점"
+                  record="9.8%"
                   location="부산"
                   investmentAmount="50만원"
-                  solution="적은 투자금도 "
-                  solution1="가능합니다."
+                  solution="적은 투자금도 크게 만들 수 있습니다. 가벼운 마음으로 시작해 보세요."
                 />
                 <FundManagers
-                  name="손투자1"
+                  name="재투자"
+                  record="15%"
                   location="서울"
                   investmentAmount="760만원"
-                  solution="좋은 제안서 많습니다."
-                  solution1="최선을 다하겠습니다."
+                  solution="투자에 대해 모르는것은 쉽게 이해할 수 있도록 설명해 드릴게요, 재밌게 시작해요세요."
                 />
                 <FundManagers
-                  name="최투자1"
+                  name="최미래"
+                  record="12.5%"
                   location="서울"
                   investmentAmount="550만원"
-                  solution="첨부해주신 자료를 보면 "
-                  solution1="투자 가능성이 좋습니다."
+                  solution="투자가 어렵다고만 느껴지시겠지만 전문가와 함께 진행하면 어렵지 않습니다. 쉽게 접근하세요"
                 />
                 <FundManagers
-                  name="최부자1"
+                  name="이기자"
+                  record="8.8%"
                   location="부산"
                   investmentAmount="50만원"
-                  solution="적은 투자금도 "
-                  solution1="가능합니다."
+                  solution="친구와 상담하듯이 도와드리겠습니다. 편안하게 문의하고 편안하게 투자하세요"
                 />
               </div>
             </div>

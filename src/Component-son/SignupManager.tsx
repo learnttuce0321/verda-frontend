@@ -18,6 +18,7 @@ function SignupManager() {
     setInvestmentType(typeValue.toString() + "%");
   };
   const [Image, setImage] = useState<string | null>(null);
+
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile: File | null = event.target.files
       ? event.target.files[0]
@@ -38,11 +39,18 @@ function SignupManager() {
     event.preventDefault();
     const data = {
       number: event.target.phone.value,
-      file: event.target.file.value,
       record: investmentType,
       location: event.target.location.value,
     };
     console.log(data);
+
+    const formData = new FormData();
+    if (event.target.file.files.length > 0) {
+      const selectedFile = event.target.file.files[0];
+      formData.append("file", selectedFile);
+      formData.append("email", recoildata.email);
+    }
+
     try {
       const response = await fetch(
         `${process.env.BASE_URL}/api/members/fund/add`,
@@ -60,9 +68,17 @@ function SignupManager() {
           }),
         },
       );
+      const response2 = await fetch(
+        `${process.env.BASE_URL}/api/fundpic/uploadfundpic`,
+        {
+          method: "POST",
+          body: formData,
+        },
+      );
+
       routerUser.push("/fundmanager");
 
-      if (!response.ok) {
+      if (!response.ok && !response2.ok) {
         throw new Error("Failed to send data to the backend");
       }
     } catch (error) {
