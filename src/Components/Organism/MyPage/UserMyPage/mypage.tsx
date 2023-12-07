@@ -1,6 +1,6 @@
 "use client";
 
-import Section from "@/components-kim/Section";
+import Section from "@/Components-kim/Section";
 import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 import { useRecoilState } from "recoil";
@@ -11,7 +11,7 @@ export interface UserProfile {
   fmId?: number;
   email?: string;
   name?: string;
-  age_range?: string;
+  ageRange?: string;
   number?: string;
 }
 
@@ -28,12 +28,11 @@ export default function MyPage() {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${
-            token.authToken.accessToken
-              ? token.authToken.accessToken
-              : JSON.parse(localStorage.getItem("loginData") as string)
-                  .authToken.accessToken
-          }`,
+          Authorization: `Bearer ${token.authToken.accessToken
+            ? token.authToken.accessToken
+            : JSON.parse(localStorage.getItem("loginData") as string)
+              .authToken.accessToken
+            }`,
         },
       },
     );
@@ -57,7 +56,7 @@ export default function MyPage() {
         boxStyle={BoxStyle.BOX_RECTANGLE_LONG_WHITE}
         style="text-black mt-5 w-full"
       >
-        <TextStore textStyle={TextStyle.TEXT_R_30} style="pl-3">
+        <TextStore textStyle={TextStyle.TEXT_R_24} style="pl-3 leading-[45px]">
           {profile && profile.email}
         </TextStore>
       </BoxStore>
@@ -76,7 +75,7 @@ export default function MyPage() {
         style="text-black mt-2 w-full"
       >
         <TextStore textStyle={TextStyle.TEXT_R_30} style="pl-3">
-          {profile && profile.age_range}세
+          {profile && profile.ageRange}세
         </TextStore>
       </BoxStore>
       <BoxStore
