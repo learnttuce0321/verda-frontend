@@ -28,7 +28,7 @@ export default async function PostDetailPage({ params: { postId } }: Props) {
     <>
       <Section style="flex justify-between ">
         <TextStore textStyle={TextStyle.TEXT_R_40_BLUE} style="mb-[2.5rem]">
-          {post.title}
+          {post.title.length > 5 ? `${post.title.slice(0, 5)}...` : post.title}
         </TextStore>
         <div>
           <Link href="/user/reviewWrite">

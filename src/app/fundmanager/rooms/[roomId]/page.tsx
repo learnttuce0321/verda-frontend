@@ -7,11 +7,11 @@ import { useState } from "react";
 
 interface Props {
   params: {
-    roomId: string;
+    roomid: string;
   };
 };
 
-export default function Chat({ params: { roomId } }: Props) {
+export default function Chat({ params: { roomid: roomId } }: Props) {
 
   const [chatMessages, setChatMessages] = useState<any>([]);
 

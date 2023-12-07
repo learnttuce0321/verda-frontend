@@ -23,6 +23,16 @@ export default function Navigation() {
         return "/";
     }
   }
+  const setMyPageURL = (): string => {
+    switch (url.split('/')[1]) {
+      case "user":
+        return "/user/mypage";
+      case "fundmanager":
+        return "/fundmanager/mypage"
+      default:
+        return "/";
+    }
+  }
 
   useEffect(() => {
     const loginData = localStorage.getItem("loginData") as string
@@ -74,7 +84,7 @@ export default function Navigation() {
                       }}>
                         <TextStore textStyle={TextStyle.TEXT_R_20} style="mb-2">로그아웃</TextStore>
                       </Link>
-                      <Link href="/" onClick={() => { setToggle(false) }}>
+                      <Link href={{ pathname: setMyPageURL() }} onClick={() => { setToggle(false) }}>
                         <TextStore textStyle={TextStyle.TEXT_R_20}>마이페이지</TextStore>
                       </Link>
                     </div>

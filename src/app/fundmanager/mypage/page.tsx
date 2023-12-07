@@ -1,4 +1,4 @@
-import MyPage from "@/Components/Organism/FundmanagerMypage/mypage";
+import MyPage from "@/Components/Organism/MyPage/FundmanagerMypage/mypage";
 
 export default function MypageInfo() {
   return <MyPage />;
