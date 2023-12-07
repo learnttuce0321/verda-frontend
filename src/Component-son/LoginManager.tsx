@@ -36,7 +36,7 @@ function LoginManager() {
   const handleKakaoLogin = async () => {
     try {
       const API_KEY = "90085a0fa6f999d431f31e0de484536a";
-      const REDIRECT_URI = "http://localhost:3000/loginManager";
+      const REDIRECT_URI = "https://verda-frontend-rjrkr4d2y-learnttuce0321s-projects.vercel.app/loginManager";
 
       // 카카오 로그인 요청을 위한 URL 생성
       const kakaoAuthUrl = `https://kauth.kakao.com/oauth/authorize?client_id=${API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
@@ -115,7 +115,9 @@ function LoginManager() {
         </div>
         <Image
           src="/kakao_login_large_wide.png"
-          className="w-10/12 mt-10"
+          className="mt-10"
+          width={350}
+          height={53}
           alt="kakao_login"
           onClick={handleKakaoLogin}
         />
