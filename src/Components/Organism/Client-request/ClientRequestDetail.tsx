@@ -34,7 +34,6 @@ export default function RequestDetail({ postid }: Props) {
   };
 
   const getFindChatList = async (): Promise<any> => {
-    console.log("token", token.authToken.accessToken);
     const res = await fetch(
       `${process.env.BASE_URL}/api/exist/chat/${postid}`,
       {
@@ -86,7 +85,6 @@ export default function RequestDetail({ postid }: Props) {
   useEffect(() => {
     const changeButtonText = async () => {
       const chatList = await getFindChatList();
-      console.log(chatList);
       if (chatList.roomId !== -1) {
         setfindRoomId(chatList.roomId);
         setbuttonMessage("채팅하기");
@@ -94,8 +92,6 @@ export default function RequestDetail({ postid }: Props) {
     };
     changeButtonText();
   }, []);
-
-  console.log(token);
 
   return (
     <Section style="m-auto">

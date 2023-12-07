@@ -41,7 +41,6 @@ export default function Navigation() {
       setLoginToken(JSON.parse(loginData))
     }
   }, [])
-  console.log(url !== "/")
 
   return (
     <div className="flex justify-center mt-10 lg:pr-3 px-2 bg-transparent absolute z-10 w-[432px] overflow-hidden">
