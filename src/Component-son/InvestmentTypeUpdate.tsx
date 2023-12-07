@@ -82,15 +82,14 @@ function InvestmentTypeUpdate() {
     };
     try {
       const response = await fetch(
-        `${process.env.BASE_URL}/api/members/user/add`,
+        `${process.env.BASE_URL}/api/members/user/investment/update`,
         {
-          method: "POST",
+          method: "PATCH",
           headers: {
+            Authorization: `Bearer ${recoildata.authToken.accessToken}`,
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            email: "sonys95@naver.com",
-            number: "testsets",
             investmentPropensity: data.investmentPropensity,
           }),
         },
@@ -142,7 +141,7 @@ function InvestmentTypeUpdate() {
           />
           <BoxStore
             boxStyle={BoxStyle.BOX_RECTANGLE_NAVY}
-            style="rounded-3xl mt-10 w-1/5 self-end"
+            style="rounded-3xl mt-10 !w-1/5 self-end"
           >
             <TextStore
               textStyle={TextStyle.TEXT_R_16}
