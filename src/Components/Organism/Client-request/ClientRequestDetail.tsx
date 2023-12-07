@@ -1,7 +1,6 @@
 "use client";
 
-import Link from "next/link";
-import Section from "@/components-kim/Section";
+import Section from "@/Components-kim/Section";
 import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 import { useEffect, useState } from "react";
@@ -18,7 +17,7 @@ interface Request {
   title?: string;
   content?: string;
   userId: string;
-}
+};
 
 export default function RequestDetail({ postid }: Props) {
   const [request, setRequest] = useState<Request | null>(null);
@@ -30,7 +29,6 @@ export default function RequestDetail({ postid }: Props) {
   const getRequestDetail = async (): Promise<any> => {
     const res = await fetch(`${process.env.BASE_URL}/api/board/${postid}`, {
       method: "GET",
-      cache: "no-store",
     });
     return res.json();
   };
@@ -43,12 +41,11 @@ export default function RequestDetail({ postid }: Props) {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${
-            token.authToken.accessToken
-              ? token.authToken.accessToken
-              : JSON.parse(localStorage.getItem("loginData") as string)
-                  .authToken.accessToken
-          }`,
+          Authorization: `Bearer ${token.authToken.accessToken
+            ? token.authToken.accessToken
+            : JSON.parse(localStorage.getItem("loginData") as string)
+              .authToken.accessToken
+            }`,
         },
       },
     );
@@ -61,12 +58,11 @@ export default function RequestDetail({ postid }: Props) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${
-          token.authToken.accessToken
-            ? token.authToken.accessToken
-            : JSON.parse(localStorage.getItem("loginData") as string).authToken
-                .accessToken
-        }`,
+        Authorization: `Bearer ${token.authToken.accessToken
+          ? token.authToken.accessToken
+          : JSON.parse(localStorage.getItem("loginData") as string).authToken
+            .accessToken
+          }`,
       },
       body: JSON.stringify({
         postId: postid,

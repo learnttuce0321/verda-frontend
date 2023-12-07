@@ -1,6 +1,6 @@
 "use client";
 
-import Section from "@/components-kim/Section";
+import Section from "@/Components-kim/Section";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 import { useRecoilValue } from "recoil";
 import { loginState } from "@/utils/recoil/loginState";

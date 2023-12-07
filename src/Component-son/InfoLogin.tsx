@@ -3,7 +3,7 @@ import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 import ButtonButton from "@/Components/Molecure/Button-son/ButtonButton";
 
-function InfoLogin() {
+export default function InfoLogin() {
   return (
     <>
       <BoxStore boxStyle={BoxStyle.BOX_RECTANGLE_LIGHTBLUE} style="flex mt-10 ">
@@ -12,13 +12,11 @@ function InfoLogin() {
             <TextStore
               textStyle={TextStyle.TEXT_R_16}
               style="w-full"
-              children="펀드매니저 이신가요?"
-            />
+            >펀드매니저 이신가요?</TextStore>
             <TextStore
               textStyle={TextStyle.TEXT_R_16}
               style="w-full"
-              children="verda에서 더 많은 고객을 만나보세요."
-            />
+            >verda에서 더 많은 고객을 만나보세요.</TextStore>
           </div>
           <Link href="/loginManager">
             <ButtonButton
@@ -37,8 +35,7 @@ function InfoLogin() {
           <TextStore
             textStyle={TextStyle.TEXT_R_16}
             style="text-white"
-            children="지금 의뢰하고 다양한 투자전략을 제안 받으세요."
-          />
+          >지금 의뢰하고 다양한 투자전략을 제안 받으세요.</TextStore>
         </div>
         <Link href="/loginUser">
           <ButtonButton
@@ -50,5 +47,4 @@ function InfoLogin() {
       </BoxStore>
     </>
   );
-}
-export default InfoLogin;
+};

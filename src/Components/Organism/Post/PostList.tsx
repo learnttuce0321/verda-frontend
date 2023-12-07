@@ -25,7 +25,6 @@ export default function PostList() {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${loginData.authToken.accessToken ? loginData.authToken.accessToken : JSON.parse(localStorage.getItem("loginData") as string).authToken.accessToken}`
       },
-      cache: "no-store"
     });
 
     return res.json();

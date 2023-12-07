@@ -4,7 +4,7 @@ interface Props {
   children: React.ReactNode;
   style?: string;
   clickHandler?: () => void;
-}
+};
 
 export default function BoxRectangeLongOrange({
   children,

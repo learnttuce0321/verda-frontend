@@ -2,12 +2,11 @@
 
 import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
-import InputForm from "@/Components/Molecure/Input-son/InputForm";
-
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { useRecoilValue } from "recoil";
 import { loginState } from "@/utils/recoil/loginState";
+
 interface UserData {
   name: string;
   investmentPropensity: string;
@@ -15,8 +14,12 @@ interface UserData {
 
 function InvestmentTypeUpdate() {
   const recoildata = useRecoilValue(loginState);
-  const email = recoildata.email;
-  const [userdata, setUserData] = useState<UserData | null>(null);
+  const { email } = recoildata;
+  const [userdata, setUserData] = useState<UserData | null>({ name: "", investmentPropensity: "" });
+  const routerUser = useRouter();
+  const [investmentType, setInvestmentType] = useState(
+    `${userdata?.investmentPropensity}`,
+  );
 
   useEffect(() => {
     if (userdata) {
@@ -28,7 +31,7 @@ function InvestmentTypeUpdate() {
     const fetchData = async () => {
       try {
         const res = await fetch(
-          `${process.env.BASE_URL}/api/members/user/${email}`,
+          `${process.env.BASE_URL}/api/members/user/${recoildata.email ? recoildata.email : JSON.parse(localStorage.getItem("loginData") as string).email}`,
           {
             method: "GET",
           },
@@ -42,10 +45,7 @@ function InvestmentTypeUpdate() {
     fetchData();
   }, [email]);
 
-  const routerUser = useRouter();
-  const [investmentType, setInvestmentType] = useState(
-    `${userdata?.investmentPropensity}`,
-  );
+
   const handleRangeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const typeValue = parseInt(event.target.value, 6);
     let type = "";
@@ -68,8 +68,8 @@ function InvestmentTypeUpdate() {
       case 5:
         type = "투자광";
         break;
-
       default:
+        type = ""
         break;
     }
     setInvestmentType(type);
@@ -111,7 +111,7 @@ function InvestmentTypeUpdate() {
             <TextStore textStyle={TextStyle.TEXT_R_30}>
               나의 투자 성향
             </TextStore>
-            <TextStore textStyle={TextStyle.TEXT_R_30} style="text-custom_navy">
+            <TextStore textStyle={TextStyle.TEXT_R_30} style="text-custom_navy h-[45px]">
               {investmentType}
             </TextStore>
           </div>

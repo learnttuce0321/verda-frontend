@@ -3,22 +3,44 @@
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 import ChatMessageInput from "@/Components/Organism/Chat/ChatMessageInput";
 import ChatRoom from "@/Components/Organism/Chat/ChatRoom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface Props {
   params: {
-    roomid: string;
+    roomId: string;
   };
 };
 
-export default function Chat({ params: { roomid: roomId } }: Props) {
+export default function Chat({ params: { roomId } }: Props) {
 
   const [chatMessages, setChatMessages] = useState<any>([]);
+  const [roomTitle, setRoomTitle] = useState<string>("");
+  const getRoomTitle = async () => {
+    const res = await fetch(`${process.env.BASE_URL}/api/chat/fm/${roomId}`, {
+      method: "GET",
+    });
+
+    return res.json()
+  }
+
+  useEffect(() => {
+    const getTitle = async () => {
+      const data = await getRoomTitle()
+      setRoomTitle(data.targetName)
+    }
+    getTitle()
+  }, [])
 
   return (
     <section className="w-[100%]">
-      <TextStore textStyle={TextStyle.TEXT_R_40_BLUE} style="mb-2">
-        ㅎㅇ
+      <TextStore textStyle={TextStyle.TEXT_R_40_BLUE} style="mb-2 !text-white">
+        {roomTitle.length ? (
+          roomTitle
+        ) : (
+          <>
+            loading...
+          </>
+        )}
       </TextStore>
 
       <div className="border-2 opacity-100 h-[calc(100vh_-_140px)] overflow-y-scroll">

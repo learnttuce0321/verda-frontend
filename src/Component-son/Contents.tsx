@@ -1,7 +1,7 @@
 import React from "react";
-import FundManagers from "./Fundmanagers";
 import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
+import FundManagers from "./Fundmanagers";
 
 function Contents() {
   const imageAnimationStyle = `
