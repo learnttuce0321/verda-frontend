@@ -1,6 +1,9 @@
-import { notFound } from "next/navigation";
-import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
+"use client";
+
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
+import ChatMessageInput from "@/Components/Organism/Chat/ChatMessageInput";
+import ChatRoom from "@/Components/Organism/Chat/ChatRoom";
+import { useEffect, useState } from "react";
 
 interface Props {
   params: {
@@ -8,26 +11,42 @@ interface Props {
   };
 };
 
-export default async function ChatDetailPage({ params: { roomId } }: Props) {
-  const getChat = async (): Promise<any> => {
-    const res = await fetch(`${process.env.BASE_URL}/api/chat/${roomId}`, {
+export default function ChatDetailPage({ params: { roomId } }: Props) {
+
+  const [chatMessages, setChatMessages] = useState<any>([]);
+  const [roomTitle, setRoomTitle] = useState<string>("");
+  const getRoomTitle = async () => {
+    const res = await fetch(`${process.env.BASE_URL}/api/chat/user/${roomId}`, {
       method: "GET",
     });
 
     return res.json()
   }
-  const { preChatList: chats } = await getChat()
+
+  useEffect(() => {
+    const getTitle = async () => {
+      const data = await getRoomTitle()
+      setRoomTitle(data.targetName)
+    }
+    getTitle()
+  }, [])
 
   return (
     <section className="w-[100%] ">
       <TextStore textStyle={TextStyle.TEXT_R_40_BLUE} style="mb-2">
-        {/* {data?.fundManagerName} */}
+        {roomTitle.length ? (
+          roomTitle
+        ) : (
+          <>
+            loading...
+          </>
+        )}
       </TextStore>
-      <div className="border-2 opacity-100 h-[calc(100vh_-_126px)] overflow-y-scroll">
-        {/* todos : 이거 백엔드랑 연결 후 설정해야됨 */}
+
+      <div className="border-2 opacity-100 h-[calc(100vh_-_145px)] overflow-y-scroll">
+        <ChatRoom roomId={roomId} chatMessages={chatMessages} setChatMessages={setChatMessages} />
       </div>
-      {/* </section> */}
-      {/* todos: input 생성해야됨 */}
+      <ChatMessageInput setChatMessages={setChatMessages} roomId={roomId} />
     </section>
   );
 }

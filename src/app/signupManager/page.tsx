@@ -1,6 +1,10 @@
 import SignupManager from "@/Component-son/SignupManager";
 
-function Signup() {
-  return (<SignupManager />);
+function SignupManagerRouter() {
+  return (
+    <div className="pt-[100px]">
+      <SignupManager />
+    </div>
+  )
 }
-export default Signup;
+export default SignupManagerRouter;

@@ -1,25 +1,18 @@
+import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
+import Section from "@/Components-kim/Section";
 import FundmanagerChatList from "@/organisms/fundmanager-kim/Rooms/Rooms";
 
-interface TokenProps {
-  token: string;
-}
+export default function FundmanagerRoomsInfo() {
+  return (
+    <>
+      <Section>
+        <TextStore textStyle={TextStyle.TEXT_R_40}>
+          채팅문의
+        </TextStore>
+      </Section>
 
-const getRoomsData = async ({ token }: TokenProps): Promise<any> => {
-  const res = await fetch(`${process.env.BASE_URL}/api/rooms/fm/`, {
-    method: "GET",
-    headers: {
-      // Authorization: "Bearer" + localStorage.getItem("access_token"),
-    },
-  });
-
-  if (!res.ok) {
-    return <p>Loading...</p>;
-  }
-
-  return res.json();
-};
-
-export default function FundmanagerRoomsInfo({ token }: TokenProps) {
-  const CheckFundmanagerRooms = getRoomsData({ token });
-  return <FundmanagerChatList />;
+      <FundmanagerChatList />
+    </>
+  )
+    ;
 }

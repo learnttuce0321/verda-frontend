@@ -1,6 +1,10 @@
-import SignupUser from "@/Component-son/SignupUser";
+import SignupUsers from "@/Component-son/SignupUser";
 
-function SignupUsers() {
-  return (<SignupUser />);
+function SignupUserRouter() {
+  return (
+    <div className="pt-[100px]">
+      <SignupUsers />
+    </div>
+  );
 }
-export default SignupUsers;
+export default SignupUserRouter;
