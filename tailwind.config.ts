@@ -40,6 +40,10 @@ const config: Config = {
         custom_skygrey: "#CFE1F8",
         custom_smog: "#A5B3D8 ",
         custom_mint: "#79F6BA",
+        custom_userbg_start: "#B3E2FC",
+        custom_userbg_end: "#8BACFE",
+        custom_fmbg_start: "#3929AA",
+        custom_fmbg_end: "#8BACFE",
       },
       container: {
         center: true,

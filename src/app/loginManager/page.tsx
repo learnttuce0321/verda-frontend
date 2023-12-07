@@ -1,7 +1,10 @@
-"use client";
 import LoginManager from "@/Component-son/LoginManager";
 
 function LoginManagerRouter() {
-  return (<LoginManager />);
+  return (
+    <div className="pt-[100px]">
+      <LoginManager />
+    </div>
+  );
 }
 export default LoginManagerRouter;

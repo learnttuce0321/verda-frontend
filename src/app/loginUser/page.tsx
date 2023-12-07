@@ -1,8 +1,10 @@
-"use client";
-
 import LoginUser from "@/Component-son/LoginUser";
 
 function LoginUserRouter() {
-  return (<LoginUser />);
+  return (
+    <div className="pt-[100px]">
+      <LoginUser />
+    </div>
+  );
 }
 export default LoginUserRouter;
