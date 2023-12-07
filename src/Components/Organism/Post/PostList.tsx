@@ -17,8 +17,6 @@ export default function PostList() {
   });
 
   const getPostList = async (pageParam: (null | number) = null): Promise<any> => {
-
-    console.log(`Bearer ${loginData.authToken.accessToken ? loginData.authToken.accessToken : JSON.parse(localStorage.getItem("loginData") as string).authToken.accessToken}`)
     const res = await fetch(`${process.env.BASE_URL}/api/user/board?page=${pageParam}&size=20`, {
       method: 'GET',
       headers: {
@@ -44,17 +42,15 @@ export default function PostList() {
   useEffect(() => {
     if (inView && hasNextPage) {
       fetchNextPage()
-    }
-  }, [inView])
+    };
+  }, [inView]);
 
-  console.log(data)
   return (
     <section>
       <div className="flex items-center flex-col">
         {
           data ? (
             data?.pages.map((page, idx) => {
-              console.log(page)
               return (
                 <Fragment key={idx}>
                   {

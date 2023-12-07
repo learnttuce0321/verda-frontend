@@ -43,7 +43,6 @@ function SignupManager() {
       record: investmentType,
       location: event.target.location.value,
     };
-    console.log(data);
 
     const formData = new FormData();
     if (event.target.file.files.length > 0) {

@@ -19,8 +19,6 @@ export default function MyPage() {
   const [token, setToken] = useRecoilState(loginState);
   const [profile, setProfile] = useState<UserProfile | null>(null);
 
-  console.log(token);
-
   const getFundManagerProfile = async (): Promise<UserProfile | null> => {
     const res = await fetch(
       `${process.env.BASE_URL}/api/members/fund/profile`,
@@ -29,9 +27,9 @@ export default function MyPage() {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token.authToken.accessToken
-              ? token.authToken.accessToken
-              : JSON.parse(localStorage.getItem("loginData") as string)
-                .authToken.accessToken
+            ? token.authToken.accessToken
+            : JSON.parse(localStorage.getItem("loginData") as string)
+              .authToken.accessToken
             }`,
         },
       },
@@ -44,7 +42,6 @@ export default function MyPage() {
     const fetchProfile = async () => {
       const getProfile = await getFundManagerProfile();
       setProfile(getProfile);
-      console.log(getProfile);
     };
     fetchProfile();
   }, []);

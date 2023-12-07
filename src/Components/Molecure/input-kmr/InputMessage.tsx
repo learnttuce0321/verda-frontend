@@ -1,7 +1,7 @@
 import { ArrowUpCircleFill } from "react-bootstrap-icons";
 import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
 
-import { useState, forwardRef, useEffect } from "react";
+import { forwardRef } from "react";
 import type { ChangeEvent, LegacyRef } from "react";
 
 interface Props {
@@ -16,14 +16,11 @@ export default forwardRef(function InputContent(
   const handleInputChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
     const targetTextarea = event.target;
     const rowCount = targetTextarea.value.split(/\r\n|\r|\n/).length;
-    console.log(rowCount);
     const textareaHeight = 56;
     const newH = 100;
 
     if (rowCount >= 0 && rowCount <= 3) {
       targetTextarea.style.height = textareaHeight.toString();
-      console.log("rowCount", rowCount);
-      console.log("세로", targetTextarea.style.height);
     } else {
       const newHeight = Math.min(newH, rowCount * 18 + 2);
       targetTextarea.style.height = `${newHeight}px`;

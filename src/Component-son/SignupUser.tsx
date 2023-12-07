@@ -49,7 +49,6 @@ function SignupUser() {
       number: event.target.phone.value,
       investmentPropensity: investmentType,
     };
-    console.log(data);
     try {
       const response = await fetch(
         `${process.env.BASE_URL}/api/members/user/add`,

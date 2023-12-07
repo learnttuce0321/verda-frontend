@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import "./globals.css";
+import Navigation from "@/Components/Organism/Navigation/Navigation";
 import RecoilProvider from "@/utils/provider/RecoilProvider";
 import ReactQueryProvider from "@/utils/provider/ReactQueryProvider";
-import Navigation from "@/Components/Organism/Navigation/Navigation";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 import Image from "next/image";
 import { Github } from "react-bootstrap-icons";
 import Link from "next/link";
-
 
 export const metadata: Metadata = {
   title: "Verda",
