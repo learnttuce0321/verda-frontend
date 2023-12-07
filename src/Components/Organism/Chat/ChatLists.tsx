@@ -10,19 +10,18 @@ import { loginState } from "@/utils/recoil/loginState";
 
 export default function ChatLists() {
   const [loginData, setLoginData] = useRecoilState(loginState)
+
   const { ref, inView } = useInView({
     threshold: 0.3,
   });
 
   const GetChatList = async (pageParam: (null | number) = null) => {
-    console.log(`${process.env.BASE_URL}/api/rooms/user?page=${pageParam}&size=20`)
     const res = await fetch(`${process.env.BASE_URL}/api/rooms/user?page=${pageParam}&size=20`, {
       method: 'GET',
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${loginData.authToken.accessToken}`
-      },
-      cache: "no-store"
+        "Authorization": `Bearer ${loginData.authToken.accessToken ? loginData.authToken.accessToken : JSON.parse(localStorage.getItem("loginData") as string).authToken.accessToken}`
+      }
     })
     return res.json();
   }
@@ -39,12 +38,12 @@ export default function ChatLists() {
   )
 
   useEffect(() => {
-    console.log("data", data)
     if (inView && hasNextPage) {
       fetchNextPage()
     }
   }, [inView])
 
+  console.log(data)
   return (
     <section className="mt-2.5">
       <div className="flex items-center flex-col">

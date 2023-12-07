@@ -11,10 +11,7 @@ interface Props {
   chatMessages: Array<any>
   setChatMessages: Dispatch<SetStateAction<any>>;
 }
-// chatMessages
 export default function ChatRoom({ roomId, chatMessages, setChatMessages }: Props) {
-  // todos: 지워야됨
-  const myEmail = "ssoert123@naver.com";
   const scrollRef = useRef<HTMLDivElement>(null)
   const [loginEmail, setLoginEmail] = useRecoilState(loginState)
 
@@ -36,9 +33,10 @@ export default function ChatRoom({ roomId, chatMessages, setChatMessages }: Prop
   }, []);
 
   useEffect(() => {
-    console.log("change")
     scrollRef.current?.scrollIntoView({ behavior: "smooth" })
   }, [chatMessages]);
+
+  console.log(chatMessages)
 
   return (
     <section className="h-full">
