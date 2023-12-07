@@ -23,11 +23,12 @@ export default function WriteInput() {
       content: contentInput
     }
 
+    console.log(loginData)
     const res = await fetch(`${process.env.BASE_URL}/api/board`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `bearer ${loginData.authToken.accessToken}`
+        "Authorization": `Bearer ${loginData.authToken.accessToken}`
       },
       body: JSON.stringify(postData)
     })

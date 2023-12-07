@@ -6,26 +6,38 @@ import { useInfiniteQuery } from "react-query";
 import { useInView } from "react-intersection-observer";
 import ButtonListTitle from "@/Components/Molecure/Button-jsh/List/ButtonListTitle";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
+import { useRecoilState } from "recoil";
+import { loginState } from "@/utils/recoil/loginState";
 
 export default function PostList() {
+  const [loginData, setLoginData] = useRecoilState(loginState)
+
   const { ref, inView } = useInView({
     threshold: 0.3,
   });
 
-  const getPostList = async (pageParam: (null | number) = 99999): Promise<any> => {
-    const res = await fetch(`${process.env.BASE_URL}/api/board?lastPostId=${pageParam}&size=20`, {
+  const getPostList = async (pageParam: (null | number) = null): Promise<any> => {
+
+    console.log(`Bearer ${loginData.authToken.accessToken ? loginData.authToken.accessToken : JSON.parse(localStorage.getItem("loginData") as string).authToken.accessToken}`)
+    const res = await fetch(`${process.env.BASE_URL}/api/user/board?page=${pageParam}&size=20`, {
       method: 'GET',
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${loginData.authToken.accessToken ? loginData.authToken.accessToken : JSON.parse(localStorage.getItem("loginData") as string).authToken.accessToken}`
+      },
+      cache: "no-store"
     });
 
     return res.json();
   };
+
   const { data, hasNextPage, fetchNextPage } = useInfiniteQuery(
     ['specialPostList'],
-    ({ pageParam = 99999 }) => getPostList(pageParam),
+    ({ pageParam = 0 }) => getPostList(pageParam),
     {
       getNextPageParam: (lastPage, allPages) => {
-        const nextPage = lastPage[lastPage.length - 1].postId
-        return nextPage === 1 ? false : nextPage
+        const nextPage = allPages.length;
+        return nextPage
       }
     }
   )
@@ -36,16 +48,18 @@ export default function PostList() {
     }
   }, [inView])
 
+  console.log(data)
   return (
     <section>
       <div className="flex items-center flex-col">
         {
           data ? (
-            data.pages.map((page, idx) => {
+            data?.pages.map((page, idx) => {
+              console.log(page)
               return (
                 <Fragment key={idx}>
                   {
-                    page.map((post: any, id: number) => {
+                    page?.content.map((post: any, id: number) => {
                       return (
                         <Link href={`/user/post/${post.postId}`} key={post.postId}>
                           <ButtonListTitle>
