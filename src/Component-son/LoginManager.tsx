@@ -1,9 +1,9 @@
 "use client";
 
-import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import Image from "next/image";
+import React, { useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useRecoilState } from "recoil";
 import { loginState } from "../utils/recoil/loginState";
@@ -113,7 +113,7 @@ function LoginManager() {
             를 받으세요
           </TextStore>
         </div>
-        <img
+        <Image
           src="/kakao_login_large_wide.png"
           className="w-10/12 mt-10"
           alt="kakao_login"

@@ -24,7 +24,6 @@ export default function FundmanagerChatList() {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${loginData.authToken.accessToken}`
       },
-      cache: "no-store"
     })
     console.log(`${process.env.BASE_URL}/api/rooms/fm?page=${pageParam}&size=20`)
     return res.json();

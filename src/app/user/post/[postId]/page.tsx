@@ -1,4 +1,4 @@
-import Section from "@/components-kim/Section";
+import Section from "@/Components-kim/Section";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 import PostDetailMain from "@/Components/Organism/Post/PostDetailMain";
 import PostDetailChatList from "@/Components/Organism/Post/PostDetailChatList";
@@ -15,13 +15,11 @@ export default async function PostDetailPage({ params: { postId } }: Props) {
   const getPostDetail = async (): Promise<any> => {
     const res = await fetch(`${process.env.BASE_URL}/api/board/${postId}`, {
       method: "GET",
-      cache: "no-store",
     });
 
     return res.json();
   };
 
-  // todos : 타입지정
   const post = await getPostDetail();
 
   return (
@@ -58,4 +56,4 @@ export default async function PostDetailPage({ params: { postId } }: Props) {
       <PostDetailChatList postId={postId} />
     </>
   );
-}
+};

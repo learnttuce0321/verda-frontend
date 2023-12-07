@@ -1,4 +1,3 @@
-// "use client";
 import React, { ReactElement } from "react";
 import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
@@ -9,9 +8,9 @@ interface FundManagersProps {
   location: string;
   investmentAmount: string;
   solution: string;
-}
+};
 
-function FundManagers({
+export default function FundManagers({
   name,
   location,
   record,
@@ -47,6 +46,5 @@ function FundManagers({
       </div>
     </BoxStore>
   );
-}
+};
 
-export default FundManagers;
