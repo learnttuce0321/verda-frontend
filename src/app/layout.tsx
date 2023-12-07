@@ -12,7 +12,11 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Verda",
   description: "Matching User and Fundmanager",
+  icons: {
+    icon: "/mainLogo.ico"
+  }
 };
+
 export default function RootLayout({
   children,
 }: {
@@ -24,13 +28,14 @@ export default function RootLayout({
         <ReactQueryProvider>
           <RecoilProvider>
             <div className="flex justify-center min-h-full gap-[8rem]">
-              <div className="hidden lg:flex flex-col justify-between py-8">
+              <div className="hidden xl:flex flex-col justify-between py-8">
                 <section>
                   <Image
                     src="/verda_logo-removebg-preview.png"
                     width={100}
                     height={70}
-                    alt="verda_logo" />
+                    alt="verda_logo"
+                    priority />
                 </section>
                 <section>
                   <div>
@@ -70,7 +75,6 @@ export default function RootLayout({
                     Notion
                   </Link>
                 </section>
-
               </div>
 
               <div className="h-screen overflow-y-scroll overflow-x-hidden">
