@@ -25,7 +25,7 @@ export default async function PostDetailChatList({ postId }: Props) {
             chatList.map(chat => {
               console.log('chat', chat)
               return (
-                <Link href={`/user/rooms/${chat.room_id}`} key={chat.room_id}>
+                <Link href={`/user/rooms/${chat.roomId}`} key={chat.roomId}>
                   <ButtonListInfo chat={chat} />
                 </Link>
               );

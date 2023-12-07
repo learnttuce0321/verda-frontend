@@ -1,5 +1,4 @@
 import React from "react";
-import FundManagers from "./Fundmanagers";
 import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 
@@ -49,7 +48,7 @@ function Reviews() {
                     <div className="flex mt-3">
                       <TextStore
                         textStyle={TextStyle.TEXT_R_16}
-                        style="w-full !text-white"
+                        style="w-full !text-black"
                       >
                         " 돈을 예상보다 많이 벌어서 너무 너무 행복합니다. 아직
                         관심이 있다면 적극 추천합니다! "
@@ -59,7 +58,7 @@ function Reviews() {
                     <div className="mt-3">
                       <TextStore
                         textStyle={TextStyle.TEXT_R_11}
-                        style="!text-white"
+                        style="!text-black"
                       >
                         손영석 펀드매니저님 고객
                       </TextStore>
@@ -74,7 +73,7 @@ function Reviews() {
                     <div className="flex mt-3">
                       <TextStore
                         textStyle={TextStyle.TEXT_R_16}
-                        style="w-full !text-white"
+                        style="w-full !text-black"
                       >
                         " 매니저님의 좋은 코칭으로 큰 성과를 달성했어요.
                         만족합니다! "
@@ -84,7 +83,7 @@ function Reviews() {
                     <div className="mt-3">
                       <TextStore
                         textStyle={TextStyle.TEXT_R_11}
-                        style="!text-white"
+                        style="!text-black"
                       >
                         이기자 펀드매니저님 고객
                       </TextStore>
@@ -99,7 +98,7 @@ function Reviews() {
                     <div className="flex mt-3">
                       <TextStore
                         textStyle={TextStyle.TEXT_R_16}
-                        style="w-full !text-white"
+                        style="w-full !text-black"
                       >
                         " 투자가 무섭다면 VERDA로 시작 "
                       </TextStore>
@@ -108,7 +107,7 @@ function Reviews() {
                     <div className="mt-3">
                       <TextStore
                         textStyle={TextStyle.TEXT_R_11}
-                        style="!text-white"
+                        style="!text-black"
                       >
                         손영석 펀드매니저님 고객
                       </TextStore>
@@ -123,7 +122,7 @@ function Reviews() {
                     <div className="flex mt-3">
                       <TextStore
                         textStyle={TextStyle.TEXT_R_16}
-                        style="w-full !text-white"
+                        style="w-full !text-black"
                       >
                         " 투자가 이렇게 쉬운 건지 몰랐네요. 강추 "
                       </TextStore>
@@ -132,7 +131,7 @@ function Reviews() {
                     <div className="mt-3">
                       <TextStore
                         textStyle={TextStyle.TEXT_R_11}
-                        style="!text-white"
+                        style="!text-black"
                       >
                         최미래 펀드매니저님 고객
                       </TextStore>

@@ -12,9 +12,9 @@ interface Post {
 };
 interface SummarizedChat {
   content: string;
-  fm_id: number;
-  room_id: number;
-  user_id: number;
-  post_id: number;
-  target_Name: string;
+  fmId: number;
+  roomId: number;
+  userId: number;
+  postId: number;
+  targetName: string;
 }

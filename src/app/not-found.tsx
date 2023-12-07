@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 import ButtonButtonNavy from "@/Components/Molecure/Button-jsh/Button/ButtonButtonNavy";
 

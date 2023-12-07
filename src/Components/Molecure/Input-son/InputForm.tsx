@@ -25,6 +25,6 @@ export default function InputForm({
       placeholder={placeholder}
       id={id}
       name={name}
-    ></input>
+    />
   );
 }

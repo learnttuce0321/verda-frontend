@@ -1,6 +1,6 @@
 "use client";
 
-import Section from "@/components-kim/Section";
+import Section from "@/Components-kim/Section";
 import BoxStore, { BoxStyle } from "@/Components/Atom/Box/BoxStore";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 import { useRecoilState } from "recoil";
@@ -28,12 +28,11 @@ export default function MyPage() {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${
-            token.authToken.accessToken
+          Authorization: `Bearer ${token.authToken.accessToken
               ? token.authToken.accessToken
               : JSON.parse(localStorage.getItem("loginData") as string)
-                  .authToken.accessToken
-          }`,
+                .authToken.accessToken
+            }`,
         },
       },
     );
