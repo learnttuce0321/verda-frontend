@@ -17,7 +17,6 @@ export default function FundmanagerChatList() {
   });
 
   const GetChatList = async (pageParam: (null | number) = null) => {
-    console.log(`Bearer ${loginData.authToken.accessToken}`)
     const res = await fetch(`https://verda.monster/api/rooms/fm?page=${pageParam}&size=20`, {
       method: 'GET',
       headers: {
@@ -25,7 +24,6 @@ export default function FundmanagerChatList() {
         "Authorization": `Bearer ${loginData.authToken.accessToken}`
       },
     })
-    console.log(`${process.env.BASE_URL}/api/rooms/fm?page=${pageParam}&size=20`)
     return res.json();
   }
 

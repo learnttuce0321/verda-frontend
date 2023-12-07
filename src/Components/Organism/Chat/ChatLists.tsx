@@ -43,7 +43,6 @@ export default function ChatLists() {
     }
   }, [inView])
 
-  console.log(data)
   return (
     <section className="mt-2.5">
       <div className="flex items-center flex-col">

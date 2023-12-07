@@ -22,10 +22,8 @@ function LoginManager() {
       );
       const data = await response.json();
       if (data) {
-        console.log("해당 이메일에 등록된 정보가 없음 회원가입 진행");
         routerUser.push("/signupManager");
       } else {
-        console.log("등록된 정보 있음 유저페이지로 이동");
         routerUser.push("/fundmanager");
       }
     } catch (error) {
@@ -44,7 +42,6 @@ function LoginManager() {
       // 클라이언트 측에서 카카오 로그인 페이지로 리다이렉트
       routerUser.push(kakaoAuthUrl);
       const code = new URL(window.location.href).searchParams.get("code");
-      console.log(code);
     } catch (error) {
       console.error("카카오 로그인에 실패", error);
     }
@@ -82,7 +79,6 @@ function LoginManager() {
       };
       localStorage.setItem("loginData", JSON.stringify(recoilData));
       setRecoildata(recoilData);
-      console.log("userEmail from backend:", data);
       const encodedEmail = encodeURIComponent(data.email);
       await checkEmailExistence(encodedEmail);
     } catch (error) {
@@ -115,7 +111,7 @@ function LoginManager() {
         </div>
         <Image
           src="/kakao_login_large_wide.png"
-          className="mt-10"
+          className="mt-10 cursor-pointer"
           width={350}
           height={53}
           alt="kakao_login"

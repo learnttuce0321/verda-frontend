@@ -19,8 +19,6 @@ export default function MyPage() {
   const [token, setToken] = useRecoilState(loginState);
   const [profile, setProfile] = useState<UserProfile | null>(null);
 
-  console.log(token);
-
   const getFundManagerProfile = async (): Promise<UserProfile | null> => {
     const res = await fetch(
       `${process.env.BASE_URL}/api/members/user/profile`,
@@ -44,7 +42,6 @@ export default function MyPage() {
     const fetchProfile = async () => {
       const getProfile = await getFundManagerProfile();
       setProfile(getProfile);
-      console.log(getProfile);
     };
     fetchProfile();
   }, []);
