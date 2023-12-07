@@ -21,9 +21,8 @@ export default function WriteInput() {
     const postData = {
       title: titleInput,
       content: contentInput
-    }
+    };
 
-    console.log(loginData)
     const res = await fetch(`${process.env.BASE_URL}/api/board`, {
       method: "POST",
       headers: {

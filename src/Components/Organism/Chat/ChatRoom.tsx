@@ -26,7 +26,6 @@ export default function ChatRoom({ roomId, chatMessages, setChatMessages }: Prop
   useEffect(() => {
     const tempFunc = async () => {
       const chats = await getChat()
-      console.log(chats)
       setChatMessages(chats)
     }
     tempFunc()
@@ -35,8 +34,6 @@ export default function ChatRoom({ roomId, chatMessages, setChatMessages }: Prop
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" })
   }, [chatMessages]);
-
-  console.log(chatMessages)
 
   return (
     <section className="h-full">

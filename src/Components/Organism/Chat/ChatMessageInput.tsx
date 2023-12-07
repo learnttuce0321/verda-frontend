@@ -20,8 +20,6 @@ export default function ChatMessageInput({ setChatMessages, roomId }: Props) {
   const onMessageReceived = (messageBody: any) => {
     const messageb = JSON.parse(messageBody.body)
 
-    console.log("tokenEmial", loginEmail.email)
-    console.log("messageb", messageb)
     const data = {
       content: messageb.content,
       sender_email: messageb.sender,

@@ -17,17 +17,14 @@ function LoginUser() {
 
   // 동일한 이메일의 회원정보 있는지 확인
   const checkEmailExistence = async (encodedEmail: string) => {
-    console.log(encodedEmail);
     try {
       const response = await fetch(
         `https://verda.monster/api/members/user/exist/${encodedEmail}`,
       );
       const data = await response.json();
       if (data) {
-        console.log("해당 이메일에 등록된 정보가 없음 회원가입 진행");
         routerUser.push("/signupUser");
       } else {
-        console.log("등록된 정보 있음 유저페이지로 이동");
         routerUser.push("/user");
       }
     } catch (error) {
@@ -41,7 +38,6 @@ function LoginUser() {
         console.error("Authorization code is null");
         return;
       }
-      console.log("-----------2---------------", code);
       const response = await fetch(
         `${process.env.BASE_URL}/api/auth/kakaouser`,
         {
@@ -67,7 +63,6 @@ function LoginUser() {
       };
       localStorage.setItem("loginData", JSON.stringify(recoilData));
       setRecoildata(recoilData);
-      console.log("userEmail from backend:", data);
       const encodedEmail = data.email;
       await checkEmailExistence(encodedEmail);
     } catch (error) {
@@ -121,7 +116,7 @@ function LoginUser() {
           </div>
           <Image
             src="/kakao_login_large_wide.png"
-            className="w-10/12 mt-10"
+            className="w-10/12 mt-10 cursor-pointer"
             width={350}
             height={53}
             alt="kakao_login"
