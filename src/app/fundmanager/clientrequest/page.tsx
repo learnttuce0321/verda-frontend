@@ -1,31 +1,8 @@
-
-
-import ClientRequest from "@/organisms/fundmanager-kim/Client-request/ClientRequest";
-
-const size = 20;
-const lastPostId = 10000;
-const getData = async (): Promise<any> => {
-
-  const res = await fetch(
-    `${process.env.BASE_URL}/api/board?lastPostId=${lastPostId}&size=${size}`,
-    {
-      method: "GET",
-    },
-  );
-
-  if (!res.ok) {
-
-    return <>Loading...</>;
-
-  }
-
-  return res.json();
-};
-
-
+import Section from "@/Components-kim/Section";
+import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
+import ClientRequerstList from "@/Component-son/ClientRequestList";
 
 export default async function ClientRequestData() {
-  const data = await getData();
   // const { data, hasNextPage, fetchNextPage } = useInfiniteQuery(
   //   ["postScroll"],
   //   pageParam => getData(pageParam),
@@ -55,6 +32,5 @@ export default async function ClientRequestData() {
   //   };
   // };
 
-  return <ClientRequest posts={data} />;
-
+  return <ClientRequerstList />;
 }
