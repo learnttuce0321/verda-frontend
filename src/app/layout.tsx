@@ -66,7 +66,7 @@ export default function RootLayout({
                     <Github className="w-[50px] h-[50px]" />
                     Github
                   </Link>
-                  <Link href="https://www.notion.so/kimmr/verda-9362c1a22c00470da7a544b8f068bea1?pvs=4">
+                  <Link href="https://kimmr.notion.site/verda-9362c1a22c00470da7a544b8f068bea1?pvs=4">
                     <Image
                       src="/icons8-notion-150-removebg-preview.png"
                       width={50}
