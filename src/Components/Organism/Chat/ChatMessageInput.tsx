@@ -51,7 +51,7 @@ export default function ChatMessageInput({ setChatMessages, roomId }: Props) {
   }
 
   useEffect(() => {
-    const socket = new WebSocket("wss://verda.monster/wss");
+    const socket = new WebSocket(`${process.env.BASE_WEBSOCKET_URL}`);
 
     const client = Stomp.over(socket);
     client.connect(
