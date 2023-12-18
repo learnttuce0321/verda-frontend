@@ -1,5 +1,5 @@
 "use client";
-
+//  ? loginData.authToken.accessToken : JSON.parse(localStorage.getItem("loginData") as string).authToken.accessToken
 import { useEffect, Fragment } from "react";
 import Link from "next/link";
 import { useInfiniteQuery } from "react-query";
@@ -15,12 +15,17 @@ export default function ChatLists() {
     threshold: 0.3,
   });
 
+  /**
+* 게시글 불러오는 fetch함수
+* @param pageParam 게시글을 불러오는 page번호
+* @returns 
+*/
   const GetChatList = async (pageParam: (null | number) = null) => {
     const res = await fetch(`${process.env.BASE_URL}/api/rooms/user?page=${pageParam}&size=20`, {
       method: 'GET',
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${loginData.authToken.accessToken ? loginData.authToken.accessToken : JSON.parse(localStorage.getItem("loginData") as string).authToken.accessToken}`
+        "Authorization": `Bearer ${loginData.authToken.accessToken}`
       }
     })
     return res.json();
