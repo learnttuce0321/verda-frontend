@@ -33,7 +33,7 @@ export default function ChatDetailPage({ params: { roomId } }: Props) {
 
   return (
     <section className="w-[100%] ">
-      <TextStore textStyle={TextStyle.TEXT_R_40_BLUE} style="mb-2">
+      <TextStore textStyle={TextStyle.TEXT_R_40_BLUE} styl  e="mb-2">
         {roomTitle.length ? (
           roomTitle
         ) : (

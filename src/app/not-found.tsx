@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
-import ButtonButtonNavy from "@/Components/Molecure/Button-jsh/Button/ButtonButtonNavy";
+import ButtonButtonNavy from "@/Components/Molecure/Button/Button/ButtonButtonNavy";
 
 export default function NotFound() {
   const router = useRouter()

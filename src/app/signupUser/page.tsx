@@ -1,4 +1,4 @@
-import SignupUsers from "@/Component-son/SignupUser";
+import SignupUsers from "@/Components/Organism/SignUp/SignupUser";
 
 export default function SignupUserRouter() {
   return (

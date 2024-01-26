@@ -83,8 +83,6 @@ export default function ChatMessageInput({ setChatMessages, roomId }: Props) {
     };
   };
 
-
-
   return (
     <InputMessage textareaHeight={textareaHeight} setTextareaHeight={setTextareaHeight} submitHandler={submitHandler} ref={textareaRef} />
   )
