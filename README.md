@@ -28,9 +28,11 @@
 > **verda 바로가기👉https://verda1.vercel.app/**
 <br/>
 --현재 서버가 닫혀 동작하지 않습니다.--
->
+<br/>
 > 시연 영상
+<br/>
 > [펀드매니저 화면(web버전)](https://youtu.be/4htkcIsmj_k)
+<br/>
 > [일반회원 화면(mobile버전)](https://youtu.be/4QnvwiQkCuQ)
 
 ## 2.🤼 팀원 소개
@@ -101,7 +103,6 @@
 > **2023.11.10 ~ 2023.12.08 (총 29일)**
 
 ## 4.⚙️ 기술 스택 및 협업 방식
-
 <details>
   <summary>협업 관련 링크</summary>
   <div markdown="1">
@@ -165,7 +166,6 @@
 </table>
 
 ## 5.🔧 주요기능
-
 - 투자자는 투자문의를 작성할 수 있습니다.
   
 |투자문의 작성
