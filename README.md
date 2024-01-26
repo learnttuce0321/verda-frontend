@@ -32,13 +32,11 @@
 
 > 시연 영상
 
-<br/>
-
-> [펀드매니저 화면(web버전)](https://youtu.be/4htkcIsmj_k)
+> [펀드매니저 화면(web 화면)](https://youtu.be/4htkcIsmj_k)
 
 <br/>
 
-> [일반회원 화면(mobile버전)](https://youtu.be/4QnvwiQkCuQ)
+> [일반회원 화면(mobile 화면)](https://youtu.be/4QnvwiQkCuQ)
 
 <br />
 
