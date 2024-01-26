@@ -1,4 +1,4 @@
-import LoginManager from "@/Component-son/LoginManager";
+import LoginManager from "@/Components/Organism/Login/LoginManager";
 
 export default function LoginManagerRouter() {
   return (

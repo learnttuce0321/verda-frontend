@@ -1,4 +1,4 @@
-import Section from "@/Components-kim/Section";
+import Section from "@/Components/_LayoutComponent/Section";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 import PostDetailMain from "@/Components/Organism/Post/PostDetailMain";
 import PostDetailChatList from "@/Components/Organism/Post/PostDetailChatList";

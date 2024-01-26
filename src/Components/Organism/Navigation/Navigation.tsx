@@ -1,12 +1,12 @@
 "use client";
 
 import { ArrowLeft, List, X } from "react-bootstrap-icons";
-import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 import Link from "next/link";
-import { useRecoilState } from "recoil";
-import { loginState } from "@/utils/recoil/loginState";
 import { useEffect, useState } from "react";
+import { useRecoilState } from "recoil";
 import { useRouter, usePathname } from "next/navigation";
+import { loginState } from "@/utils/recoil/loginState";
+import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 
 export default function Navigation() {
   const [toggle, setToggle] = useState<boolean>(false)

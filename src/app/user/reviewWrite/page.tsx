@@ -1,5 +1,5 @@
-import ReviewWrite from "@/Component-son/ReviewWrite";
-import Section from "@/Components-kim/Section";
+import ReviewWrite from "@/Components/Organism/Review/ReviewWrite";
+import Section from "@/Components/_LayoutComponent/Section";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 
 export default function WritePostPage() {

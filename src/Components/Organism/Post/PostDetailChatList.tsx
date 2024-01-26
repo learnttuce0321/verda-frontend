@@ -1,5 +1,5 @@
 import Link from "next/link";
-import ButtonListInfo from "@/Components/Molecure/Button-jsh/List/ButtonListInfo";
+import ButtonListInfo from "@/Components/Molecure/Button/List/ButtonListInfo";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 
 interface Props {

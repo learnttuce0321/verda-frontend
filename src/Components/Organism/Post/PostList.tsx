@@ -4,7 +4,7 @@ import { useEffect, Fragment } from "react";
 import Link from "next/link";
 import { useInfiniteQuery } from "react-query";
 import { useInView } from "react-intersection-observer";
-import ButtonListTitle from "@/Components/Molecure/Button-jsh/List/ButtonListTitle";
+import ButtonListTitle from "@/Components/Molecure/Button/List/ButtonListTitle";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 import { useRecoilState } from "recoil";
 import { loginState } from "@/utils/recoil/loginState";

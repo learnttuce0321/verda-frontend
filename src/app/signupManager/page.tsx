@@ -1,4 +1,4 @@
-import SignupManager from "@/Component-son/SignupManager";
+import SignupManager from "@/Components/Organism/SignUp/SignupManager";
 
 export default function SignupManagerRouter() {
   return (

@@ -1,6 +1,7 @@
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
-import Section from "@/Components-kim/Section";
-import FundmanagerChatList from "@/organisms/fundmanager-kim/Rooms/Rooms";
+import Section from "@/Components/_LayoutComponent/Section";
+import FundmanagerChatList from "@/Components/Organism/Chat/FundmanagerChatList";
+
 
 export default function FundmanagerRoomsInfo() {
   return (

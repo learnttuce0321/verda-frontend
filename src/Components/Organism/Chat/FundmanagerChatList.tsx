@@ -1,38 +1,34 @@
 "use client";
-//  ? loginData.authToken.accessToken : JSON.parse(localStorage.getItem("loginData") as string).authToken.accessToken
-import { useEffect, Fragment } from "react";
+
 import Link from "next/link";
-import { useInfiniteQuery } from "react-query";
+import Section from "@/Components/_LayoutComponent/Section";
 import { useInView } from "react-intersection-observer";
+import { useInfiniteQuery } from "react-query";
+import { Fragment, useEffect } from "react";
 import ButtonListInfo from "@/Components/Molecure/Button/List/ButtonListInfo";
 import { useRecoilState } from "recoil";
 import { loginState } from "@/utils/recoil/loginState";
 
-export default function ChatLists() {
-  const [loginData, setLoginData] = useRecoilState(loginState)
 
+export default function FundmanagerChatList() {
+  const [loginData, setLoginDate] = useRecoilState(loginState)
   const { ref, inView } = useInView({
     threshold: 0.3,
   });
 
-  /**
-* 게시글 불러오는 fetch함수
-* @param pageParam 게시글을 불러오는 page번호
-* @returns 
-*/
   const GetChatList = async (pageParam: (null | number) = null) => {
-    const res = await fetch(`${process.env.BASE_URL}/api/rooms/user?page=${pageParam}&size=20`, {
+    const res = await fetch(`https://verda.monster/api/rooms/fm?page=${pageParam}&size=20`, {
       method: 'GET',
       headers: {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${loginData.authToken.accessToken}`
-      }
+      },
     })
     return res.json();
   }
 
   const { data, hasNextPage, fetchNextPage } = useInfiniteQuery(
-    ['specialChatListUser'],
+    ['specialChatListFm'],
     ({ pageParam = 0 }) => GetChatList(pageParam),
     {
       getNextPageParam: (lastPage, allPages) => {
@@ -47,9 +43,8 @@ export default function ChatLists() {
       fetchNextPage()
     }
   }, [inView])
-
   return (
-    <section className="mt-2.5">
+    <Section>
       <div className="flex items-center flex-col">
         {
           data ? (
@@ -60,10 +55,10 @@ export default function ChatLists() {
                     page.content && (
                       page.content.map((chat: any, id: number) => {
                         return (
-                          <Link href={`/user/rooms/${chat.roomId}`} key={`${chat.roomId} + ${id}`}>
+                          <Link href={`/fundmanager/rooms/${chat.roomId}`} key={`${chat.roomId} + ${id}`} className="!text-black">
                             <ButtonListInfo chat={chat} />
                           </Link>
-                        );
+                        )
                       })
                     )
                   }
@@ -78,6 +73,6 @@ export default function ChatLists() {
         }
       </div>
       <div ref={ref} className="h-[1rem]" />
-    </section>
-  )
+    </Section>
+  );
 }
