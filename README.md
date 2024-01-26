@@ -308,16 +308,13 @@ export default function IconStore({ iconStyle, design, children }: Props) {
       {
         selectIcon()
       }
-
-      <IconStore iconStyle={IconStyle.DEFAULT_BUTTON} design="p-3">
-        황동준 바보
-      </IconStore>
     </>
   )
 }
 ```
 
 <br/>
+
 ### 무한 스크롤 구현
 ReactQuery의 useInfiniteQuery와 React-Intersection-Observer를 활용한 무한 스크롤 구현
 
