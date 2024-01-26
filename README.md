@@ -78,11 +78,11 @@
   <tr>
     <td align="center">Front-End</td>
     <td>
-      <span><img src="https://img.shields.io/badge/next.js-FFF?style=flat&logo=next.js&logoColor=black"></span>&nbsp
-      <span><img src="https://img.shields.io/badge/tailwindcss-06B6D4?style=flat&logo=tailwindcss&logoColor=black"></span>&nbsp
-      <span><img src="https://img.shields.io/badge/reactquery-FF4154?style=flat&logo=reactquery&logoColor=black"></span>&nbsp
-      <span><img src="https://img.shields.io/badge/recoil-FFF?style=flat&logo=recoil&logoColor=black"></span>&nbsp
-      <span><img src="https://img.shields.io/badge/stomp-FFF?style=flat&logo=stomp&logoColor=black"></span>&nbsp
+      <span><img src="https://img.shields.io/badge/next.js-FFF?style=for-the-badge&logo=next.js&logoColor=black"></span>&nbsp
+      <span><img src="https://img.shields.io/badge/tailwindcss-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=black"></span>&nbsp
+      <span><img src="https://img.shields.io/badge/reactquery-FF4154?style=for-the-badge&logo=reactquery&logoColor=black"></span>&nbsp
+      <span><img src="https://img.shields.io/badge/recoil-FFF?style=for-the-badge&logo=recoil&logoColor=black"></span>&nbsp
+      <span><img src="https://img.shields.io/badge/stomp-FFF?style=for-the-badge&logo=stomp&logoColor=black"></span>&nbsp
     </td>
   </tr>
   <tr>
@@ -101,6 +101,11 @@
      </td>
   </tr>
   <tr>
+   <td align="center">IDE</td>
+   <td>
+      <span><img src="https://img.shields.io/badge/VSCode-007ACC?style=for-the-badge&logo=Visual%20Studio%20Code&logoColor=white"/></span>&nbsp
+  </tr>
+  <tr>
    <td align="center">컨벤션</td>
    <td>
       <span><img src="https://img.shields.io/badge/Prettier-F7B93E?style=for-the-badge&logo=Prettier&logoColor=white"/></span>&nbsp
@@ -115,5 +120,3 @@
   </tr>
 </table>
 
-
-<span><img src="https://img.shields.io/badge/visualstudiocode-FFF?style=flat&logo=visualstudiocode&logoColor=black"></span>
