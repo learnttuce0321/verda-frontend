@@ -28,6 +28,9 @@
 <br/>
 --현재 서버가 닫혀 동작하지 않습니다.--
 >
+> 시연 영상
+> [펀드매니저 화면(web버전)](https://youtu.be/4htkcIsmj_k)
+> [일반회원 화면(mobile버전)](https://youtu.be/4QnvwiQkCuQ)
 
 ## 2.🤼 팀원 소개
 <table>
@@ -189,3 +192,64 @@
 |:------:
 |<img src="https://kimmr-fun1ty.vercel.app/_next/image?url=%2Fstatic%2Fimages%2F%EC%A0%9C%EC%95%88%EC%84%9C%EC%9E%91%EC%84%B1.gif&w=640&q=75" width="250" height="530"/>
 <br/>
+
+## 6. 폴더 구조
+```
+verda/src
+├─@types
+│  └─Post
+├─app
+│  ├─fundmanager
+│  │  ├─clientrequest
+│  │  │  └─[postid]
+│  │  ├─mypage
+│  │  └─rooms
+│  │      └─[roomId]
+│  ├─loginManager
+│  ├─loginUser
+│  ├─signupManager
+│  ├─signupUser
+│  └─user
+│      ├─mypage
+│      ├─post
+│      │  └─[postId]
+│      ├─reviewWrite
+│      ├─rooms
+│      │  └─[roomId]
+│      └─write
+├─Components
+│  ├─Atom
+│  │  ├─Box
+│  │  │  ├─Chat
+│  │  │  ├─Corner
+│  │  │  ├─Rectangle
+│  │  │  │  └─Long
+│  │  │  └─Square
+│  │  ├─Icon
+│  │  └─Text
+│  ├─Molecure
+│  │  ├─Button
+│  │  │  ├─Button
+│  │  │  ├─Link
+│  │  │  │  └─Button
+│  │  │  └─List
+│  │  └─Input
+│  ├─Organism
+│  │  ├─Chat
+│  │  ├─ClientRequest
+│  │  ├─FundManager
+│  │  ├─Login
+│  │  ├─Main
+│  │  │  ├─FundManagerContent
+│  │  │  └─ReviewContent
+│  │  ├─Navigation
+│  │  ├─Post
+│  │  ├─Review
+│  │  ├─SignUp
+│  │  ├─User
+│  │  └─Write
+│  └─_LayoutComponent
+└─utils
+    ├─provider
+    └─recoil
+```
