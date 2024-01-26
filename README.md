@@ -14,7 +14,9 @@
 
 ## 1.📱verda 소개
 
-<img width="706" alt="image" src="https://github.com/kdt8-Team5-verda-project/verda-frontend/assets/138414160/757b99b9-ced2-4986-ac85-8f799d12f646">
+<div align="center">
+  <img width="706" alt="image" src="https://github.com/kdt8-Team5-verda-project/verda-frontend/assets/138414160/757b99b9-ced2-4986-ac85-8f799d12f646">
+</div>
 
 투자에 대한 관심은 증가하지만,투자 상담받기에 어려움을 느끼고 대부분 금융지식이 부족한 상태에서 투자를 진행합니다. 또한 문자나 인터넷에서 투자와 관련된 위험한 경로로부터 투자 제안을 종종 받습니다. 이러한 문제점을 극복하기 위한 펀드매니저 매칭 서비스입니다.
 
@@ -157,3 +159,33 @@
   </tr>
 </table>
 
+## 5. 주요기능
+
+- 투자자는 투자문의를 작성할 수 있습니다.
+  
+|투자문의 작성
+|:------:
+|<img src="https://kimmr-fun1ty.vercel.app/_next/image?url=%2Fstatic%2Fimages%2F%ED%88%AC%EC%9E%90%EB%AC%B8%EC%9D%98%EC%9E%91%EC%84%B1.gif&w=640&q=75" width="250" height="550"/>
+<br/>
+
+
+- 투자자는 펀드매니저에게 온 제안서를 확인 할 수 있습니다. (총 3개의 제안서만 받을 수 있음)
+  
+|제안서 확인
+|:------:
+|<img src="https://kimmr-fun1ty.vercel.app/_next/image?url=%2Fstatic%2Fimages%2F%EC%A0%9C%EC%95%88%EC%84%9C%EB%AA%A9%EB%A1%9D.gif&w=640&q=75" width="250" height="550"/>
+<br/>
+
+- 펀드매니저는 고객들의 투자문의를 확인 할 수 있습니다.
+  
+|투자문의 확인
+|:------:
+|<img src="https://kimmr-fun1ty.vercel.app/_next/image?url=%2Fstatic%2Fimages%2F%EB%AC%B4%ED%95%9C%EC%8A%A4%ED%81%AC%EB%A1%A4.gif&w=828&q=75" width="250" height="450" />
+<br/>
+
+- 투자자와 펀드매니저는 서로 채팅을 할 수 있습니다.
+  
+|채팅화면
+|:------:
+|<img src="https://kimmr-fun1ty.vercel.app/_next/image?url=%2Fstatic%2Fimages%2F%EC%A0%9C%EC%95%88%EC%84%9C%EC%9E%91%EC%84%B1.gif&w=640&q=75" width="250" height="530"/>
+<br/>
