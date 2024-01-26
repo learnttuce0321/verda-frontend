@@ -32,27 +32,58 @@
   <tbody>
     <tr>
       <th scope="col" colspan="3">프론트엔드</th>
-       <th scope="col" colspan="3">백엔드</th>
     </tr>
     <tr>
       <td align="center"><a href="https://github.com/fun1ty"><img src="https://github.com/fun1ty.png" width="100px;" alt=""/><br /><b>김미리</b></a><br /></td>
       <td align="center"><a href="https://github.com/learnttuce0321"><img src="https://github.com/learnttuce0321.png" width="100px;" alt=""/><br /><b>주상후</b></a><br /></td>
       <td align="center"><a href="https://github.com/sonys95"><img src="https://github.com/sonys95.png" width="100px;" alt=""/> <br /><b>손영석</b></a><br /></td>
-      <td align="center"><a href="https://github.com/changhyun-jang"><img src="https://github.com/changhyun-jang.png" width="100px;" alt=""/><br /><b>장창현</b></a><br /></td>
-      <td align="center"><a href="https://github.com/Kimjonghyeon6084"><img src="https://github.com/Kimjonghyeon6084.png" width="100px;" alt=""/><br /><b>김종현</b></a><br /></td>
-      <td align="center"><a href="https://github.com/saebyeok1"><img src="https://github.com/saebyeok1.png" width="100px;" alt=""/><br /><b>김보영</b></a><br /></td>
     </tr>
-    <tr>
+<!--     <tr>
       <td >펀드매니저 모든 페이지,<br/> UI/UX디자인</td>
       <td >프론트엔드 조장<br/>유저 모든 페이지 <br/>채팅 구현 <br/></td>
       <td >로그인,<br/>회원가입,<br/>메인 페이지</td>
-      <td >백엔드 조장<br/>채팅 기능 구현<br/> 데이터 캐싱<br/></td>
-      <td >회원가입<br/>로그인<br/>사용자 관리<br/></td>
-      <td >게시판 CRUD<br/>CI/CD 파이프라인<br/></td>
-    </tr>
-    
+    </tr> -->
   </tbody>
 </table>
+
+> ### 주상후
+#### 📃 페이지
+  - 유저 메인 페이지
+  - 유저 게시글 페이지
+  - 유저 게시글 작성 페이지
+  - 유저 채팅리스트 페이지
+  - 유저, 펀드매니저 채팅 페이지
+#### 📡 기능
+  - 자신이 작성한 게시글 불러오기
+  - 게시글 작성
+  - 유저가 수락한 펀드매니저와의 채팅 리스트 불러오기
+  - 유저와 펀드매니저와의 실시간 채팅
+  - 펀드매니저 채팅리스트 제외 모든 페이지의 게시글, 채팅리스트 무한스크롤 구현
+> ### 김미리
+#### 🎨 디자인
+  - 디자인 총괄
+#### 📃 페이지
+  - 펀드매니저 메인 페이지
+  - 펀드매니저 게시글 페이지
+  - 펀드매니저 답변 작성 페이지
+  
+  - 유저, 펀드매니저 마이 페이지
+#### 📡 기능
+  - 유저가 작성한 모든 게시글 불러오기
+  - 답변 작성
+  - 유저와의 채팅 리스트 불러오기
+  - 자신의 가입 정보 불러오기
+> ### 손영석
+#### 🎨 디자인
+  - 로고 및 디자인 총괄
+#### 📃 페이지
+  - 로그인 전 메인 페이지
+  - 일반 회원, 펀드매니저 회원가입페이지
+  - 일반 회원, 펀드매니저 로그인페이지
+  - 펀드매니저 채팅리스트 페이지
+#### 📡 기능
+  - 카카오API를 활용한 로그인 및 회원가입 구현
+  - 펀드매니저 채팅리스트 무한스크롤 구현
 
 ## 3.📆 개발 기간
 
@@ -78,11 +109,11 @@
   <tr>
     <td align="center">Front-End</td>
     <td>
-      <span><img src="https://img.shields.io/badge/next.js-FFF?style=for-the-badge&logo=next.js&logoColor=black"></span>&nbsp
-      <span><img src="https://img.shields.io/badge/tailwindcss-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=black"></span>&nbsp
+      <span><img src="https://img.shields.io/badge/next.js-000?style=for-the-badge&logo=next.js&logoColor=white"></span>&nbsp
+      <span><img src="https://img.shields.io/badge/tailwindcss-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white"></span>&nbsp
       <span><img src="https://img.shields.io/badge/reactquery-FF4154?style=for-the-badge&logo=reactquery&logoColor=black"></span>&nbsp
-      <span><img src="https://img.shields.io/badge/recoil-FFF?style=for-the-badge&logo=recoil&logoColor=black"></span>&nbsp
-      <span><img src="https://img.shields.io/badge/stomp-FFF?style=for-the-badge&logo=stomp&logoColor=black"></span>&nbsp
+      <span><img src="https://img.shields.io/badge/recoil-000?style=for-the-badge&logo=recoil&logoColor=white"></span>&nbsp
+      <span><img src="https://img.shields.io/badge/stomp-000?style=for-the-badge&logo=stomp&logoColor=white"></span>&nbsp
     </td>
   </tr>
   <tr>
