@@ -1,4 +1,4 @@
-import LoginUser from "@/Component-son/LoginUser";
+import LoginUser from "@/Components/Organism/Login/LoginUser";
 
 export default function LoginUserRouter() {
   return (

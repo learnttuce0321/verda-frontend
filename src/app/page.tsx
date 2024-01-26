@@ -1,7 +1,7 @@
 import React from "react";
-import Contents from "@/Component-son/Contents";
-import InfoLogin from "@/Component-son/InfoLogin";
-import Reviews from "@/Component-son/Reviews";
+import Contents from "@/Components/Organism/Main/FundManagerContent/Contents";
+import InfoLogin from "@/Components/Organism/Login/LoginInfo";
+import Reviews from "@/Components/Organism/Main/ReviewContent/Reviews";
 
 export default function Home() {
   return (

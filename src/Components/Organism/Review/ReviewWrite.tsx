@@ -8,11 +8,11 @@ import InputTitle from "@/Components/Molecure/Input/InputTitle";
 import { useRecoilState } from "recoil";
 import { loginState } from "@/utils/recoil/loginState";
 
-export default function WriteInput() {
-  const router = useRouter()
-  const titleRef = useRef<HTMLInputElement>(null)
-  const contentRef = useRef<HTMLTextAreaElement>(null)
-  const [loginData, setLoginData] = useRecoilState(loginState)
+export default function ReviewWrite() {
+  const router = useRouter();
+  const titleRef = useRef<HTMLInputElement>(null);
+  const contentRef = useRef<HTMLTextAreaElement>(null);
+  const [loginData, setLoginData] = useRecoilState(loginState);
 
   const SubmitHandler = async (): Promise<any> => {
     const titleInput = titleRef.current!.value;
@@ -20,32 +20,33 @@ export default function WriteInput() {
 
     const postData = {
       title: titleInput,
-      content: contentInput
+      content: contentInput,
     };
 
     const res = await fetch(`${process.env.BASE_URL}/api/board`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${loginData.authToken.accessToken}`
+        Authorization: `bearer ${loginData.authToken.accessToken}`,
       },
-      body: JSON.stringify(postData)
-    })
+      body: JSON.stringify(postData),
+    });
 
     if (!res.ok) {
-      notFound()
+      notFound();
     }
 
-    router.push('/user')
-  }
+    router.push("/user");
+  };
   return (
     <>
       <section className="flex flex-col my-3">
         <InputTitle ref={titleRef} />
         <InputContent
           ref={contentRef}
-          placeHolder="투자관련 문의를 작성해주세요"
-          rows={23} />
+          placeHolder="투자후기를 작성해주세요"
+          rows={23}
+        />
       </section>
 
       <section className="mt-5">
@@ -56,5 +57,5 @@ export default function WriteInput() {
         </button>
       </section>
     </>
-  )
+  );
 }
