@@ -10,7 +10,8 @@
   4. [기술 스택 및 협업 방식](#4-기술-스택-및-협업-방식)
   5. [주요 기능](#5-주요-기능)
   6. [폴더 구조](#6-폴더-구조)
-  7. [추가 개발/개선 사항](#6-추가-개발/개선-사항)
+  7. [핵심 코드](#7-핵심-코드)
+  8. [추가 개발/개선 사항](#8-추가-개발/개선-사항)
 </details>
 
 ## 1.📱verda 소개
@@ -35,6 +36,8 @@
 <br/>
 > [일반회원 화면(mobile버전)](https://youtu.be/4QnvwiQkCuQ)
 
+<br />
+
 ## 2.🤼 팀원 소개
 <table>
   <tbody>
@@ -46,11 +49,6 @@
       <td align="center"><a href="https://github.com/learnttuce0321"><img src="https://github.com/learnttuce0321.png" width="100px;" alt=""/><br /><b>주상후</b></a><br /></td>
       <td align="center"><a href="https://github.com/sonys95"><img src="https://github.com/sonys95.png" width="100px;" alt=""/> <br /><b>손영석</b></a><br /></td>
     </tr>
-<!--     <tr>
-      <td >펀드매니저 모든 페이지,<br/> UI/UX디자인</td>
-      <td >프론트엔드 조장<br/>유저 모든 페이지 <br/>채팅 구현 <br/></td>
-      <td >로그인,<br/>회원가입,<br/>메인 페이지</td>
-    </tr> -->
   </tbody>
 </table>
 
@@ -99,8 +97,14 @@
   - 카카오API를 활용한 로그인 및 회원가입 구현
   - 펀드매니저 채팅리스트 무한스크롤 구현
 
+
+<br />
+
 ## 3.📆 개발 기간
 > **2023.11.10 ~ 2023.12.08 (총 29일)**
+
+
+<br />
 
 ## 4.⚙️ 기술 스택 및 협업 방식
 <details>
@@ -165,7 +169,10 @@
   </tr>
 </table>
 
-## 5.🔧 주요기능
+
+<br />
+
+## 5.🔧 주요 기능
 - 투자자는 투자문의를 작성할 수 있습니다.
   
 |투자문의 작성
@@ -194,6 +201,9 @@
 |:------:
 |<img src="https://kimmr-fun1ty.vercel.app/_next/image?url=%2Fstatic%2Fimages%2F%EC%A0%9C%EC%95%88%EC%84%9C%EC%9E%91%EC%84%B1.gif&w=640&q=75" width="250" height="530"/>
 <br/>
+
+
+<br />
 
 ## 6.📜 폴더 구조
 ```
@@ -255,3 +265,97 @@ verda/src
     ├─provider
     └─recoil
 ```
+
+## 7.⭐️ 핵심 코드
+### 아토믹 디자인 구현
+각 단위의 필요한 컴포넌트를 구현하고 store에서 가져오는 방식으로 활용 <br />
+store방식을 molecule단위까지 사용
+```
+export enum IconStyle {
+  CONTENTS = "CONTENTS",
+  COMMENTS = "COMMENTS",
+  DEFAULT_BUTTON = "DEFAULT_BUTTON",
+}
+
+interface Props {
+  iconStyle: IconStyle;
+  design?: string;
+  children?: React.ReactNode
+}
+
+export default function IconStore({ iconStyle, design, children }: Props) {
+  const selectIcon = (): React.ReactNode => {
+    switch (iconStyle) {
+      case IconStyle.CONTENTS:
+        return <p className={`p-2 ${design}`}>Content Icon</p>
+      case IconStyle.COMMENTS:
+        return <p>Comment Icon</p>
+
+      case IconStyle.DEFAULT_BUTTON:
+        return (
+          <button type="button" className={`bg-yellow ${design}`}>
+            {children}
+          </button>
+        )
+      default:
+        return null;
+    }
+  }
+
+  return (
+    <>
+      {
+        selectIcon()
+      }
+
+      <IconStore iconStyle={IconStyle.DEFAULT_BUTTON} design="p-3">
+        황동준 바보
+      </IconStore>
+    </>
+  )
+}
+```
+
+<br/>
+### 무한 스크롤 구현
+ReactQuery의 useInfiniteQuery와 React-Intersection-Observer를 활용한 무한 스크롤 구현
+```
+/**
+* 게시글 불러오는 fetch함수
+* @param pageParam 게시글을 불러오는 page번호
+* @returns 
+*/
+const GetChatList = async (pageParam: (null | number) = null) => {
+    const res = await fetch(`${process.env.BASE_URL}/api/rooms/user?page=${pageParam}&size=20`, {
+      method: 'GET',
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${loginData.authToken.accessToken}`
+      }
+    })
+    return res.json();
+  }
+
+/**
+ * 무한 스크롤에 맞춰 data fetch 하는 hook
+ */
+  const { data, hasNextPage, fetchNextPage } = useInfiniteQuery(
+    ['specialChatListUser'],
+    ({ pageParam = 0 }) => GetChatList(pageParam),
+    {
+      getNextPageParam: (lastPage, allPages) => {
+        const nextPage = allPages.length;
+        return nextPage
+      },
+    }
+  )
+/**
+ * 스크롤 마지막에 도달하면 다음 데이터를 불러옴
+ */
+  useEffect(() => {
+    if (inView && hasNextPage) {
+      fetchNextPage()
+    }
+  }, [inView])
+```
+## 8.♻️ 추가 개발/개선 사항
