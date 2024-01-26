@@ -270,6 +270,7 @@ verda/src
 ### 아토믹 디자인 구현
 각 단위의 필요한 컴포넌트를 구현하고 store에서 가져오는 방식으로 활용 <br />
 store방식을 molecule단위까지 사용
+
 ```
 export enum IconStyle {
   CONTENTS = "CONTENTS",
@@ -319,12 +320,13 @@ export default function IconStore({ iconStyle, design, children }: Props) {
 <br/>
 ### 무한 스크롤 구현
 ReactQuery의 useInfiniteQuery와 React-Intersection-Observer를 활용한 무한 스크롤 구현
+
 ```
 /**
-* 게시글 불러오는 fetch함수
-* @param pageParam 게시글을 불러오는 page번호
-* @returns 
-*/
+ * 게시글 불러오는 fetch함수
+ * @param pageParam 게시글을 불러오는 page번호
+ * @returns 
+ */
 const GetChatList = async (pageParam: (null | number) = null) => {
     const res = await fetch(`${process.env.BASE_URL}/api/rooms/user?page=${pageParam}&size=20`, {
       method: 'GET',
@@ -358,4 +360,5 @@ const GetChatList = async (pageParam: (null | number) = null) => {
     }
   }, [inView])
 ```
+
 ## 8.♻️ 추가 개발/개선 사항
