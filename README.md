@@ -50,8 +50,8 @@
       <th scope="col" colspan="3">프론트엔드</th>
     </tr>
     <tr>
-      <td align="center"><a href="https://github.com/fun1ty"><img src="https://github.com/fun1ty.png" width="100px;" alt=""/><br /><b>김미리</b></a><br /></td>
       <td align="center"><a href="https://github.com/learnttuce0321"><img src="https://github.com/learnttuce0321.png" width="100px;" alt=""/><br /><b>주상후</b></a><br /></td>
+      <td align="center"><a href="https://github.com/fun1ty"><img src="https://github.com/fun1ty.png" width="100px;" alt=""/><br /><b>김미리</b></a><br /></td>
       <td align="center"><a href="https://github.com/sonys95"><img src="https://github.com/sonys95.png" width="100px;" alt=""/> <br /><b>손영석</b></a><br /></td>
     </tr>
   </tbody>
