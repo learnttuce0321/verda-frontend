@@ -1,4 +1,4 @@
-import Section from "@/Components-kim/Section";
+import Section from "@/Components/_LayoutComponent/Section";
 import TextStore, { TextStyle } from "@/Components/Atom/Text/TextStore";
 import WriteInput from "@/Components/Organism/Write/WriteInput";
 
